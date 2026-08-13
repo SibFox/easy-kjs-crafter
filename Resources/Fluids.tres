@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemCollection" format=3 uid="uid://bnken43t6ng6k"]
+
+[ext_resource type="Script" uid="uid://c0rkj240liapo" path="res://Resource Classes/ItemCollection.cs" id="1_uygw1"]
+
+[resource]
+resource_name = "fluid"
+script = ExtResource("1_uygw1")
+ItemName = null
+metadata/_custom_type_script = "uid://c0rkj240liapo"
