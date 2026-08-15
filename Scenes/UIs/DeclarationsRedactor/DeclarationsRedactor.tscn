@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dc8srvin27rtg"]
 
 [ext_resource type="Script" uid="uid://dg6vfa1h6gkfy" path="res://Scenes/UIs/DeclarationsRedactor/DeclarationsRedactor.cs" id="1_abtwu"]
+[ext_resource type="PackedScene" uid="uid://buvp0yyq5s7qg" path="res://Scenes/UIs/DeclarationTab/DeclarationTab.tscn" id="2_6yq3b"]
+[ext_resource type="PackedScene" uid="uid://dpu4wycjq7o05" path="res://Scenes/UIs/ResourceEntry/ItemEntryBox.tscn" id="3_dejuy"]
 
 [node name="DeclarationsRedactor" type="Control" unique_id=1056935821]
 layout_mode = 3
@@ -10,3 +12,58 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_abtwu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=169465235]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1615489840]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer" unique_id=2108608296]
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 48
+text = "Редактор определений"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=796507484]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/HBoxContainer" unique_id=599100389]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/side_margin = 48
+theme_override_constants/tab_separation = 72
+theme_override_font_sizes/font_size = 32
+current_tab = 0
+tab_0/title = "Предметы"
+tab_1/title = "Теги"
+tab_2/title = "Жидкости"
+
+[node name="ItemsTab" parent="VBoxContainer/HBoxContainer/TabContainer" unique_id=1112128700 instance=ExtResource("2_6yq3b")]
+layout_mode = 2
+metadata/_tab_index = 0
+metadata/_tab_name = "Предметы"
+
+[node name="ItemEntryBox" parent="VBoxContainer/HBoxContainer/TabContainer/ItemsTab" unique_id=613924869 instance=ExtResource("3_dejuy")]
+layout_mode = 2
+
+[node name="TagsTab" parent="VBoxContainer/HBoxContainer/TabContainer" unique_id=399460692 instance=ExtResource("2_6yq3b")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+metadata/_tab_name = "Теги"
+
+[node name="FluidsTab" parent="VBoxContainer/HBoxContainer/TabContainer" unique_id=1278415594 instance=ExtResource("2_6yq3b")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+metadata/_tab_name = "Жидкости"

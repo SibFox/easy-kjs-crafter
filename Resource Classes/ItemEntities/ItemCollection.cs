@@ -8,8 +8,10 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
     {
         [Export]
         public Array<ResourceEntry> Collection { get; private set; }
+        // Для отображения в редакторе
+        public string CollectionName { get; set; }
 
         public ItemCollection() {}
-        public ItemCollection(string declarationKey) : base (declarationKey) {}
+        public ItemCollection(string declarationKey, string collectionName) : base (declarationKey) { CollectionName = collectionName; }
     }
 }

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dwumoehu1dsar"]
+
+[ext_resource type="Script" uid="uid://b0ta5111hg3s5" path="res://Scenes/UIs/LoadingScreen/LoadingScreen.cs" id="1_hcwhx"]
+
+[node name="LoadingScreen" type="Control" unique_id=930557254]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hcwhx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1839847550]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=1340598128]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2" unique_id=2065861216]
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 64
+text = "Редактор крафтов KubeJS
+Сделано SibFox"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=20564047]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/margin_left = 450
+theme_override_constants/margin_right = 450
+
+[node name="LoadingProgress" type="ProgressBar" parent="VBoxContainer/MarginContainer" unique_id=1290821084]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6

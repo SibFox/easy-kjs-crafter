@@ -20,10 +20,15 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=360519616]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=618735150]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer" unique_id=360519616]
 layout_mode = 2
 size_flags_vertical = 2
 size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 64
 text = "Редактор крафтов KubeJS
 Сделано SibFox"
 horizontal_alignment = 1
@@ -31,3 +36,25 @@ horizontal_alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1424088610]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="DeclRedButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=512129100]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Редактор
+определений
+предметов"
+
+[node name="CraftRedButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=211502205]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Редактор
+крафтов"
+
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/DeclRedButton" to="." method="OnDeclRedButton_Click"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/CraftRedButton" to="." method="OnCraftRedButton_Click"]

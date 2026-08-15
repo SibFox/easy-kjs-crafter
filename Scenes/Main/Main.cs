@@ -1,16 +1,22 @@
 using Godot;
-using EasyKJSCrafter.ResourceClasses.ItemEntities;
+using EasyKJSCrafter.Singleton;
 
 namespace EasyKJSCrafter.Scenes.Main
 {
     public partial class Main : Node
     {
-        ItemCollection Items = GD.Load<ItemCollection>("res://Resources/Items.tres");
-        ItemCollection Tags = GD.Load<ItemCollection>("res://Resources/Tags.tres");
-        ItemCollection Fluids = GD.Load<ItemCollection>("res://Resources/Fluids.tres");
+        public UIHandler UIHandler => GetChild<UIHandler>(0);
 
-        public override void _Ready() {
-            GD.Print(Items.Collection.Count);
+        public override void _Ready()
+        {
+            Global.Main = this;
+
+            // Корректно выдаёт false
+            // string t = "44t";
+            // GD.Print(int.TryParse(t, out int ti));
+            // GD.Print(float.TryParse(t, out float tf));
+            // GD.Print(ti);
+            // GD.Print(tf);
         }
     }
 }

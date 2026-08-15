@@ -15,7 +15,7 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
         [Export]
         public PathId ItemId { get; set; } = new();
         [Export]
-        public Array<ComponentBase> Components { get; set; }
+        public Array<ComponentBase> Components { get; private set; } = [];
 
         // Для отображения иконки для удобного отображения
         // TODO: Вставку через буфер обмена и сохранение внутри файлов проекта/приложения

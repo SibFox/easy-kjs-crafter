@@ -39,13 +39,27 @@ namespace EasyKJSCrafter.ResourceClasses
             set { SetPathFromWholePath(value); }
         }
 
+        public PathId() {}
+        public PathId(string modId, string path)
+        {
+            ModId = modId;
+            Path = path;
+        }
+        public PathId(string wholePath) { SetPathFromWholePath(wholePath); }
+
         public void SetPathFromWholePath(string wholePath)
         {
-            string[] slicedPath = wholePath.Split(':');
+            string rememberedPath = WholePath;
+            string[] slicedPath = wholePath.ToLower().Split(':');
             if (slicedPath.Length != 2)
+            {
+                WholePath = rememberedPath;
                 throw new ArgumentException("Wrong string path for the PathId: " + wholePath);
+            }
             _modId = slicedPath[0];
             _path = slicedPath[1];
         }
+
+        public override string ToString() { return WholePath; }
     }
 }

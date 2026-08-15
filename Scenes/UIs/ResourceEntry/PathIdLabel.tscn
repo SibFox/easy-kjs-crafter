@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://8yxjkqme6h04"]
+
+[ext_resource type="Script" uid="uid://b851f33ux70qc" path="res://Scenes/UIs/ResourceEntry/PathIdLabel.cs" id="1_qwwjf"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_qwwjf"]
+color = Color(0.19215687, 0.039215688, 0.41568628, 1)
+grow_begin = -2.0
+grow_end = -2.0
+thickness = 3
+vertical = true
+
+[node name="PathIdLabel" type="HBoxContainer" unique_id=203030064]
+script = ExtResource("1_qwwjf")
+
+[node name="DividedLineHBoxContainer" type="HBoxContainer" parent="." unique_id=945702147]
+layout_mode = 2
+
+[node name="ModIdLine" type="LineEdit" parent="DividedLineHBoxContainer" unique_id=447484690]
+layout_mode = 2
+placeholder_text = "ModId"
+expand_to_text_length = true
+select_all_on_focus = true
+
+[node name="Label" type="Label" parent="DividedLineHBoxContainer" unique_id=1054070786]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = ":"
+
+[node name="PathLine" type="LineEdit" parent="DividedLineHBoxContainer" unique_id=1593881491]
+layout_mode = 2
+placeholder_text = "Path"
+expand_to_text_length = true
+select_all_on_focus = true
+
+[node name="WholeLineHBoxContainer" type="HBoxContainer" parent="." unique_id=1954642256]
+visible = false
+layout_mode = 2
+
+[node name="WholePathLine" type="LineEdit" parent="WholeLineHBoxContainer" unique_id=1818409613]
+layout_mode = 2
+placeholder_text = "ModId:Path"
+expand_to_text_length = true
+select_all_on_focus = true
+
+[node name="VSeparator" type="VSeparator" parent="." unique_id=648083468]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_qwwjf")
+
+[node name="ChangeButton" type="Button" parent="." unique_id=989651096]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "C"
+
+[connection signal="editing_toggled" from="DividedLineHBoxContainer/ModIdLine" to="." method="OnModIdLine_EditingToggled"]
+[connection signal="editing_toggled" from="DividedLineHBoxContainer/PathLine" to="." method="OnPathLine_EditingToggled"]
+[connection signal="editing_toggled" from="WholeLineHBoxContainer/WholePathLine" to="." method="OnWholePathLine_EditingToggled"]
+[connection signal="pressed" from="ChangeButton" to="." method="OnChangeButton_Pressed"]
