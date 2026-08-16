@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="ItemCollection" format=3 uid="uid://bedvqcvm4wcju"]
+[gd_resource type="Resource" script_class="ItemCollection" format=3]
 
-[ext_resource type="Script" uid="uid://c0rkj240liapo" path="res://Resource Classes/ItemEntities/ItemCollection.cs" id="1_05u8e"]
+[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ItemCollection.cs" id="1_05u8e"]
+[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ResourceEntry.cs" id="1_47vnv"]
 
 [resource]
 resource_name = "tag"
 script = ExtResource("1_05u8e")
-Collection = Array[Object]([])
+Collection = Array[ExtResource("1_47vnv")]([])
 metadata/_custom_type_script = "uid://c0rkj240liapo"

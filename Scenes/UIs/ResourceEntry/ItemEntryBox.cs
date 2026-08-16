@@ -18,7 +18,7 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 
                     KeyLine.Text = item.ResourceName;
                     EntryNameLine.Text = item.EntryName;
-                    IdLabel.Id = item.ItemId;
+                    IdLabel.Id = item.Id;
                     ItemIconRect.Texture = item.Icon;
                     if (item.Icon == null)
                         ItemIconRect.Texture = Global.QuestionMarkTexture;
@@ -27,12 +27,19 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 		}
 
 		protected TextureRect ItemIconRect => NameContainer.GetNode<TextureRect>("ItemIconRect");
+
 		protected PathIdLabel IdLabel => DataContainer.GetNode<PathIdLabel>("PathIdLabel");
 		protected Button ComponentsButton => DataContainer.GetNode<Button>("ComponentsButton");
+		protected VBoxContainer ComponentsContainer => DataContainer.GetNode<VBoxContainer>("ComponentsVBoxContainer");
 		
-		void OnComponentsButton_Toggle(bool toggledOn)
+		void BuildComponentsTrees()
 		{
 			
+		}
+
+		void OnComponentsButton_Toggle(bool toggledOn)
+		{
+			ComponentsContainer.Visible = toggledOn;
 		}
 	}
 }

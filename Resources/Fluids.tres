@@ -1,9 +1,26 @@
-[gd_resource type="Resource" script_class="ItemCollection" format=3 uid="uid://bnken43t6ng6k"]
+[gd_resource type="Resource" script_class="ItemCollection" format=3]
 
-[ext_resource type="Script" uid="uid://c0rkj240liapo" path="res://Resource Classes/ItemEntities/ItemCollection.cs" id="1_uygw1"]
+[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ResourceEntry.cs" id="1_ioi0w"]
+[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ItemCollection.cs" id="1_uygw1"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/ComponentBase.cs" id="2_6ofqd"]
+[ext_resource type="Script" path="res://Resource Classes/PathId.cs" id="3_fbdrw"]
+[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ItemEntry.cs" id="4_fpkat"]
+
+[sub_resource type="Resource" id="Resource_qgw8q"]
+script = ExtResource("3_fbdrw")
+ModId = "minecraft"
+Path = "water"
+WholePath = "minecraft:water"
+
+[sub_resource type="Resource" id="Resource_ghhv7"]
+resource_name = "water"
+script = ExtResource("4_fpkat")
+Id = SubResource("Resource_qgw8q")
+Components = Array[ExtResource("2_6ofqd")]([])
+EntryName = "Вода"
 
 [resource]
 resource_name = "fluid"
 script = ExtResource("1_uygw1")
-Collection = Array[Object]([])
+Collection = Array[ExtResource("1_ioi0w")]([SubResource("Resource_ghhv7")])
 metadata/_custom_type_script = "uid://c0rkj240liapo"

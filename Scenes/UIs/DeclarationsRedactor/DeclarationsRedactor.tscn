@@ -35,11 +35,29 @@ theme_override_font_sizes/font_size = 48
 text = "Редактор определений"
 horizontal_alignment = 1
 
+[node name="BackButton" type="Button" parent="VBoxContainer/MarginContainer/Label" unique_id=1377841891]
+custom_minimum_size = Vector2(150, 80)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -22.0
+offset_bottom = 22.0
+grow_horizontal = 0
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(-0.5, 0)
+offset_transform_visual_only = false
+text = "Назад"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=796507484]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TabContainer" type="TabContainer" parent="VBoxContainer/HBoxContainer" unique_id=599100389]
+[node name="DeclarationTabContainer" type="TabContainer" parent="VBoxContainer/HBoxContainer" unique_id=599100389]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/side_margin = 48
@@ -50,22 +68,31 @@ tab_0/title = "Предметы"
 tab_1/title = "Теги"
 tab_2/title = "Жидкости"
 
-[node name="ItemsTab" parent="VBoxContainer/HBoxContainer/TabContainer" unique_id=1112128700 instance=ExtResource("2_6yq3b")]
+[node name="ItemsTab" parent="VBoxContainer/HBoxContainer/DeclarationTabContainer" unique_id=1112128700 instance=ExtResource("2_6yq3b")]
 layout_mode = 2
 DeclarationCollection = ExtResource("3_bs6ar")
 metadata/_tab_index = 0
 metadata/_tab_name = "Предметы"
 
-[node name="TagsTab" parent="VBoxContainer/HBoxContainer/TabContainer" unique_id=399460692 instance=ExtResource("2_6yq3b")]
+[node name="TagsTab" parent="VBoxContainer/HBoxContainer/DeclarationTabContainer" unique_id=399460692 instance=ExtResource("2_6yq3b")]
 visible = false
 layout_mode = 2
 DeclarationCollection = ExtResource("4_jy3jp")
 metadata/_tab_index = 1
 metadata/_tab_name = "Теги"
 
-[node name="FluidsTab" parent="VBoxContainer/HBoxContainer/TabContainer" unique_id=1278415594 instance=ExtResource("2_6yq3b")]
+[node name="FluidsTab" parent="VBoxContainer/HBoxContainer/DeclarationTabContainer" unique_id=1278415594 instance=ExtResource("2_6yq3b")]
 visible = false
 layout_mode = 2
 DeclarationCollection = ExtResource("5_0xy4v")
 metadata/_tab_index = 2
 metadata/_tab_name = "Жидкости"
+
+[node name="SaveButton" type="Button" parent="VBoxContainer" unique_id=1616036766]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Сохранить"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/Label/BackButton" to="." method="OnBackButton_Pressed"]
+[connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="OnSaveButton_Pressed"]

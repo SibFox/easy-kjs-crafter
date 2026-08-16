@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://mx32uw3d250u"]
+
+[ext_resource type="Script" uid="uid://di5emxu27nkoq" path="res://Scenes/UIs/ResourceEntry/ComponentEntry/ComponentEntry.cs" id="1_kge7g"]
+
+[node name="ComponentEntry" type="VBoxContainer" unique_id=698204598]
+script = ExtResource("1_kge7g")

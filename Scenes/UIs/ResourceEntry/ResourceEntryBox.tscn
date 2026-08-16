@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cdopx7atnel7s" path="res://Scenes/UIs/ResourceEntry/ResourceEntryBox.cs" id="1_4y8wc"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2dwb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_xmw0h"]
 color = Color(0.19215687, 0.039215688, 0.41568628, 1)
 grow_begin = -2.0
@@ -21,51 +25,79 @@ script = ExtResource("1_4y8wc")
 custom_minimum_size = Vector2(50, 50)
 custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
+toggle_mode = true
 text = "O"
 
-[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=1954647250]
+[node name="InfoPanelContainer" type="PanelContainer" parent="." unique_id=454553234]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t2dwb")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="InfoPanelContainer" unique_id=1954647250]
 layout_mode = 2
 
-[node name="NameHBoxContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=305104392]
+[node name="NameHBoxContainer" type="HBoxContainer" parent="InfoPanelContainer/HBoxContainer" unique_id=305104392]
 layout_mode = 2
 offset_transform_position_ratio = Vector2(0.05, 0)
 offset_transform_visual_only = false
 
-[node name="KeyLine" type="LineEdit" parent="HBoxContainer/NameHBoxContainer" unique_id=1513191439]
+[node name="KeyLine" type="LineEdit" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=1513191439]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 placeholder_text = "Ключ"
 expand_to_text_length = true
 select_all_on_focus = true
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer/NameHBoxContainer" unique_id=1097351034]
+[node name="VSeparator" type="VSeparator" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=1097351034]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxLine_xmw0h")
 
-[node name="EntryNameLine" type="LineEdit" parent="HBoxContainer/NameHBoxContainer" unique_id=1914674687]
+[node name="EntryNameLine" type="LineEdit" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=1914674687]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 placeholder_text = "Название"
 expand_to_text_length = true
 select_all_on_focus = true
 
-[node name="VSeparator2" type="VSeparator" parent="HBoxContainer/NameHBoxContainer" unique_id=130170753]
+[node name="VSeparator2" type="VSeparator" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=130170753]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxLine_xmw0h")
 
-[node name="Button" type="Button" parent="HBoxContainer/NameHBoxContainer" unique_id=384270146]
+[node name="DeleteButton" type="Button" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=384270146]
 layout_mode = 2
-text = "Удалить (-> \"Y/N\")"
+text = "Удалить"
 
-[node name="DataVBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1105333730]
+[node name="ConfirmDeleteButton" type="Button" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=2013115525]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "Y"
+
+[node name="DeclineDeleteButton" type="Button" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=780734770]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "N"
+
+[node name="HasErrorsLabel" type="Label" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=1214620063]
+visible = false
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0.2, 0)
+theme_override_colors/font_color = Color(0.92156863, 0.24705882, 0.23529412, 1)
+text = "ОШИБКА"
+
+[node name="DataVBoxContainer" type="VBoxContainer" parent="InfoPanelContainer/HBoxContainer" unique_id=1105333730]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[connection signal="pressed" from="ShowDataButton" to="." method="OnShowDataButton_Pressed"]
-[connection signal="editing_toggled" from="HBoxContainer/NameHBoxContainer/KeyLine" to="." method="OnKeyLine_EditingToggled"]
-[connection signal="editing_toggled" from="HBoxContainer/NameHBoxContainer/EntryNameLine" to="." method="OnItemNameLine_EditingToggled"]
+[connection signal="toggled" from="ShowDataButton" to="." method="OnShowDataButton_Toggled"]
+[connection signal="editing_toggled" from="InfoPanelContainer/HBoxContainer/NameHBoxContainer/KeyLine" to="." method="OnKeyLine_EditingToggled"]
+[connection signal="editing_toggled" from="InfoPanelContainer/HBoxContainer/NameHBoxContainer/EntryNameLine" to="." method="OnItemNameLine_EditingToggled"]
+[connection signal="pressed" from="InfoPanelContainer/HBoxContainer/NameHBoxContainer/DeleteButton" to="." method="OnDeleteButton_Pressed"]
+[connection signal="pressed" from="InfoPanelContainer/HBoxContainer/NameHBoxContainer/ConfirmDeleteButton" to="." method="OnConfirmDeleteButton_Pressed"]
+[connection signal="pressed" from="InfoPanelContainer/HBoxContainer/NameHBoxContainer/DeclineDeleteButton" to="." method="OnDeclineDeleteButton_Pressed"]

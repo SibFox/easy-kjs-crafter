@@ -16,7 +16,7 @@ vertical = true
 script = ExtResource("2_1kpaa")
 Resource = null
 
-[node name="VSeparator2" type="VSeparator" parent="HBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="3" unique_id=1703838304]
+[node name="VSeparator3" type="VSeparator" parent="HBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="3" unique_id=1703838304]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxLine_uwvma")
@@ -37,3 +37,10 @@ custom_maximum_size = Vector2(350, -1)
 layout_mode = 2
 toggle_mode = true
 text = "Компоненты (N)"
+
+[node name="ComponentsVBoxContainer" type="VBoxContainer" parent="HBoxContainer/DataVBoxContainer" parent_id_path=PackedInt32Array(1105333730) index="2" unique_id=1372559599]
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(30, 0)
+offset_transform_visual_only = false

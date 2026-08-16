@@ -9,8 +9,8 @@ namespace EasyKJSCrafter.ResourceClasses
     [DebuggerDisplay("Mod = {_modId}, Path = {_path}")]
     public partial class PathId : Resource
     {
-        private string _modId = "minecraft";
-        private string _path = "air";
+        private string _modId;
+        private string _path;
         
         [Export]
         public string ModId { 
@@ -68,7 +68,7 @@ namespace EasyKJSCrafter.ResourceClasses
         [GeneratedRegex(@"^[a-z_]+$", RegexOptions.IgnoreCase)]
         private static partial Regex ModIdRegex();
 
-        [GeneratedRegex(@"^[a-z_]+(?:/[a-z0-9_]+)*$", RegexOptions.IgnoreCase)]
+        [GeneratedRegex(@"^[a-z_]+(?:/\w+)*$", RegexOptions.IgnoreCase)]
         private static partial Regex PathRegex();
 
         public static PathId Instance => new PathId();

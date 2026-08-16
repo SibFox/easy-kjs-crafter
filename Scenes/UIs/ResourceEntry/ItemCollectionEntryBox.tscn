@@ -16,7 +16,7 @@ vertical = true
 script = ExtResource("2_wfdgm")
 Resource = null
 
-[node name="VSeparator2" type="VSeparator" parent="HBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="3" unique_id=1304113086]
+[node name="VSeparator3" type="VSeparator" parent="HBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="3" unique_id=1304113086]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxLine_ma682")

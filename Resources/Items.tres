@@ -1,20 +1,23 @@
-[gd_resource type="Resource" script_class="ItemCollection" format=3 uid="uid://c86nfm6cn53yx"]
+[gd_resource type="Resource" script_class="ItemCollection" format=3]
 
-[ext_resource type="Script" uid="uid://dnqbschkt35h" path="res://Resource Classes/PathId.cs" id="1_fs83q"]
-[ext_resource type="Script" uid="uid://c0rkj240liapo" path="res://Resource Classes/ItemEntities/ItemCollection.cs" id="1_nbop3"]
-[ext_resource type="Script" uid="uid://dxhj00dxkf3cq" path="res://Resource Classes/ItemEntities/ItemEntry.cs" id="2_7aef8"]
-[ext_resource type="Script" uid="uid://d2em7ndnmkq7j" path="res://Resource Classes/ComponentEntities/IntegerComponent.cs" id="3_koyoo"]
+[ext_resource type="Script" path="res://Resource Classes/PathId.cs" id="1_fs83q"]
+[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ResourceEntry.cs" id="1_koyoo"]
+[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ItemCollection.cs" id="1_nbop3"]
+[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ItemEntry.cs" id="2_7aef8"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/IntegerComponent.cs" id="3_koyoo"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/ComponentBase.cs" id="4_3nxin"]
 
-[sub_resource type="Resource" id="Resource_2qsml"]
+[sub_resource type="Resource" id="Resource_s5dqs"]
 script = ExtResource("1_fs83q")
-Path = "redstone"
-metadata/_custom_type_script = "uid://dnqbschkt35h"
+ModId = "minecraft"
+Path = "air"
+WholePath = "minecraft:air"
 
 [sub_resource type="Resource" id="Resource_ames6"]
 resource_name = "redstone"
 script = ExtResource("2_7aef8")
-ItemId = SubResource("Resource_2qsml")
-Components = null
+Id = SubResource("Resource_s5dqs")
+Components = Array[ExtResource("4_3nxin")]([])
 EntryName = "Редстоун"
 metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
 
@@ -22,6 +25,7 @@ metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
 script = ExtResource("1_fs83q")
 ModId = "industrialupgrade"
 Path = "level_microchip"
+WholePath = "industrialupgrade:level_microchip"
 metadata/_custom_type_script = "uid://dnqbschkt35h"
 
 [sub_resource type="Resource" id="Resource_ox0vw"]
@@ -30,42 +34,42 @@ Value = 1
 Id = SubResource("Resource_45dtk")
 metadata/_custom_type_script = "uid://d2em7ndnmkq7j"
 
-[sub_resource type="Resource" id="Resource_xf2dy"]
+[sub_resource type="Resource" id="Resource_xtmuh"]
 script = ExtResource("1_fs83q")
-ModId = "industrialupgrade"
-Path = "crafting_elements/crafting_272_element"
-metadata/_custom_type_script = "uid://dnqbschkt35h"
+ModId = "minecraft"
+Path = "air"
+WholePath = "minecraft:air"
 
 [sub_resource type="Resource" id="Resource_7srki"]
 resource_name = "lvl1"
 script = ExtResource("2_7aef8")
-ItemId = SubResource("Resource_xf2dy")
-Components = Array[Object]([SubResource("Resource_ox0vw")])
+Id = SubResource("Resource_xtmuh")
+Components = Array[ExtResource("4_3nxin")]([SubResource("Resource_ox0vw")])
 EntryName = "Микрочип 1ур"
 metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
 
-[sub_resource type="Resource" id="Resource_0nr7f"]
+[sub_resource type="Resource" id="Resource_ehnp8"]
 script = ExtResource("1_fs83q")
-ModId = "industrialupgrade"
-Path = "graphene_wire"
-metadata/_custom_type_script = "uid://dnqbschkt35h"
+ModId = "minecraft"
+Path = "air"
+WholePath = "minecraft:air"
 
 [sub_resource type="Resource" id="Resource_7m4je"]
 resource_name = "graphene_wire"
 script = ExtResource("2_7aef8")
-ItemId = SubResource("Resource_0nr7f")
-Components = null
+Id = SubResource("Resource_ehnp8")
+Components = Array[ExtResource("4_3nxin")]([])
 metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
 
 [sub_resource type="Resource" id="Resource_qc31c"]
 resource_name = "iu"
 script = ExtResource("1_nbop3")
-Collection = Array[Object]([SubResource("Resource_7srki"), SubResource("Resource_7m4je")])
+Collection = Array[ExtResource("1_koyoo")]([SubResource("Resource_7srki"), SubResource("Resource_7m4je")])
 EntryName = "Industrial Upgrade"
 metadata/_custom_type_script = "uid://c0rkj240liapo"
 
 [resource]
 resource_name = "item"
 script = ExtResource("1_nbop3")
-Collection = Array[Object]([SubResource("Resource_ames6"), SubResource("Resource_qc31c")])
+Collection = Array[ExtResource("1_koyoo")]([SubResource("Resource_ames6"), SubResource("Resource_qc31c")])
 metadata/_custom_type_script = "uid://c0rkj240liapo"

@@ -32,5 +32,14 @@ namespace EasyKJSCrafter.Singleton
             public static ItemEntryBox ItemEntryBoxInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ResourceEntry/ItemEntryBox.tscn").Instantiate<ItemEntryBox>();
             public static ItemCollectionEntryBox ItemCollectionEntryBoxBoxInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ResourceEntry/ItemCollectionEntryBox.tscn").Instantiate<ItemCollectionEntryBox>();
         }
+
+        public static class Paths
+	{
+		public const string LogsPath = "user://Logs/";
+		// public const string GlobalConfigPath = "user://GlobalConfig.cfg";
+
+		// public const string Scenes = "res://Scenes/";
+		// public const string UI = Scenes + "UI/";
+	}
     }
 }

@@ -11,7 +11,7 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
     {
         // Для отображения в редакторе
         [Export]
-        public PathId ItemId { get; set; }
+        public PathId Id { get; set; }
         [Export]
         public Array<ComponentBase> Components { get; private set; }
 
@@ -20,17 +20,17 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
         [Export]
         public Texture2D Icon { get; set; }
 
-        public ItemEntry() { Components = []; ItemId = new(); }
+        public ItemEntry() { Components = []; Id = new(); }
 
         public ItemEntry(string declarationKey, PathId itemId, string itemName = null) : base(declarationKey, itemName)
         {
-            ItemId = itemId;
+            Id = itemId;
             Components = [];
         }
 
         public ItemEntry(string declarationKey, string itemIdString, string itemName = null) : base(declarationKey, itemName)
         {
-            ItemId.SetPathFromWholePath(itemIdString);
+            Id.SetPathFromWholePath(itemIdString);
             Components = [];
         }
     }
