@@ -2,7 +2,7 @@ using System.IO;
 using EasyKJSCrafter.ResourceClasses;
 using Godot;
 
-namespace EasyKJSCrafter.Scenes.UIs.ResourceEntry
+namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 {
     public partial class PathIdLabel : HBoxContainer
     {

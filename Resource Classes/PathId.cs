@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace EasyKJSCrafter.ResourceClasses
 {
@@ -16,9 +17,8 @@ namespace EasyKJSCrafter.ResourceClasses
             get { return _modId; }
             set
             {
-                if (value.Contains(':') || value.Contains('/'))
-                    return;
-                _modId = value;
+                if (ModIdRegex().IsMatch(value))
+                    _modId = value.ToLower();
             }
         }
         [Export]
@@ -26,9 +26,14 @@ namespace EasyKJSCrafter.ResourceClasses
             get { return _path; }
             set
             {
-                if (value.Contains(':'))
+                if (string.IsNullOrEmpty(value))
                     return;
-                _path = value;
+                
+                string cleaned = value.Trim('/');
+                cleaned = Regex.Replace(cleaned, @"/+", "/");
+
+                if (PathRegex().IsMatch(cleaned))
+                    _path = cleaned.ToLower();
             }
         }
 
@@ -49,17 +54,23 @@ namespace EasyKJSCrafter.ResourceClasses
 
         public void SetPathFromWholePath(string wholePath)
         {
-            string rememberedPath = WholePath;
-            string[] slicedPath = wholePath.ToLower().Split(':');
+            string[] slicedPath = wholePath.Split(':');
             if (slicedPath.Length != 2)
             {
-                WholePath = rememberedPath;
-                throw new ArgumentException("Wrong string path for the PathId: " + wholePath);
+                return;
             }
-            _modId = slicedPath[0];
-            _path = slicedPath[1];
+            ModId = slicedPath[0];
+            Path = slicedPath[1];
         }
 
         public override string ToString() { return WholePath; }
+
+        [GeneratedRegex(@"^[a-z_]+$", RegexOptions.IgnoreCase)]
+        private static partial Regex ModIdRegex();
+
+        [GeneratedRegex(@"^[a-z_]+(?:/[a-z0-9_]+)*$", RegexOptions.IgnoreCase)]
+        private static partial Regex PathRegex();
+
+        public static PathId Instance => new PathId();
     }
 }

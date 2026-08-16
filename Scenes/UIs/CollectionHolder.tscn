@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://3y3dglybi0lp"]
+
+[ext_resource type="Script" uid="uid://d08etyddg5qt6" path="res://Scenes/UIs/CollectionHolder.cs" id="1_okyvb"]
+
+[node name="CollectionHolder" type="VBoxContainer" unique_id=2117693577]
+offset_right = 302.0
+offset_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_okyvb")
+
+[node name="AddEntryOption" type="OptionButton" parent="." unique_id=1133288119]
+custom_minimum_size = Vector2(0, 50)
+custom_maximum_size = Vector2(350, -1)
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Добавить запись"
+popup/item_0/id = 0
+popup/item_1/text = "Предмет"
+popup/item_1/id = 1
+popup/item_2/text = "Коллекция"
+popup/item_2/id = 2
+
+[connection signal="item_selected" from="AddEntryOption" to="." method="OnAddEntryOption_Selected"]

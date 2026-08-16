@@ -8,11 +8,11 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
     {
         [Export]
         [DebuggerDisplay("Id = {Id.WholePath}, Value = {Value}")]
-        public PathId Id { get; set; } = new();
+        public PathId Id { get; set; }
 
         public virtual Variant Value { get; set; }
 
-        public ComponentBase() {}
+        public ComponentBase() { Id = new(); }
         public ComponentBase(PathId pathId) { Id = pathId; }
         public ComponentBase(string wholePath) { Id.SetPathFromWholePath(wholePath); }
     }

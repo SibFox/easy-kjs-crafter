@@ -1,78 +1,71 @@
 [gd_resource type="Resource" script_class="ItemCollection" format=3 uid="uid://c86nfm6cn53yx"]
 
-[ext_resource type="Script" uid="uid://cg4jp2j3n0mjw" path="res://Resource Classes/ItemEntities/ResourceEntry.cs" id="1_7aef8"]
+[ext_resource type="Script" uid="uid://dnqbschkt35h" path="res://Resource Classes/PathId.cs" id="1_fs83q"]
 [ext_resource type="Script" uid="uid://c0rkj240liapo" path="res://Resource Classes/ItemEntities/ItemCollection.cs" id="1_nbop3"]
-[ext_resource type="Script" uid="uid://dnqbschkt35h" path="res://Resource Classes/PathId.cs" id="2_koyoo"]
-[ext_resource type="Script" uid="uid://bg2wumieujrnd" path="res://Resource Classes/ComponentEntities/BooleanComponent.cs" id="3_3nxin"]
-[ext_resource type="Script" uid="uid://b5nwpdsyks4dv" path="res://Resource Classes/ComponentEntities/FloatComponent.cs" id="4_3nxin"]
-[ext_resource type="Script" uid="uid://bqkniakv6ol4n" path="res://Resource Classes/ComponentEntities/ArrayComponent.cs" id="4_s5dqs"]
-[ext_resource type="Script" uid="uid://dxhj00dxkf3cq" path="res://Resource Classes/ItemEntities/ItemEntry.cs" id="5_xtmuh"]
+[ext_resource type="Script" uid="uid://dxhj00dxkf3cq" path="res://Resource Classes/ItemEntities/ItemEntry.cs" id="2_7aef8"]
+[ext_resource type="Script" uid="uid://d2em7ndnmkq7j" path="res://Resource Classes/ComponentEntities/IntegerComponent.cs" id="3_koyoo"]
 
-[sub_resource type="Resource" id="Resource_ehnp8"]
-script = ExtResource("2_koyoo")
-Path = "bloob"
-WholePath = "minecraft:bloob"
-
-[sub_resource type="Resource" id="Resource_0n3xo"]
-script = ExtResource("3_3nxin")
-Id = SubResource("Resource_ehnp8")
-metadata/_custom_type_script = "uid://bg2wumieujrnd"
-
-[sub_resource type="Resource" id="Resource_jhp23"]
-script = ExtResource("2_koyoo")
-Path = "yqa"
-WholePath = "minecraft:yqa"
-
-[sub_resource type="Resource" id="Resource_cmk6n"]
-script = ExtResource("4_3nxin")
-Value = 4.5
-Id = SubResource("Resource_jhp23")
-metadata/_custom_type_script = "uid://b5nwpdsyks4dv"
-
-[sub_resource type="Resource" id="Resource_qtv3y"]
-script = ExtResource("4_s5dqs")
-Value = Array[Object]([SubResource("Resource_cmk6n")])
-Id = SubResource("Resource_jhp23")
-metadata/_custom_type_script = "uid://bqkniakv6ol4n"
-
-[sub_resource type="Resource" id="Resource_3nxin"]
-script = ExtResource("2_koyoo")
-WholePath = "minecraft:air"
-
-[sub_resource type="Resource" id="Resource_jajaj"]
-resource_name = "las"
-script = ExtResource("5_xtmuh")
-ItemName = "oiuh"
-Components = Array[Object]([SubResource("Resource_0n3xo"), SubResource("Resource_qtv3y")])
-metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
-
-[sub_resource type="Resource" id="Resource_3figq"]
-script = ExtResource("2_koyoo")
+[sub_resource type="Resource" id="Resource_2qsml"]
+script = ExtResource("1_fs83q")
+Path = "redstone"
 metadata/_custom_type_script = "uid://dnqbschkt35h"
 
-[sub_resource type="Resource" id="Resource_bhnsc"]
-script = ExtResource("5_xtmuh")
-ItemId = SubResource("Resource_3figq")
+[sub_resource type="Resource" id="Resource_ames6"]
+resource_name = "redstone"
+script = ExtResource("2_7aef8")
+ItemId = SubResource("Resource_2qsml")
+Components = null
+EntryName = "Редстоун"
+metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
+
+[sub_resource type="Resource" id="Resource_45dtk"]
+script = ExtResource("1_fs83q")
+ModId = "industrialupgrade"
+Path = "level_microchip"
+metadata/_custom_type_script = "uid://dnqbschkt35h"
+
+[sub_resource type="Resource" id="Resource_ox0vw"]
+script = ExtResource("3_koyoo")
+Value = 1
+Id = SubResource("Resource_45dtk")
+metadata/_custom_type_script = "uid://d2em7ndnmkq7j"
+
+[sub_resource type="Resource" id="Resource_xf2dy"]
+script = ExtResource("1_fs83q")
+ModId = "industrialupgrade"
+Path = "crafting_elements/crafting_272_element"
+metadata/_custom_type_script = "uid://dnqbschkt35h"
+
+[sub_resource type="Resource" id="Resource_7srki"]
+resource_name = "lvl1"
+script = ExtResource("2_7aef8")
+ItemId = SubResource("Resource_xf2dy")
+Components = Array[Object]([SubResource("Resource_ox0vw")])
+EntryName = "Микрочип 1ур"
+metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
+
+[sub_resource type="Resource" id="Resource_0nr7f"]
+script = ExtResource("1_fs83q")
+ModId = "industrialupgrade"
+Path = "graphene_wire"
+metadata/_custom_type_script = "uid://dnqbschkt35h"
+
+[sub_resource type="Resource" id="Resource_7m4je"]
+resource_name = "graphene_wire"
+script = ExtResource("2_7aef8")
+ItemId = SubResource("Resource_0nr7f")
 Components = null
 metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
 
-[sub_resource type="Resource" id="Resource_xbji0"]
-script = ExtResource("2_koyoo")
-metadata/_custom_type_script = "uid://dnqbschkt35h"
-
-[sub_resource type="Resource" id="Resource_11rml"]
-script = ExtResource("5_xtmuh")
-ItemId = SubResource("Resource_xbji0")
-Components = null
-metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
-
-[sub_resource type="Resource" id="Resource_oxha2"]
+[sub_resource type="Resource" id="Resource_qc31c"]
+resource_name = "iu"
 script = ExtResource("1_nbop3")
-Collection = Array[Object]([SubResource("Resource_bhnsc"), SubResource("Resource_11rml")])
+Collection = Array[Object]([SubResource("Resource_7srki"), SubResource("Resource_7m4je")])
+EntryName = "Industrial Upgrade"
 metadata/_custom_type_script = "uid://c0rkj240liapo"
 
 [resource]
 resource_name = "item"
 script = ExtResource("1_nbop3")
-Collection = Array[ExtResource("1_7aef8")]([SubResource("Resource_jajaj"), SubResource("Resource_oxha2")])
+Collection = Array[Object]([SubResource("Resource_ames6"), SubResource("Resource_qc31c")])
 metadata/_custom_type_script = "uid://c0rkj240liapo"

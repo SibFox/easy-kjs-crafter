@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cpn7rta0p7lhy"]
+
+[ext_resource type="PackedScene" uid="uid://dpu4wycjq7o05" path="res://Scenes/UIs/ResourceEntry/ResourceEntryBox.tscn" id="1_h3r0d"]
+[ext_resource type="Script" uid="uid://dduqhw71alt11" path="res://Scenes/UIs/ResourceEntry/ItemCollectionEntryBox.cs" id="2_wfdgm"]
+[ext_resource type="Texture2D" uid="uid://qofs7r3clh04" path="res://Assets/Images/list_icon.png" id="3_s4pbk"]
+[ext_resource type="PackedScene" uid="uid://3y3dglybi0lp" path="res://Scenes/UIs/CollectionHolder.tscn" id="3_tihlx"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ma682"]
+color = Color(0.19215687, 0.039215688, 0.41568628, 1)
+grow_begin = -2.0
+grow_end = -2.0
+thickness = 5
+vertical = true
+
+[node name="ItemCollectionEntryBox" unique_id=1670762569 instance=ExtResource("1_h3r0d")]
+script = ExtResource("2_wfdgm")
+Resource = null
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="3" unique_id=1304113086]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_ma682")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="4" unique_id=1523115831]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_s4pbk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="HBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="5" unique_id=1301429550]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollectionHolder" parent="HBoxContainer/DataVBoxContainer" parent_id_path=PackedInt32Array(1105333730) index="0" unique_id=2117693577 instance=ExtResource("3_tihlx")]
+layout_mode = 2
+
+[connection signal="item_rect_changed" from="." to="." method="OnResized"]
+[connection signal="resized" from="HBoxContainer/DataVBoxContainer/CollectionHolder" to="." method="OnResized"]

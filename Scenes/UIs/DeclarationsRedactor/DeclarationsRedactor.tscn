@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dg6vfa1h6gkfy" path="res://Scenes/UIs/DeclarationsRedactor/DeclarationsRedactor.cs" id="1_abtwu"]
 [ext_resource type="PackedScene" uid="uid://buvp0yyq5s7qg" path="res://Scenes/UIs/DeclarationTab/DeclarationTab.tscn" id="2_6yq3b"]
-[ext_resource type="PackedScene" uid="uid://dpu4wycjq7o05" path="res://Scenes/UIs/ResourceEntry/ItemEntryBox.tscn" id="3_dejuy"]
+[ext_resource type="Resource" uid="uid://c86nfm6cn53yx" path="res://Resources/Items.tres" id="3_bs6ar"]
+[ext_resource type="Resource" uid="uid://bedvqcvm4wcju" path="res://Resources/Tags.tres" id="4_jy3jp"]
+[ext_resource type="Resource" uid="uid://bnken43t6ng6k" path="res://Resources/Fluids.tres" id="5_0xy4v"]
 
 [node name="DeclarationsRedactor" type="Control" unique_id=1056935821]
 layout_mode = 3
@@ -50,20 +52,20 @@ tab_2/title = "Жидкости"
 
 [node name="ItemsTab" parent="VBoxContainer/HBoxContainer/TabContainer" unique_id=1112128700 instance=ExtResource("2_6yq3b")]
 layout_mode = 2
+DeclarationCollection = ExtResource("3_bs6ar")
 metadata/_tab_index = 0
 metadata/_tab_name = "Предметы"
-
-[node name="ItemEntryBox" parent="VBoxContainer/HBoxContainer/TabContainer/ItemsTab" unique_id=613924869 instance=ExtResource("3_dejuy")]
-layout_mode = 2
 
 [node name="TagsTab" parent="VBoxContainer/HBoxContainer/TabContainer" unique_id=399460692 instance=ExtResource("2_6yq3b")]
 visible = false
 layout_mode = 2
+DeclarationCollection = ExtResource("4_jy3jp")
 metadata/_tab_index = 1
 metadata/_tab_name = "Теги"
 
 [node name="FluidsTab" parent="VBoxContainer/HBoxContainer/TabContainer" unique_id=1278415594 instance=ExtResource("2_6yq3b")]
 visible = false
 layout_mode = 2
+DeclarationCollection = ExtResource("5_0xy4v")
 metadata/_tab_index = 2
 metadata/_tab_name = "Жидкости"
