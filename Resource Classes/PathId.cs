@@ -30,9 +30,9 @@ namespace EasyKJSCrafter.ResourceClasses
                     return;
                 
                 string cleaned = value.Trim('/');
-                cleaned = Regex.Replace(cleaned, @"/+", "/");
+                cleaned = CleanSlashRegex().Replace(cleaned, "/");
 
-                if (PathRegex().IsMatch(cleaned))
+                if (new Regex(@"^[a-z][a-z0-9_]*(?:/[a-z0-9_]+)*$", RegexOptions.IgnoreCase).IsMatch(cleaned))
                     _path = cleaned.ToLower();
             }
         }
@@ -68,9 +68,8 @@ namespace EasyKJSCrafter.ResourceClasses
         [GeneratedRegex(@"^[a-z_]+$", RegexOptions.IgnoreCase)]
         private static partial Regex ModIdRegex();
 
-        [GeneratedRegex(@"^[a-z_]+(?:/\w+)*$", RegexOptions.IgnoreCase)]
-        private static partial Regex PathRegex();
+        [GeneratedRegex(@"/+")]
+        private static partial Regex CleanSlashRegex();
 
-        public static PathId Instance => new PathId();
     }
 }

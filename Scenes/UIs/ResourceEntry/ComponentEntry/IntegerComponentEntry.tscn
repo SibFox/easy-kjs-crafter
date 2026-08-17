@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c4ofav60g2ggu"]
+
+[ext_resource type="PackedScene" uid="uid://mx32uw3d250u" path="res://Scenes/UIs/ResourceEntry/ComponentEntry/ComponentEntry.tscn" id="1_51g6l"]
+[ext_resource type="Script" uid="uid://1xjuawcj25tq" path="res://Scenes/UIs/ResourceEntry/ComponentEntry/IntegerComponentEntry.cs" id="2_lnin2"]
+[ext_resource type="Texture2D" uid="uid://b0en74rlccigd" path="res://Assets/Images/integer_icon.png" id="3_60fbn"]
+[ext_resource type="Script" uid="uid://dnqbschkt35h" path="res://Resource Classes/PathId.cs" id="3_uefn4"]
+[ext_resource type="Script" uid="uid://u2ra5b6ufqwd" path="res://Resource Classes/ComponentEntities/ComponentBase.cs" id="4_bdrjv"]
+
+[sub_resource type="Resource" id="Resource_l712x"]
+script = ExtResource("3_uefn4")
+WholePath = ":"
+
+[sub_resource type="Resource" id="Resource_o8lry"]
+script = ExtResource("4_bdrjv")
+Id = SubResource("Resource_l712x")
+
+[node name="IntegerComponentEntry" unique_id=698204598 instance=ExtResource("1_51g6l")]
+script = ExtResource("2_lnin2")
+Component = SubResource("Resource_o8lry")
+
+[node name="TextureRect" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="2" unique_id=1792871586]
+texture = ExtResource("3_60fbn")
+
+[node name="ValueSpinBox" type="SpinBox" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="4" unique_id=1677886277]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(-1, 35)
+layout_mode = 2
+max_value = 99999999.0
+rounded = true
+allow_greater = true
+allow_lesser = true
+alignment = 2
+update_on_text_changed = true
+custom_arrow_step = 1.0
+custom_arrow_round = true
+select_all_on_focus = true
+
+[connection signal="value_changed" from="DataHBoxContainer/ValueSpinBox" to="." method="OnValueBox_ValueChanged"]

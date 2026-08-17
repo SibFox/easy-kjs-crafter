@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://buvp0yyq5s7qg"]
 
 [ext_resource type="Script" uid="uid://sw4i6qtdqxp6" path="res://Scenes/UIs/DeclarationTab/DeclarationTab.cs" id="1_cl3ww"]
-[ext_resource type="PackedScene" uid="uid://3y3dglybi0lp" path="res://Scenes/UIs/CollectionHolder.tscn" id="2_lkwwa"]
+[ext_resource type="PackedScene" uid="uid://d3rfqbyng6i2o" path="res://Scenes/UIs/CollectionHolderUI/ItemCollectionHolder.tscn" id="2_lkwwa"]
 
 [node name="DeclarationTab" type="ScrollContainer" unique_id=1112128700]
 custom_maximum_size = Vector2(1920, -1)
@@ -13,5 +13,5 @@ grow_vertical = 2
 follow_focus = true
 script = ExtResource("1_cl3ww")
 
-[node name="CollectionHolder" parent="." unique_id=2117693577 instance=ExtResource("2_lkwwa")]
+[node name="ItemCollectionHolder" parent="." unique_id=298819742 instance=ExtResource("2_lkwwa")]
 layout_mode = 2

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dlyqw1e0yte5c"]
+
+[ext_resource type="PackedScene" uid="uid://mx32uw3d250u" path="res://Scenes/UIs/ResourceEntry/ComponentEntry/ComponentEntry.tscn" id="1_gs2u6"]
+[ext_resource type="Texture2D" uid="uid://c4afjajn62qer" path="res://Assets/Images/boolean_icon.png" id="2_dnrgb"]
+[ext_resource type="Script" uid="uid://bu36svyo0ul64" path="res://Scenes/UIs/ResourceEntry/ComponentEntry/BooleanComponentEntry.cs" id="2_l8577"]
+
+[node name="BooleanComponentEntry" unique_id=698204598 instance=ExtResource("1_gs2u6")]
+script = ExtResource("2_l8577")
+
+[node name="TextureRect" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="2" unique_id=1792871586]
+texture = ExtResource("2_dnrgb")
+
+[node name="ValueCheck" type="CheckButton" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="4" unique_id=1269802385]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(-1, 35)
+layout_mode = 2

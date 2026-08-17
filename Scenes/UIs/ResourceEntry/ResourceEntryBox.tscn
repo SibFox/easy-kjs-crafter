@@ -4,7 +4,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2dwb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_color = Color(0.8, 0.8, 0.8, 0)
+border_width_left = 3
+border_color = Color(0.17254902, 0.6431373, 0.47843137, 1)
+corner_radius_top_left = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_xmw0h"]
 color = Color(0.19215687, 0.039215688, 0.41568628, 1)
@@ -14,19 +17,20 @@ thickness = 5
 vertical = true
 
 [node name="ResourceEntryBox" type="HBoxContainer" unique_id=1670762569]
-offset_right = 620.0
-offset_bottom = 54.0
+offset_right = 855.0
+offset_bottom = 39.0
 offset_transform_enabled = true
-offset_transform_position = Vector2(30, 0)
+offset_transform_position = Vector2(50, 0)
 offset_transform_visual_only = false
 script = ExtResource("1_4y8wc")
 
 [node name="ShowDataButton" type="Button" parent="." unique_id=1012586564]
-custom_minimum_size = Vector2(50, 50)
-custom_maximum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
 layout_mode = 2
 toggle_mode = true
 text = "O"
+alignment = 2
 
 [node name="InfoPanelContainer" type="PanelContainer" parent="." unique_id=454553234]
 layout_mode = 2
@@ -41,57 +45,64 @@ offset_transform_position_ratio = Vector2(0.05, 0)
 offset_transform_visual_only = false
 
 [node name="KeyLine" type="LineEdit" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=1513191439]
-custom_minimum_size = Vector2(240, 0)
+custom_minimum_size = Vector2(240, 35)
+custom_maximum_size = Vector2(-1, 35)
 layout_mode = 2
 placeholder_text = "Ключ"
 expand_to_text_length = true
 select_all_on_focus = true
 
 [node name="VSeparator" type="VSeparator" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=1097351034]
-custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxLine_xmw0h")
 
 [node name="EntryNameLine" type="LineEdit" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=1914674687]
-custom_minimum_size = Vector2(240, 0)
+custom_minimum_size = Vector2(240, 35)
+custom_maximum_size = Vector2(-1, 35)
 layout_mode = 2
 placeholder_text = "Название"
 expand_to_text_length = true
 select_all_on_focus = true
 
 [node name="VSeparator2" type="VSeparator" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=130170753]
-custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxLine_xmw0h")
 
 [node name="DeleteButton" type="Button" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=384270146]
+custom_minimum_size = Vector2(0, 35)
+custom_maximum_size = Vector2(-1, 35)
 layout_mode = 2
 text = "Удалить"
 
 [node name="ConfirmDeleteButton" type="Button" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=2013115525]
 visible = false
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Y"
 
 [node name="DeclineDeleteButton" type="Button" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=780734770]
 visible = false
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "N"
 
 [node name="HasErrorsLabel" type="Label" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" unique_id=1214620063]
 visible = false
+custom_maximum_size = Vector2(-1, 35)
 layout_mode = 2
 offset_transform_enabled = true
-offset_transform_position_ratio = Vector2(0.2, 0)
+offset_transform_position_ratio = Vector2(0.1, 0)
 theme_override_colors/font_color = Color(0.92156863, 0.24705882, 0.23529412, 1)
+theme_override_font_sizes/font_size = 20
 text = "ОШИБКА"
 
 [node name="DataVBoxContainer" type="VBoxContainer" parent="InfoPanelContainer/HBoxContainer" unique_id=1105333730]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 

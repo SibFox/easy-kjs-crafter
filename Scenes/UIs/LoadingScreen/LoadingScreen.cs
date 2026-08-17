@@ -1,7 +1,7 @@
 using EasyKJSCrafter.ResourceClasses.ItemEntities;
 using EasyKJSCrafter.Scenes.UIs.DeclarationsRedactor;
 using EasyKJSCrafter.Scenes.UIs.MainMenu;
-using EasyKJSCrafter.Singleton;
+using EasyKJSCrafter;
 using Godot;
 using System;
 using System.Collections.Generic;

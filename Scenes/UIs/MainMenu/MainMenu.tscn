@@ -29,15 +29,14 @@ layout_mode = 2
 size_flags_vertical = 2
 size_flags_stretch_ratio = 0.0
 theme_override_font_sizes/font_size = 64
-text = "Редактор крафтов KubeJS
-Сделано SibFox"
+text = "Редактор крафтов KubeJS"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1424088610]
+[node name="ButtonsHBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1424088610]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DeclRedButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=512129100]
+[node name="DeclRedButton" type="Button" parent="VBoxContainer/ButtonsHBoxContainer" unique_id=512129100]
 custom_minimum_size = Vector2(600, 600)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -47,7 +46,7 @@ text = "Редактор
 определений
 предметов"
 
-[node name="CraftRedButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=211502205]
+[node name="CraftRedButton" type="Button" parent="VBoxContainer/ButtonsHBoxContainer" unique_id=211502205]
 custom_minimum_size = Vector2(600, 600)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -56,5 +55,20 @@ theme_override_font_sizes/font_size = 36
 text = "Редактор
 крафтов"
 
-[connection signal="button_down" from="VBoxContainer/HBoxContainer/DeclRedButton" to="." method="OnDeclRedButton_Click"]
-[connection signal="button_down" from="VBoxContainer/HBoxContainer/CraftRedButton" to="." method="OnCraftRedButton_Click"]
+[node name="InfoHBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1442339652]
+layout_mode = 2
+
+[node name="BuildLabel" type="Label" parent="VBoxContainer/InfoHBoxContainer" unique_id=465679428]
+layout_mode = 2
+text = "By SibFox. Version ..."
+
+[node name="ExitButton" type="Button" parent="VBoxContainer/InfoHBoxContainer" unique_id=419479126]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 24
+text = "Выйти"
+
+[connection signal="button_down" from="VBoxContainer/ButtonsHBoxContainer/DeclRedButton" to="." method="OnDeclRedButton_Click"]
+[connection signal="button_down" from="VBoxContainer/ButtonsHBoxContainer/CraftRedButton" to="." method="OnCraftRedButton_Click"]
+[connection signal="pressed" from="VBoxContainer/InfoHBoxContainer/ExitButton" to="." method="OnExitButton_Pressed"]

@@ -13,7 +13,14 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
     public partial class ArrayComponent : ComponentBase
     {
         [Export]
-        public new Array<ComponentBase> Value { get; private set; }
+        public override Variant Value
+		{
+			get => _value.AsGodotArray<ComponentBase>();
+			set
+			{
+				_value = (Array<ComponentBase>)value;
+			}
+		}
 
         public ArrayComponent() {}
         public ArrayComponent(PathId pathId) : base(pathId) {}

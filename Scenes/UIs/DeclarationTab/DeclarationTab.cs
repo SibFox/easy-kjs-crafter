@@ -1,4 +1,6 @@
+using EasyKJSCrafter.Interfaces;
 using EasyKJSCrafter.ResourceClasses.ItemEntities;
+using EasyKJSCrafter.Scenes.UIs.CollectionHolderUI;
 using Godot;
 
 namespace EasyKJSCrafter.Scenes.UIs.DeclarationTabUI
@@ -8,25 +10,28 @@ namespace EasyKJSCrafter.Scenes.UIs.DeclarationTabUI
 		[Export]
 		public ItemCollection DeclarationCollection { get; set; }
 
-		CollectionHolder CollHolder => GetNode<CollectionHolder>("CollectionHolder");
+		ItemCollectionHolder CollHolder => GetNode<ItemCollectionHolder>("ItemCollectionHolder");
 
 		public override void _Ready() {
-			CollHolder.Collection = DeclarationCollection;
+			CollHolder.Holder = DeclarationCollection;
 			CollHolder.BuildEntryTree();
 		}
 
-		public void SaveCollection()
+		public bool SaveCollection()
 		{
+			bool res = false;
 			if (CollHolder.ValidateCollection())
 			{
 				if (ResourceSaver.Save(DeclarationCollection) == Error.Ok)
 				{
 					GD.Print($"Коллекция \"{DeclarationCollection.ResourceName}\" успешно сохранена");
+					res = true;
 				}
 				else
 					GD.Print($"При сохранении коллекции \"{DeclarationCollection.ResourceName}\" произошла ошибка");
 			}
 			CollHolder.BuildEntryTree();
+			return res;
 		}
 	}
 }

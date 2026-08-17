@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using EasyKJSCrafter.Interfaces;
 using EasyKJSCrafter.ResourceClasses.ComponentEntities;
 using Godot;
 using Godot.Collections;
@@ -10,10 +11,11 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 {
     [GlobalClass]
     [DebuggerDisplay("Key = {ResourceName}, Name = {EntryName}, Count = {Collection.Count}")]
-    public partial class ItemCollection : ResourceEntry
+    public partial class ItemCollection : ResourceEntry, ICollection<ResourceEntry>
     {
+		protected Array<ResourceEntry> _collection;
         [Export]
-        public Array<ResourceEntry> Collection { get; private set; }
+        public virtual Array<ResourceEntry> Collection { get => _collection; set => _collection = value; }
 
         public ItemCollection() { Collection = []; }
         public ItemCollection(string declarationKey, string collectionName = null) : base (declarationKey, collectionName) { Collection = []; }
@@ -72,13 +74,13 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 					if (collErrors.Length > 0)
 						error.Append(collErrors);
 				}
-
+;
 				if (error.Length > 0)
 				{
 					if (allErrors.Length > 0)
-						allErrors.Append(new string('=', 40 + deep * 4) + '\n');
+						allErrors.Append(new string('-', 40 + deep * 4) + '\n');
 					allErrors.Append(new string('\t', deep) + $"Ошибки валидации записи \"{entryResId}\" коллекции \"{collResId}\"" + '\n');
-					allErrors.Append(new string('-', 40 + deep * 4) + '\n');
+					allErrors.Append(new string('=', 40 + deep * 4) + '\n');
 					allErrors.Append(error.ToString());
 
 					HasErrors = true;

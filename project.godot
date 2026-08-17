@@ -11,17 +11,23 @@ config_version=5
 [application]
 
 config/name="EasyKJSCrafter"
+config/version="prod7"
 config/tags=PackedStringArray("c#")
 run/main_scene="uid://bjhedk5qrajta"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Manager="*uid://birkrhogrbl8u"
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/mode=3
+window/size/window_width_override=1920
+window/size/window_height_override=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
@@ -33,7 +39,10 @@ project/assembly_name="EasyKJSCrafter"
 [file_customization]
 
 folder_colors={
-"res://Resource Classes/": "blue"
+"res://Resource Classes/": "blue",
+"res://Scenes/": "purple",
+"res://Scenes/UIs/": "green",
+"res://Scenes/UIs/ResourceEntry/": "yellow"
 }
 
 [gui]

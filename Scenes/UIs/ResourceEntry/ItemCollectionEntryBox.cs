@@ -1,6 +1,7 @@
-using System;
 using EasyKJSCrafter.ResourceClasses.ItemEntities;
+using EasyKJSCrafter.Scenes.UIs.CollectionHolderUI;
 using Godot;
+
 
 namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 {
@@ -25,11 +26,11 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 		}
 
 		Label CountLabel => NameContainer.GetNode<Label>("CountLabel");
-		CollectionHolder CollHolder => DataContainer.GetNode<CollectionHolder>("CollectionHolder");
+		ItemCollectionHolder CollHolder => DataContainer.GetNode<ItemCollectionHolder>("CollectionHolder");
 
 		void BuildEntryTree()
 		{
-			CollHolder.Collection = _resource as ItemCollection;
+			CollHolder.Holder = _resource as ItemCollection;
 			CollHolder.BuildEntryTree();
 		}
 

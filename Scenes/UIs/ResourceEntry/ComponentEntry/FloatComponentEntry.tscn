@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://gi4aukixawbl"]
+
+[ext_resource type="PackedScene" uid="uid://c4ofav60g2ggu" path="res://Scenes/UIs/ResourceEntry/ComponentEntry/IntegerComponentEntry.tscn" id="1_k7sr5"]
+[ext_resource type="Script" uid="uid://cbb1mndjmk4dq" path="res://Scenes/UIs/ResourceEntry/ComponentEntry/FloatComponentEntry.cs" id="2_fmumm"]
+[ext_resource type="Texture2D" uid="uid://c6tvysgnlufc4" path="res://Assets/Images/float_icon.png" id="3_8m8cu"]
+[ext_resource type="Script" uid="uid://dnqbschkt35h" path="res://Resource Classes/PathId.cs" id="3_b5ekv"]
+[ext_resource type="Script" uid="uid://u2ra5b6ufqwd" path="res://Resource Classes/ComponentEntities/ComponentBase.cs" id="4_ew61f"]
+
+[sub_resource type="Resource" id="Resource_ch8gi"]
+script = ExtResource("3_b5ekv")
+WholePath = ":"
+
+[sub_resource type="Resource" id="Resource_ivy14"]
+script = ExtResource("4_ew61f")
+Id = SubResource("Resource_ch8gi")
+
+[node name="FloatComponentEntry" unique_id=698204598 instance=ExtResource("1_k7sr5")]
+script = ExtResource("2_fmumm")
+Component = SubResource("Resource_ivy14")
+
+[node name="TextureRect" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="2" unique_id=1792871586]
+texture = ExtResource("3_8m8cu")
+
+[node name="ValueSpinBox" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="4" unique_id=1677886277]
+step = 0.0
+rounded = false
+custom_arrow_step = 0.01
+custom_arrow_round = false

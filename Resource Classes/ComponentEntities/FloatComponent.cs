@@ -12,7 +12,14 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
     public partial class FloatComponent : ComponentBase
     {
         [Export]
-        public new float Value { get; set; }
+        public override Variant Value
+		{
+			get => (float)_value.AsDouble();
+			set
+			{
+				_value = (float)value;
+			}
+		}
 
         public FloatComponent() {}
         public FloatComponent(PathId pathId, float val) : base(pathId) { Value = val; }

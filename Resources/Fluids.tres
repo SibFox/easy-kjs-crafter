@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="ItemCollection" format=3]
+[gd_resource type="Resource" script_class="ItemCollection" format=3 uid="uid://btjlqhavknje2"]
 
-[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ResourceEntry.cs" id="1_ioi0w"]
-[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ItemCollection.cs" id="1_uygw1"]
-[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/ComponentBase.cs" id="2_6ofqd"]
-[ext_resource type="Script" path="res://Resource Classes/PathId.cs" id="3_fbdrw"]
-[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ItemEntry.cs" id="4_fpkat"]
+[ext_resource type="Script" uid="uid://cg4jp2j3n0mjw" path="res://Resource Classes/ItemEntities/ResourceEntry.cs" id="1_ioi0w"]
+[ext_resource type="Script" uid="uid://c0rkj240liapo" path="res://Resource Classes/ItemEntities/ItemCollection.cs" id="1_uygw1"]
+[ext_resource type="Script" uid="uid://u2ra5b6ufqwd" path="res://Resource Classes/ComponentEntities/ComponentBase.cs" id="2_6ofqd"]
+[ext_resource type="Script" uid="uid://dnqbschkt35h" path="res://Resource Classes/PathId.cs" id="3_fbdrw"]
+[ext_resource type="Script" uid="uid://dxhj00dxkf3cq" path="res://Resource Classes/ItemEntities/ItemEntry.cs" id="4_fpkat"]
 
 [sub_resource type="Resource" id="Resource_qgw8q"]
 script = ExtResource("3_fbdrw")

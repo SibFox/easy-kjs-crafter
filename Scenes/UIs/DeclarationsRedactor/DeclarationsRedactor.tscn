@@ -2,9 +2,15 @@
 
 [ext_resource type="Script" uid="uid://dg6vfa1h6gkfy" path="res://Scenes/UIs/DeclarationsRedactor/DeclarationsRedactor.cs" id="1_abtwu"]
 [ext_resource type="PackedScene" uid="uid://buvp0yyq5s7qg" path="res://Scenes/UIs/DeclarationTab/DeclarationTab.tscn" id="2_6yq3b"]
-[ext_resource type="Resource" uid="uid://c86nfm6cn53yx" path="res://Resources/Items.tres" id="3_bs6ar"]
-[ext_resource type="Resource" uid="uid://bedvqcvm4wcju" path="res://Resources/Tags.tres" id="4_jy3jp"]
-[ext_resource type="Resource" uid="uid://bnken43t6ng6k" path="res://Resources/Fluids.tres" id="5_0xy4v"]
+[ext_resource type="Resource" uid="uid://dbb6gc8reha55" path="res://Resources/Items.tres" id="3_bs6ar"]
+[ext_resource type="Resource" uid="uid://c573vkfdm0u03" path="res://Resources/Tags.tres" id="4_jy3jp"]
+[ext_resource type="Resource" uid="uid://btjlqhavknje2" path="res://Resources/Fluids.tres" id="5_0xy4v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2dwb"]
+bg_color = Color(0.039215688, 0.02745098, 0.078431375, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs6ar"]
+bg_color = Color(0.05882353, 0.043137256, 0.10980392, 1)
 
 [node name="DeclarationsRedactor" type="Control" unique_id=1056935821]
 layout_mode = 3
@@ -15,19 +21,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_abtwu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=169465235]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1508773708]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t2dwb")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1615489840]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=169465235]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1615489840]
 layout_mode = 2
 theme_override_constants/margin_top = 30
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer" unique_id=2108608296]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer" unique_id=2108608296]
 layout_mode = 2
 size_flags_vertical = 2
 size_flags_stretch_ratio = 0.0
@@ -35,7 +45,7 @@ theme_override_font_sizes/font_size = 48
 text = "Редактор определений"
 horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="VBoxContainer/MarginContainer/Label" unique_id=1377841891]
+[node name="BackButton" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/Label" unique_id=1377841891]
 custom_minimum_size = Vector2(150, 80)
 layout_mode = 1
 anchors_preset = 6
@@ -53,46 +63,58 @@ offset_transform_position_ratio = Vector2(-0.5, 0)
 offset_transform_visual_only = false
 text = "Назад"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=796507484]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=796507484]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DeclarationTabContainer" type="TabContainer" parent="VBoxContainer/HBoxContainer" unique_id=599100389]
+[node name="DeclarationTabContainer" type="TabContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=599100389]
 layout_mode = 2
 size_flags_horizontal = 3
+offset_transform_enabled = true
 theme_override_constants/side_margin = 48
 theme_override_constants/tab_separation = 72
 theme_override_font_sizes/font_size = 32
+theme_override_styles/panel = SubResource("StyleBoxFlat_bs6ar")
 current_tab = 0
 tab_0/title = "Предметы"
 tab_1/title = "Теги"
 tab_2/title = "Жидкости"
 
-[node name="ItemsTab" parent="VBoxContainer/HBoxContainer/DeclarationTabContainer" unique_id=1112128700 instance=ExtResource("2_6yq3b")]
+[node name="ItemsTab" parent="PanelContainer/VBoxContainer/HBoxContainer/DeclarationTabContainer" unique_id=1112128700 instance=ExtResource("2_6yq3b")]
 layout_mode = 2
+offset_transform_enabled = true
+offset_transform_visual_only = false
 DeclarationCollection = ExtResource("3_bs6ar")
 metadata/_tab_index = 0
 metadata/_tab_name = "Предметы"
 
-[node name="TagsTab" parent="VBoxContainer/HBoxContainer/DeclarationTabContainer" unique_id=399460692 instance=ExtResource("2_6yq3b")]
+[node name="TagsTab" parent="PanelContainer/VBoxContainer/HBoxContainer/DeclarationTabContainer" unique_id=399460692 instance=ExtResource("2_6yq3b")]
 visible = false
 layout_mode = 2
 DeclarationCollection = ExtResource("4_jy3jp")
 metadata/_tab_index = 1
 metadata/_tab_name = "Теги"
 
-[node name="FluidsTab" parent="VBoxContainer/HBoxContainer/DeclarationTabContainer" unique_id=1278415594 instance=ExtResource("2_6yq3b")]
+[node name="FluidsTab" parent="PanelContainer/VBoxContainer/HBoxContainer/DeclarationTabContainer" unique_id=1278415594 instance=ExtResource("2_6yq3b")]
 visible = false
 layout_mode = 2
 DeclarationCollection = ExtResource("5_0xy4v")
 metadata/_tab_index = 2
 metadata/_tab_name = "Жидкости"
 
-[node name="SaveButton" type="Button" parent="VBoxContainer" unique_id=1616036766]
+[node name="SaveHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=347698915]
+layout_mode = 2
+
+[node name="SaveInfoLabel" type="Label" parent="PanelContainer/VBoxContainer/SaveHBoxContainer" unique_id=1634162924]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="SaveButton" type="Button" parent="PanelContainer/VBoxContainer/SaveHBoxContainer" unique_id=1616036766]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.0
 text = "Сохранить"
 
-[connection signal="pressed" from="VBoxContainer/MarginContainer/Label/BackButton" to="." method="OnBackButton_Pressed"]
-[connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="OnSaveButton_Pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/Label/BackButton" to="." method="OnBackButton_Pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/SaveHBoxContainer/SaveButton" to="." method="OnSaveButton_Pressed"]

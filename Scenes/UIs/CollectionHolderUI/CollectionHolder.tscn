@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://3y3dglybi0lp"]
+
+[ext_resource type="Script" path="res://Scenes/UIs/CollectionHolderUI/CollectionHolder.cs" id="1_sh6i7"]
+
+[node name="CollectionHolder" type="VBoxContainer" unique_id=298819742]
+size_flags_horizontal = 2
+script = ExtResource("1_sh6i7")

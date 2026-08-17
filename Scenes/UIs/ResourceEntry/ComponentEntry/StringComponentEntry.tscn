@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bblxbg30e2mdc"]
+
+[ext_resource type="PackedScene" uid="uid://mx32uw3d250u" path="res://Scenes/UIs/ResourceEntry/ComponentEntry/ComponentEntry.tscn" id="1_rrf4v"]
+[ext_resource type="Texture2D" uid="uid://bqyaflil2cv51" path="res://Assets/Images/string_icon.png" id="2_k20wy"]
+[ext_resource type="Script" uid="uid://c8ybkym3a67ib" path="res://Scenes/UIs/ResourceEntry/ComponentEntry/StringComponentEntry.cs" id="2_o50qq"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_r28wj"]
+color = Color(0.19215687, 0.039215688, 0.41568628, 1)
+grow_begin = -2.0
+grow_end = -2.0
+thickness = 5
+vertical = true
+
+[node name="StringComponentEntry" unique_id=698204598 instance=ExtResource("1_rrf4v")]
+script = ExtResource("2_o50qq")
+
+[node name="VSeparator" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="1" unique_id=261552194]
+theme_override_styles/separator = SubResource("StyleBoxLine_r28wj")
+
+[node name="TextureRect" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="2" unique_id=1792871586]
+texture = ExtResource("2_k20wy")
+
+[node name="ValueLine" type="LineEdit" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="4" unique_id=2010708488]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+placeholder_text = "string"
+expand_to_text_length = true
+select_all_on_focus = true
+
+[connection signal="editing_toggled" from="DataHBoxContainer/ValueLine" to="." method="OnValueLine_Toggled"]

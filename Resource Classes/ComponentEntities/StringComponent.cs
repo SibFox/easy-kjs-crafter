@@ -12,7 +12,14 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
     public partial class StringComponent : ComponentBase
     {
         [Export]
-        public new string Value { get; set; }
+        public override Variant Value
+		{
+			get => _value.AsString();
+			set
+			{
+				_value = (string)value;
+			}
+		}
 
         public StringComponent() {}
         public StringComponent(PathId pathId, string val) : base(pathId) { Value = val; }

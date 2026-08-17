@@ -12,7 +12,14 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
     public partial class IntegerComponent : ComponentBase
     {
         [Export]
-        public new int Value { get; set; }
+        public override Variant Value
+		{
+			get => _value.AsInt32();
+			set
+			{
+				_value = (int)value;
+			}
+		}
 
         public IntegerComponent() {}
         public IntegerComponent(PathId pathId, int val) : base(pathId) { Value = val; }

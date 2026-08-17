@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bxm675frbx0u0"]
+
+[ext_resource type="PackedScene" uid="uid://3y3dglybi0lp" path="res://Scenes/UIs/CollectionHolderUI/CollectionHolder.tscn" id="1_skmh7"]
+[ext_resource type="Script" uid="uid://cosn2kp8lqanb" path="res://Scenes/UIs/CollectionHolderUI/ComponentCollectionHolder.cs" id="2_87hhb"]
+
+[node name="ComponentCollectionHolder" unique_id=298819742 instance=ExtResource("1_skmh7")]
+script = ExtResource("2_87hhb")

@@ -1,5 +1,5 @@
 using Godot;
-using EasyKJSCrafter.Singleton;
+using EasyKJSCrafter;
 
 namespace EasyKJSCrafter.Scenes.Main
 {
@@ -9,7 +9,7 @@ namespace EasyKJSCrafter.Scenes.Main
 
         public override void _Ready()
         {
-            Global.Main = this;
+            Manager.Main = this;
 
             // Корректно выдаёт false
             // string t = "44t";

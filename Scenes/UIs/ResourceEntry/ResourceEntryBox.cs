@@ -1,6 +1,6 @@
 using EasyKJSCrafter.ResourceClasses.ItemEntities;
-using EasyKJSCrafter.Singleton;
 using Godot;
+using EasyKJSCrafter.Scenes.UIs.CollectionHolderUI;
 
 namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 {
@@ -77,14 +77,14 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 
 		void OnConfirmDeleteButton_Pressed()
 		{
-			var holder = GetParent<CollectionHolder>();
-			if (holder.Collection.Collection.Remove(_resource))
+			var holder = GetParent<ItemCollectionHolder>();
+			if (holder.Holder.Collection.Remove(_resource))
 			{
-				GD.Print($"Ресурс \"{_resource.ResourceName}\" удалён из коллекции \"{holder.Collection.ResourceName}\"");
+				GD.Print($"Ресурс \"{_resource.ResourceName}\" удалён из коллекции \"{holder.Holder.ResourceName}\"");
 				QueueFree();
 				return;
 			}
-			GD.Print($"Ошибка при удалении ресурса \"{_resource.ResourceName}\" из коллекции \"{holder.Collection.ResourceName}\"");
+			GD.Print($"Ошибка при удалении ресурса \"{_resource.ResourceName}\" из коллекции \"{holder.Holder.ResourceName}\"");
 		}
 	}
 }
