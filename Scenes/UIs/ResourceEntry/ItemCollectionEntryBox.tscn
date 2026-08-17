@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dpu4wycjq7o05" path="res://Scenes/UIs/ResourceEntry/ResourceEntryBox.tscn" id="1_h3r0d"]
 [ext_resource type="Script" uid="uid://dduqhw71alt11" path="res://Scenes/UIs/ResourceEntry/ItemCollectionEntryBox.cs" id="2_wfdgm"]
 [ext_resource type="Texture2D" uid="uid://qofs7r3clh04" path="res://Assets/Images/list_icon.png" id="3_s4pbk"]
-[ext_resource type="PackedScene" uid="uid://3y3dglybi0lp" path="res://Scenes/UIs/CollectionHolderUI/CollectionHolder.tscn" id="3_tihlx"]
+[ext_resource type="PackedScene" uid="uid://d3rfqbyng6i2o" path="res://Scenes/UIs/CollectionHolderUI/ItemCollectionHolder.tscn" id="4_s4pbk"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ma682"]
 color = Color(0.19215687, 0.039215688, 0.41568628, 1)
@@ -40,7 +40,7 @@ vertical_alignment = 1
 [node name="DataVBoxContainer" parent="InfoPanelContainer/HBoxContainer" parent_id_path=PackedInt32Array(1954647250) index="1" unique_id=1105333730]
 visible = false
 
-[node name="CollectionHolder" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer" index="0" unique_id=2117693577 instance=ExtResource("3_tihlx")]
+[node name="ItemCollectionHolder" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer" index="0" unique_id=298819742 instance=ExtResource("4_s4pbk")]
 layout_mode = 2
 
 [connection signal="item_rect_changed" from="." to="." method="OnResized"]

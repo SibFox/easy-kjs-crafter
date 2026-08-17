@@ -26,7 +26,7 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 		}
 
 		Label CountLabel => NameContainer.GetNode<Label>("CountLabel");
-		ItemCollectionHolder CollHolder => DataContainer.GetNode<ItemCollectionHolder>("CollectionHolder");
+		ItemCollectionHolder CollHolder => DataContainer.GetNode<ItemCollectionHolder>("ItemCollectionHolder");
 
 		void BuildEntryTree()
 		{
