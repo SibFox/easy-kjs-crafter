@@ -17,7 +17,7 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 			get => _value.AsString();
 			set
 			{
-				_value = (string)value;
+				_value = value.AsString();
 			}
 		}
 

@@ -48,12 +48,12 @@ namespace EasyKJSCrafter
 			public static ItemEntryBox ItemEntryBoxInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ResourceEntry/ItemEntryBox.tscn").Instantiate<ItemEntryBox>();
 			public static ItemCollectionEntryBox ItemCollectionEntryBoxBoxInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ResourceEntry/ItemCollectionEntryBox.tscn").Instantiate<ItemCollectionEntryBox>();
 
-			public static IntegerComponentEntry IntegerComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ResourceEntry/ComponentEntry/IntegerComponentEntry.tscn").Instantiate<IntegerComponentEntry>();
-			public static FloatComponentEntry FloatComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ResourceEntry/ComponentEntry/FloatComponentEntry.tscn").Instantiate<FloatComponentEntry>();
-			public static StringComponentEntry StringComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ResourceEntry/ComponentEntry/StringComponentEntry.tscn").Instantiate<StringComponentEntry>();
-			public static BooleanComponentEntry BooleanComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ResourceEntry/ComponentEntry/BooleanComponentEntry.tscn").Instantiate<BooleanComponentEntry>();
-			// public static ArrayComponentEntry ArrayComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ResourceEntry/ComponentEntry/ArrayComponentEntry.tscn").Instantiate<ArrayComponentEntry>();
-			// public static DictionaryComponentEntry DictionaryComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ResourceEntry/ComponentEntry/DictionaryComponentEntry.tscn").Instantiate<DictionaryComponentEntry>();
+			public static IntegerComponentEntry IntegerComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/IntegerComponentEntry.tscn").Instantiate<IntegerComponentEntry>();
+			public static FloatComponentEntry FloatComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/FloatComponentEntry.tscn").Instantiate<FloatComponentEntry>();
+			public static StringComponentEntry StringComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/StringComponentEntry.tscn").Instantiate<StringComponentEntry>();
+			public static BooleanComponentEntry BooleanComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/BooleanComponentEntry.tscn").Instantiate<BooleanComponentEntry>();
+			public static ArrayComponentEntry ArrayComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/ArrayComponentEntry.tscn").Instantiate<ArrayComponentEntry>();
+			// public static DictionaryComponentEntry DictionaryComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/DictionaryComponentEntry.tscn").Instantiate<DictionaryComponentEntry>();
 		}
 
 		public static class Paths

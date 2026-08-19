@@ -8,7 +8,7 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 		[Export]
 		public override ComponentBase Component
 		{
-			get => _component;
+			get => base.Component;
 			set
 			{
 				base.Component = value;
@@ -16,7 +16,7 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 			}
 		}
 
-		SpinBox ValueBox => GetNode<SpinBox>("%ValueSpinBox");
+		protected SpinBox ValueBox => GetNode<SpinBox>("%ValueSpinBox");
 
 		void OnValueBox_ValueChanged(float val)
 		{

@@ -44,3 +44,5 @@ visible = false
 layout_mode = 2
 
 [connection signal="item_rect_changed" from="." to="." method="OnResized"]
+[connection signal="ElementAdded" from="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ItemCollectionHolder" to="." method="UpdateCountLabel"]
+[connection signal="ElementRemoved" from="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ItemCollectionHolder" to="." method="UpdateCountLabel"]

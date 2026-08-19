@@ -37,7 +37,8 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 		protected Button DeclineDeleteButton => NameContainer.GetNode<Button>("DeclineDeleteButton");
 		protected Label HasErrorsLabel => NameContainer.GetNode<Label>("HasErrorsLabel");
 
-		public override void _Ready() {
+		public override void _Ready()
+		{
 			HasErrorsLabel.Visible = _resource.HasErrors;
 
 			ShowDataButton.ButtonPressed = _resource.Expanded;
@@ -77,14 +78,15 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 
 		void OnConfirmDeleteButton_Pressed()
 		{
-			var holder = GetParent<ItemCollectionHolder>();
-			if (holder.Holder.Collection.Remove(_resource))
+			var owner = GetParent<ItemCollectionHolder>();
+			if (owner.Holder.Collection.Remove(_resource))
 			{
-				GD.Print($"Ресурс \"{_resource.ResourceName}\" удалён из коллекции \"{holder.Holder.ResourceName}\"");
+				owner.EmitSignal(CollectionHolder.SignalName.ElementRemoved);
+				GD.Print($"Ресурс \"{_resource.ResourceName}\" удалён из коллекции \"{owner.Holder.ResourceName}\"");
 				QueueFree();
 				return;
 			}
-			GD.Print($"Ошибка при удалении ресурса \"{_resource.ResourceName}\" из коллекции \"{holder.Holder.ResourceName}\"");
+			GD.Print($"Ошибка при удалении ресурса \"{_resource.ResourceName}\" из коллекции \"{owner.Holder.ResourceName}\"");
 		}
 	}
 }

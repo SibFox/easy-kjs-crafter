@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using EasyKJSCrafter.Interfaces;
 using Godot;
 
 namespace EasyKJSCrafter.ResourceClasses.ComponentEntities

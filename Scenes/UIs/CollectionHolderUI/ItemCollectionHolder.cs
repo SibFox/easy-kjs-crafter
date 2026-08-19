@@ -8,13 +8,22 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 {
 	public partial class ItemCollectionHolder : CollectionHolder, ICollectionHolder<ItemCollection, ResourceEntry>
 	{
-		public ItemCollection Holder { get; set; }
+		protected ItemCollection _holder;
+		[Export]
+		public ItemCollection Holder 
+		{
+			get => _holder;
+			set
+			{
+				_holder = value;
+				BuildEntryTree();
+			}
+		}
 		public Array<ResourceEntry> Collection => Holder.Collection;
 
 		OptionButton AddEntryOption => GetNode<OptionButton>("AddEntryOption");
 
-
-        public override void BuildEntryTree()
+		public override void BuildEntryTree()
 		{
 			int addedEntries = 0;
 
@@ -55,6 +64,7 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 			ItemEntryBox itemBox = Manager.LoadedUIScenes.ItemEntryBoxInstance();
 			itemBox.Resource = item;
 			AddChild(itemBox, false, InternalMode.Front);
+			EmitSignalElementAdded();
 		}
 
 		void OnAddCollectionButton_Pressed()
@@ -64,6 +74,7 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 			ItemCollectionEntryBox collectionBox = Manager.LoadedUIScenes.ItemCollectionEntryBoxBoxInstance();
 			collectionBox.Resource = coll;
 			AddChild(collectionBox, false, InternalMode.Front);
+			EmitSignalElementAdded();
 		}
 
 		public bool ValidateCollection() => Holder.ValidateCollection().Length == 0;

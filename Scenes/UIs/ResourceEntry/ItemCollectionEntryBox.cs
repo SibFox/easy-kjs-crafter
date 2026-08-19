@@ -1,7 +1,7 @@
 using EasyKJSCrafter.ResourceClasses.ItemEntities;
 using EasyKJSCrafter.Scenes.UIs.CollectionHolderUI;
 using Godot;
-
+using static EasyKJSCrafter.Common.Logger.Logger;
 
 namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 {
@@ -20,23 +20,20 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 					KeyLine.Text = coll.ResourceName;
 					EntryNameLine.Text = coll.EntryName;
 
-					BuildEntryTree();
+					ItemHolder.Holder = coll;
+					UpdateCountLabel();
 				}
 			}
 		}
 
 		Label CountLabel => NameContainer.GetNode<Label>("CountLabel");
-		ItemCollectionHolder CollHolder => DataContainer.GetNode<ItemCollectionHolder>("ItemCollectionHolder");
+		ItemCollectionHolder ItemHolder => DataContainer.GetNode<ItemCollectionHolder>("ItemCollectionHolder");
 
-		void BuildEntryTree()
-		{
-			CollHolder.Holder = _resource as ItemCollection;
-			CollHolder.BuildEntryTree();
+		void UpdateCountLabel()
+		{ 
+			CountLabel.Text = (_resource as ItemCollection).Collection.Count.ToString();
+			DebugInfo(nameof(ItemCollectionEntryBox), nameof(UpdateCountLabel)).AddLine($"Вызвано в {_resource.ResourceName} " +
+			$"с количеством элементов {(_resource as ItemCollection).Collection.Count}").Push();
 		}
-
-        void OnResized()
-        {
-            CountLabel.Text = (_resource as ItemCollection).Collection.Count.ToString();
-        }
 	}
 }

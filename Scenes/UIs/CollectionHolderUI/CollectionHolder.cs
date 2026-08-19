@@ -8,6 +8,10 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 	/// </summary>
 	public partial class CollectionHolder : VBoxContainer
 	{
+		[Signal]
+		public delegate void ElementAddedEventHandler();
+		[Signal]
+		public delegate void ElementRemovedEventHandler();
 		/// <summary>
 		/// Выстраивает элементы коллекции в дереве. Должен быть переопределён в наследниках.
 		/// </summary>

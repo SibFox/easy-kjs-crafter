@@ -5,7 +5,9 @@
 [ext_resource type="Script" uid="uid://c0rkj240liapo" path="res://Resource Classes/ItemEntities/ItemCollection.cs" id="1_nbop3"]
 [ext_resource type="Script" uid="uid://dxhj00dxkf3cq" path="res://Resource Classes/ItemEntities/ItemEntry.cs" id="2_7aef8"]
 [ext_resource type="Script" uid="uid://d2em7ndnmkq7j" path="res://Resource Classes/ComponentEntities/IntegerComponent.cs" id="3_koyoo"]
-[ext_resource type="Script" uid="uid://u2ra5b6ufqwd" path="res://Resource Classes/ComponentEntities/ComponentBase.cs" id="4_3nxin"]
+[ext_resource type="Script" uid="uid://vtkni35a1h0b" path="res://Resource Classes/ComponentEntities/ComponentCollection.cs" id="5_koyoo"]
+[ext_resource type="Script" uid="uid://bqedfyan0vtov" path="res://Resource Classes/ComponentEntities/StringComponent.cs" id="6_s5dqs"]
+[ext_resource type="Script" uid="uid://bg2wumieujrnd" path="res://Resource Classes/ComponentEntities/BooleanComponent.cs" id="7_xtmuh"]
 
 [sub_resource type="Resource" id="Resource_s5dqs"]
 script = ExtResource("1_fs83q")
@@ -17,22 +19,25 @@ WholePath = "minecraft:redstone"
 resource_name = "redstone"
 script = ExtResource("2_7aef8")
 Id = SubResource("Resource_s5dqs")
-Components = Array[ExtResource("4_3nxin")]([])
 EntryName = "Редстоун"
 metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
 
-[sub_resource type="Resource" id="Resource_45dtk"]
+[sub_resource type="Resource" id="Resource_koyoo"]
 script = ExtResource("1_fs83q")
 ModId = "industrialupgrade"
 Path = "level_microchip"
-WholePath = "industrialupgrade:level_microchip"
 metadata/_custom_type_script = "uid://dnqbschkt35h"
 
-[sub_resource type="Resource" id="Resource_ox0vw"]
+[sub_resource type="Resource" id="Resource_7aef8"]
 script = ExtResource("3_koyoo")
 Value = 1
-Id = SubResource("Resource_45dtk")
+Id = SubResource("Resource_koyoo")
 metadata/_custom_type_script = "uid://d2em7ndnmkq7j"
+
+[sub_resource type="Resource" id="Resource_fs83q"]
+script = ExtResource("5_koyoo")
+Collection = Array[Object]([SubResource("Resource_7aef8")])
+metadata/_custom_type_script = "uid://vtkni35a1h0b"
 
 [sub_resource type="Resource" id="Resource_xtmuh"]
 script = ExtResource("1_fs83q")
@@ -44,9 +49,38 @@ WholePath = "minecraft:airff12"
 resource_name = "lvl1"
 script = ExtResource("2_7aef8")
 Id = SubResource("Resource_xtmuh")
-Components = Array[ExtResource("4_3nxin")]([SubResource("Resource_ox0vw")])
+Components = SubResource("Resource_fs83q")
 EntryName = "Микрочип 1ур"
 metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
+
+[sub_resource type="Resource" id="Resource_spamo"]
+script = ExtResource("1_fs83q")
+ModId = "bazz"
+Path = "puzz"
+metadata/_custom_type_script = "uid://dnqbschkt35h"
+
+[sub_resource type="Resource" id="Resource_qxnum"]
+script = ExtResource("6_s5dqs")
+Value = "badабум"
+Id = SubResource("Resource_spamo")
+metadata/_custom_type_script = "uid://bqedfyan0vtov"
+
+[sub_resource type="Resource" id="Resource_jsilp"]
+script = ExtResource("1_fs83q")
+ModId = "bim"
+Path = "badapim"
+metadata/_custom_type_script = "uid://dnqbschkt35h"
+
+[sub_resource type="Resource" id="Resource_gpy60"]
+script = ExtResource("7_xtmuh")
+Value = true
+Id = SubResource("Resource_jsilp")
+metadata/_custom_type_script = "uid://bg2wumieujrnd"
+
+[sub_resource type="Resource" id="Resource_87hhb"]
+script = ExtResource("5_koyoo")
+Collection = Array[Object]([SubResource("Resource_qxnum"), SubResource("Resource_gpy60")])
+metadata/_custom_type_script = "uid://vtkni35a1h0b"
 
 [sub_resource type="Resource" id="Resource_ehnp8"]
 script = ExtResource("1_fs83q")
@@ -58,7 +92,7 @@ WholePath = "minecraft:air"
 resource_name = "graphene_wire"
 script = ExtResource("2_7aef8")
 Id = SubResource("Resource_ehnp8")
-Components = Array[ExtResource("4_3nxin")]([])
+Components = SubResource("Resource_87hhb")
 metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
 
 [sub_resource type="Resource" id="Resource_qc31c"]

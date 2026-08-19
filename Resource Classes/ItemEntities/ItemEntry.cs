@@ -1,37 +1,41 @@
+using EasyKJSCrafter.Interfaces;
 using Godot;
-using Godot.Collections;
-using EasyKJSCrafter.ResourceClasses.ComponentEntities;
 using System.Diagnostics;
 
 namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 {
-    [GlobalClass]
-    [DebuggerDisplay("Key = {ResourceName}, Name = {EntryName}, ItemId = {ItemId.WholePath}")]
-    public partial class ItemEntry : ResourceEntry
-    {
-        // Для отображения в редакторе
-        [Export]
-        public PathId Id { get; set; }
-        [Export]
-        public Array<ComponentBase> Components { get; private set; }
+	[GlobalClass]
+	[DebuggerDisplay("Key = {ResourceName}, Name = {EntryName}, ItemId = {ItemId.WholePath}")]
+	public partial class ItemEntry : ResourceEntry
+	{
+		[Signal]
+		public delegate void EntryAddedEventHandler();
+		[Signal]
+		public delegate void EntryRemovedEventHandler();
 
-        // Для отображения иконки для удобного отображения
-        // TODO: Вставку через буфер обмена и сохранение внутри файлов проекта/приложения
-        [Export]
-        public Texture2D Icon { get; set; }
+		// Для отображения в редакторе
+		[Export]
+		public PathId Id { get; set; }
+		[Export]
+		public ComponentCollection Components { get; private set; }
 
-        public ItemEntry() { Components = []; Id = new(); }
+		// Для отображения иконки для удобного отображения
+		// TODO: Вставку через буфер обмена и сохранение внутри файлов проекта/приложения
+		[Export]
+		public Texture2D Icon { get; set; }
 
-        public ItemEntry(string declarationKey, PathId itemId, string itemName = null) : base(declarationKey, itemName)
-        {
-            Id = itemId;
-            Components = [];
-        }
+		public ItemEntry() { Components = new(); Id = new(); }
 
-        public ItemEntry(string declarationKey, string itemIdString, string itemName = null) : base(declarationKey, itemName)
-        {
-            Id.SetPathFromWholePath(itemIdString);
-            Components = [];
-        }
-    }
+		public ItemEntry(string declarationKey, PathId itemId, string itemName = null) : base(declarationKey, itemName)
+		{
+			Id = itemId;
+			Components = new();
+		}
+
+		public ItemEntry(string declarationKey, string itemIdString, string itemName = null) : base(declarationKey, itemName)
+		{
+			Id.SetPathFromWholePath(itemIdString);
+			Components = new();
+		}
+	}
 }

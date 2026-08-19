@@ -17,7 +17,7 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 			get => _value.AsInt32();
 			set
 			{
-				_value = (int)value;
+				_value = value.AsInt32();
 			}
 		}
 

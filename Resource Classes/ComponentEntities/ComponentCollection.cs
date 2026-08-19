@@ -11,13 +11,13 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 {
 	[GlobalClass]
 	[DebuggerDisplay("Key = {ResourceName}, Name = {EntryName}, Count = {Collection.Count}")]
-	public partial class ComponentsCollection : ComponentBase, ICollection<ComponentBase>
+	public partial class ComponentCollection : ComponentBase, ICollection<ComponentBase>
 	{
 		protected Array<ComponentBase> _collection;
 		[Export]
 		public virtual Array<ComponentBase> Collection { get => _collection; set => _collection = value; }
 
-		public ComponentsCollection() { Collection = []; }
+		public ComponentCollection() { Collection = []; }
 
 		public string ValidateCollection(int deep = 0)
 		{

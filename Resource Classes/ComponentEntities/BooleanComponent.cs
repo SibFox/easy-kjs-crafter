@@ -11,13 +11,17 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 	[DebuggerDisplay("Id = {Id.WholePath}, Value = {Value}")]
 	public partial class BooleanComponent : ComponentBase
 	{
+		/// <summary>
+		/// Булевый компонент
+		/// Возвращает <see cref="bool"/>
+		/// </summary>
 		[Export]
 		public override Variant Value
 		{
 			get => _value.AsBool();
 			set
 			{
-				_value = (bool)value;
+				_value = value.AsBool();
 			}
 		}
 

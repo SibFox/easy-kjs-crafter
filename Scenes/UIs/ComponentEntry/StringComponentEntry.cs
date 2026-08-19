@@ -7,14 +7,10 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 	{
 		public override ComponentBase Component 
 		{ 
-			get
-			{
-				return base.Component;
-			}
+			get => base.Component;
 			set
 			{
 				base.Component = value;
-
 				ValueLine.Text = value.Value.AsString();
 			}
 		}

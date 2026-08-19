@@ -18,7 +18,7 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 			get => _value.AsGodotDictionary<string, Variant>();
 			set
 			{
-				_value = (Dictionary<string, Variant>)value;
+				_value = value.AsGodotDictionary<string, Variant>();
 			}
 		}
 

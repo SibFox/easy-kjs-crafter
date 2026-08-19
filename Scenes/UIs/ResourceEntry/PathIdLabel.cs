@@ -11,10 +11,7 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
         [Export]
         public PathId Id
         {
-            get
-            {
-                return _id; 
-            }
+            get => _id;
             set
             {
                 _id = value;

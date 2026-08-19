@@ -10,28 +10,25 @@ namespace EasyKJSCrafter.Scenes.UIs.DeclarationTabUI
 		[Export]
 		public ItemCollection DeclarationCollection { get; set; }
 
-		ItemCollectionHolder CollHolder => GetNode<ItemCollectionHolder>("ItemCollectionHolder");
+		ItemCollectionHolder CollectionHolder => GetNode<ItemCollectionHolder>("ItemCollectionHolder");
 
 		public override void _Ready() {
-			CollHolder.Holder = DeclarationCollection;
-			CollHolder.BuildEntryTree();
+			CollectionHolder.Holder = DeclarationCollection;
 		}
 
 		public bool SaveCollection()
 		{
-			bool res = false;
-			if (CollHolder.ValidateCollection())
+			if (CollectionHolder.ValidateCollection())
 			{
 				if (ResourceSaver.Save(DeclarationCollection) == Error.Ok)
 				{
 					GD.Print($"Коллекция \"{DeclarationCollection.ResourceName}\" успешно сохранена");
-					res = true;
+					return true;
 				}
 				else
 					GD.Print($"При сохранении коллекции \"{DeclarationCollection.ResourceName}\" произошла ошибка");
 			}
-			CollHolder.BuildEntryTree();
-			return res;
+			return false;
 		}
 	}
 }

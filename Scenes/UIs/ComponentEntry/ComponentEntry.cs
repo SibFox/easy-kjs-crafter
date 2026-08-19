@@ -1,5 +1,5 @@
 using EasyKJSCrafter.ResourceClasses.ComponentEntities;
-using EasyKJSCrafter.ResourceClasses.ItemEntities;
+using EasyKJSCrafter.Scenes.UIs.CollectionHolderUI;
 using EasyKJSCrafter.Scenes.UIs.ResourceEntryUI;
 using Godot;
 using static EasyKJSCrafter.Common.Logger.Logger;
@@ -15,8 +15,8 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 			set
 			{
 				_component = value;
-
-				IdLabel.Id = _component.Id;
+				IdLabel.Id = value.Id;
+				HasErrorsLabel.Visible = value.HasErrors;
 			}
 		}
 
@@ -25,13 +25,8 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 
 		protected Label HasErrorsLabel => DataContainer.GetNode<Label>("HasErrorsLabel");
 		protected Button DeleteButton => DataContainer.GetNode<Button>("DeleteButton");
-		protected Button ConfirmDeleteButton => DataContainer.GetNode<Button>("ConfirmDeleteButton");
+		public Button ConfirmDeleteButton => DataContainer.GetNode<Button>("ConfirmDeleteButton");
 		protected Button DeclineDeleteButton => DataContainer.GetNode<Button>("DeclineDeleteButton");
-
-		public override void _Ready()
-		{
-			HasErrorsLabel.Visible = _component.HasErrors;
-		}
 
 		void OnDeleteButton_Pressed()
 		{
@@ -47,15 +42,15 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 
 		void OnConfirmDeleteButton_Pressed()
 		{
-			// Owner не работает, потому что он сам по себе null
-			var owner = GetOwner<ItemEntry>();
-			if (owner.Components.Remove(_component))
+			var owner = FindParent("ComponentCollectionHolder") as ComponentCollectionHolder;
+			if (owner.Collection.Remove(_component))
 			{
-				LogInfo(nameof(ComponentEntry), owner.ResourceName).AddLine($"Удалён компонент типа \"{GetType().FullName[2]}\"").Push();
+				owner.EmitSignal(CollectionHolder.SignalName.ElementRemoved);
 				QueueFree();
+				LogInfo(nameof(ComponentEntry)).AddLine($"Удалён компонент \"{_component.Id.WholePath}\" типа \"{GetType().FullName[2]}\"").Push();
 				return;
 			}
-			LogErr(nameof(ComponentEntry), owner.ResourceName).AddLine($"Ошибка при удалении компонента типа \"{GetType().FullName[2]}\"").Push();
+			LogErr(nameof(ComponentEntry)).AddLine($"Ошибка при удалении компонента \"{_component.Id.WholePath}\" типа \"{GetType().FullName[2]}\"").Push();
 		}
 	}
 }

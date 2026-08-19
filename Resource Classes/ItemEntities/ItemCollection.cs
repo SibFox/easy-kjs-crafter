@@ -2,7 +2,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using EasyKJSCrafter.Interfaces;
-using EasyKJSCrafter.ResourceClasses.ComponentEntities;
 using Godot;
 using Godot.Collections;
 using static EasyKJSCrafter.Common.Logger.Logger;
@@ -52,20 +51,20 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 						if (string.IsNullOrEmpty(item.Id.Path))
 							error.Append(new string('\t', deep) + $"У предмета отсутсвует Path в Id" + '\n');
 					}
-					foreach (ComponentBase component in item.Components)
-					{
-						string componentResId = entry.ToString();
-						if (component.Id == null)
-							error.Append(new string('\t', deep) + $"У компонента \"{componentResId}\" предмета \"{entryResId}\" коллекции \"{collResId}\" отсутсвует Id" + '\n');
-						else
-						{
-							if (string.IsNullOrEmpty(component.Id.ModId))
-								error.Append(new string('\t', deep) + $"У компонента \"{componentResId}\" отсутсвует ModId в Id" + '\n');
-							if (string.IsNullOrEmpty(component.Id.Path))
-								error.Append(new string('\t', deep) + $"У компонента \"{componentResId}\" отсутсвует Path в Id" + '\n');
-						}
-						
-					}
+					error.Append(item.Components?.ValidateCollection() ?? string.Empty);
+					// foreach (ComponentBase component in item.Components)
+					// {
+					// 	string componentResId = entry.ToString();
+					// 	if (component.Id == null)
+					// 		error.Append(new string('\t', deep) + $"У компонента \"{componentResId}\" предмета \"{entryResId}\" коллекции \"{collResId}\" отсутсвует Id" + '\n');
+					// 	else
+					// 	{
+					// 		if (string.IsNullOrEmpty(component.Id.ModId))
+					// 			error.Append(new string('\t', deep) + $"У компонента \"{componentResId}\" отсутсвует ModId в Id" + '\n');
+					// 		if (string.IsNullOrEmpty(component.Id.Path))
+					// 			error.Append(new string('\t', deep) + $"У компонента \"{componentResId}\" отсутсвует Path в Id" + '\n');
+					// 	}
+					// }
 				}
 				if (entry is ItemCollection coll)
 				{

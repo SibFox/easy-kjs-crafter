@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://bpi3dimq1e0dq" path="res://Scenes/UIs/ResourceEntry/ItemEntryBox.cs" id="2_1kpaa"]
 [ext_resource type="PackedScene" uid="uid://8yxjkqme6h04" path="res://Scenes/UIs/ResourceEntry/PathIdLabel.tscn" id="2_465bp"]
 [ext_resource type="Texture2D" uid="uid://dwkbudmsga2be" path="res://Assets/Images/question_mark.svg" id="3_t5l0d"]
+[ext_resource type="PackedScene" uid="uid://bxm675frbx0u0" path="res://Scenes/UIs/CollectionHolderUI/ComponentCollectionHolder.tscn" id="5_uwvma"]
+[ext_resource type="Texture2D" uid="uid://qofs7r3clh04" path="res://Assets/Images/list_icon.png" id="5_x02ii"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_uwvma"]
 color = Color(0.19215687, 0.039215688, 0.41568628, 1)
@@ -37,6 +39,7 @@ alignment = 2
 alignment = 2
 
 [node name="DataVBoxContainer" parent="InfoPanelContainer/HBoxContainer" parent_id_path=PackedInt32Array(1954647250) index="1" unique_id=1105333730]
+visible = false
 offset_transform_enabled = true
 offset_transform_position = Vector2(50, 0)
 offset_transform_visual_only = false
@@ -44,46 +47,38 @@ offset_transform_visual_only = false
 [node name="PathIdLabel" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer" index="0" unique_id=203030064 instance=ExtResource("2_465bp")]
 layout_mode = 2
 
-[node name="ComponentsButton" type="Button" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer" index="1" unique_id=785763251]
-custom_minimum_size = Vector2(0, 35)
-custom_maximum_size = Vector2(300, 36)
+[node name="ButtonHBoxContainer" type="HBoxContainer" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer" index="1" unique_id=520580747]
+layout_mode = 2
+
+[node name="ComponentsButton" type="Button" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ButtonHBoxContainer" index="0" unique_id=785763251]
+custom_minimum_size = Vector2(250, 35)
+custom_maximum_size = Vector2(300, 35)
 layout_mode = 2
 toggle_mode = true
-text = "Компоненты (N)"
+text = "Компоненты"
 
-[node name="ComponentsHolder" type="VBoxContainer" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer" index="2" unique_id=1372559599]
+[node name="TextureRect" type="TextureRect" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ButtonHBoxContainer" index="1" unique_id=1042227866]
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("5_x02ii")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ComponentsCountLabel" type="Label" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ButtonHBoxContainer" index="2" unique_id=1582990184]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComponentCollectionHolder" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer" index="2" unique_id=298819742 instance=ExtResource("5_uwvma")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-size_flags_vertical = 3
-offset_transform_enabled = true
-offset_transform_position = Vector2(50, 0)
-offset_transform_visual_only = false
 
-[node name="AddComponentOptionButton" type="OptionButton" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ComponentsHolder" index="0" unique_id=164880981]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 35)
-custom_maximum_size = Vector2(-1, 35)
-layout_mode = 2
-size_flags_horizontal = 0
-selected = 0
-fit_to_longest_item = false
-item_count = 7
-popup/item_0/text = "Добавить компонент"
-popup/item_0/id = 0
-popup/item_0/separator = true
-popup/item_1/text = "Integer"
-popup/item_1/id = 1
-popup/item_2/text = "Float"
-popup/item_2/id = 2
-popup/item_3/text = "String"
-popup/item_3/id = 3
-popup/item_4/text = "Boolean"
-popup/item_4/id = 4
-popup/item_5/text = "Array"
-popup/item_5/id = 5
-popup/item_6/text = "Dictionary"
-popup/item_6/id = 6
-
-[connection signal="toggled" from="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ComponentsButton" to="." method="OnComponentsButton_Toggle"]
-[connection signal="item_selected" from="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ComponentsHolder/AddComponentOptionButton" to="." method="OnAddComponentOption_Selected"]
+[connection signal="toggled" from="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ButtonHBoxContainer/ComponentsButton" to="." method="OnComponentsButton_Toggle"]
+[connection signal="ElementAdded" from="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ComponentCollectionHolder" to="." method="UpdateCountLabel"]
+[connection signal="ElementRemoved" from="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ComponentCollectionHolder" to="." method="UpdateCountLabel"]
