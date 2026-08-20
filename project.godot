@@ -43,6 +43,7 @@ folder_colors={
 "res://Scenes/": "purple",
 "res://Scenes/UIs/": "green",
 "res://Scenes/UIs/CollectionHolderUI/": "red",
+"res://Scenes/UIs/ComponentEntry/": "yellow",
 "res://Scenes/UIs/ResourceEntry/": "yellow",
 "res://Scenes/UIs/ResourceEntry/ComponentEntry/": "red"
 }

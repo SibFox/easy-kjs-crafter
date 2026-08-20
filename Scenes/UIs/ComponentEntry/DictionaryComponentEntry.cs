@@ -1,21 +1,20 @@
 using EasyKJSCrafter.ResourceClasses.ComponentEntities;
-using EasyKJSCrafter.ResourceClasses.ItemEntities;
 using EasyKJSCrafter.Scenes.UIs.CollectionHolderUI;
 using Godot;
 
 namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 {
-	public partial class ArrayComponentEntry : ComponentEntry
+	public partial class DictionaryComponentEntry : ComponentEntry
 	{
 		[Export]
 		public override ComponentBase Component
 		{
-			get => base.Component as ArrayComponent;
+			get => base.Component as DictionaryComponent;
 			set
 			{
 				base.Component = value;
 
-				CollectionHolder.Holder = (value as ArrayComponent).Value.As<ComponentCollection>();
+				// CollectionHolder.Holder = (value as DictionaryComponent).Value.As<ComponentCollection>();
 				UpdateCountLabel();
 			}
 		}

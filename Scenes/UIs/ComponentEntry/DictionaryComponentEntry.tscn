@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://d1f3g2b0b2nyu"]
+
+[ext_resource type="PackedScene" uid="uid://mx32uw3d250u" path="res://Scenes/UIs/ComponentEntry/ComponentEntry.tscn" id="1_2q1yd"]
+[ext_resource type="Texture2D" uid="uid://dgrrw3jlg744b" path="res://Assets/Images/brackets_icon.png" id="2_2ygou"]
+[ext_resource type="Script" uid="uid://ctplby5o6xqgi" path="res://Scenes/UIs/ComponentEntry/DictionaryComponentEntry.cs" id="2_iaqrd"]
+[ext_resource type="Texture2D" uid="uid://qofs7r3clh04" path="res://Assets/Images/list_icon.png" id="4_fstnc"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_e1abv"]
+color = Color(0.19215687, 0.039215688, 0.41568628, 1)
+grow_begin = -2.0
+grow_end = -2.0
+thickness = 5
+vertical = true
+
+[node name="DictionaryComponentEntry" unique_id=698204598 instance=ExtResource("1_2q1yd")]
+script = ExtResource("2_iaqrd")
+
+[node name="TextureRect" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="2" unique_id=1792871586]
+texture = ExtResource("2_2ygou")
+
+[node name="Label" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="3" unique_id=995329201]
+visible = false
+
+[node name="ShowArrayButton" type="Button" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="5" unique_id=1252267228]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+toggle_mode = true
+text = "O"
+alignment = 2
+
+[node name="VSeparator3" type="VSeparator" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="6" unique_id=620257476]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_e1abv")
+
+[node name="TextureRect2" type="TextureRect" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="7" unique_id=280157816]
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("4_fstnc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ComponentsCountLabel" type="Label" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="8" unique_id=1951370655]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator4" type="VSeparator" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="9" unique_id=154649221]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_e1abv")
