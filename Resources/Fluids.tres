@@ -16,7 +16,6 @@ WholePath = "minecraft:water"
 resource_name = "water"
 script = ExtResource("4_fpkat")
 Id = SubResource("Resource_qgw8q")
-Components = Array[ExtResource("2_6ofqd")]([])
 EntryName = "Вода"
 
 [resource]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ddugy4hotwmcv"]
+
+[ext_resource type="PackedScene" uid="uid://d2fl86q7wkvjy" path="res://Scenes/UIs/ComponentEntry/DictionaryEntry/DictionaryEntry.tscn" id="1_p3hns"]
+[ext_resource type="Texture2D" uid="uid://c4afjajn62qer" path="res://Assets/Images/boolean_icon.png" id="3_vpua3"]
+[ext_resource type="Script" uid="uid://b2lrig6q5skt1" path="res://Scenes/UIs/ComponentEntry/DictionaryEntry/BooleanDictionaryEntry.cs" id="4_nhpqp"]
+
+[node name="BooleanDictionaryEntry" unique_id=216465191 instance=ExtResource("1_p3hns")]
+script = ExtResource("4_nhpqp")
+
+[node name="TextureRect" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="2" unique_id=575013122]
+texture = ExtResource("3_vpua3")
+
+[node name="ValueCheck" type="CheckButton" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="4" unique_id=1519342977]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(-1, 35)
+layout_mode = 2
+
+[connection signal="toggled" from="DataHBoxContainer/ValueCheck" to="." method="OnValueCheck_Toggled"]

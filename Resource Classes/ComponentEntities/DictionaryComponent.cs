@@ -1,6 +1,6 @@
 using System.Diagnostics;
+using EasyKJSCrafter.ResourceClasses.DictionaryEntities;
 using Godot;
-using Godot.Collections;
 
 namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 {
@@ -12,18 +12,22 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 	[DebuggerDisplay("Id = {Id.WholePath}, Count = {Value.Count}")]
 	public partial class DictionaryComponent : ComponentBase
 	{
+		/// <summary>
+		/// Словарь вхождений
+		/// Возвращает <see cref="DictionaryCollection"/>
+		/// </summary>
 		[Export]
 		public override Variant Value
 		{
-			get => _value.AsGodotDictionary<string, Variant>();
+			get => _value.As<DictionaryCollection>();
 			set
 			{
-				_value = value.AsGodotDictionary<string, Variant>();
+				_value = value.As<DictionaryCollection>();
 			}
 		}
 
-		public DictionaryComponent() {}
-		public DictionaryComponent(PathId pathId) : base(pathId) {}
-		public DictionaryComponent(string wholePath) : base(wholePath) {}
+		public DictionaryComponent() { Value = new DictionaryCollection(); }
+		public DictionaryComponent(PathId pathId) : base(pathId) { Value = new DictionaryCollection(); }
+		public DictionaryComponent(string wholePath) : base(wholePath) { Value = new DictionaryCollection(); }
 	}
 }

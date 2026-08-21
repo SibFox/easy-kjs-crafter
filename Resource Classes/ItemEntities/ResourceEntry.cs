@@ -6,30 +6,14 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 {
 	[GlobalClass]
 	[DebuggerDisplay("Key = {ResourceName}, Name = {EntryName}")]
-	public partial class ResourceEntry : Resource
+	public partial class ResourceEntry : Entry
 	{
 		[Export]
 		public string EntryName { get; set; }
-		public bool HasErrors { get; set; }
-		// Сохранение состояния раскрытия записи в редакторы
+		// Сохранение состояния раскрытия записи в редакторе
 		public bool Expanded { get; set; }
 
 		public ResourceEntry() {}
-
-		public ResourceEntry(string declarationKey, string entryName = null)
-		{
-			EntryName = entryName;
-			SetDeclarationKey(declarationKey);
-		}
-
-		public void SetDeclarationKey(string declarationKey)
-		{
-			if (KeyRegex().IsMatch(declarationKey))
-				ResourceName = declarationKey.ToLower();
-		}
-
-
-		[GeneratedRegex(@"^[a-z]+(?:[a-z_]+)*$", RegexOptions.IgnoreCase)]
-		private static partial Regex KeyRegex();
+		public ResourceEntry(string declarationKey, string entryName = null) : base(declarationKey) => EntryName = entryName;
 	}
 }

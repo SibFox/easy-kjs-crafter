@@ -135,16 +135,17 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 					arrayComponentEntry.Name = $"ArrayComponentEntry_{componentBase.Id.WholePath}";
 					CollectionContainer.AddChild(arrayComponentEntry, false, InternalMode.Front);
 					break;
-				// case ComponentBase.ComponentType.Dictionary:
-				// 	componentEntry = Manager.LoadedUIScenes.DictionaryComponentEntryInstance();
-				// 	if (componentBase == null)
-				// 	{
-				// 		componentBase = new DictionaryComponent();
-				// 		Collection.Add(componentBase);
-				// 	}
-				// componentEntry.Component = componentBase;
-				// 	CollectionContainer.AddChild(componentEntry, false, InternalMode.Front);
-				// 	break;
+				case ComponentBase.ComponentType.Dictionary:
+					DictionaryComponentEntry dictComponentEntry = Manager.LoadedUIScenes.DictionaryComponentEntryInstance();
+					if (componentBase == null)
+					{
+						componentBase = new DictionaryComponent();
+						Collection.Add(componentBase);
+					}
+					dictComponentEntry.Component = componentBase as DictionaryComponent;
+					dictComponentEntry.Name = $"DictionaryComponentEntry_{componentBase.Id.WholePath}";
+					CollectionContainer.AddChild(dictComponentEntry, false, InternalMode.Front);
+					break;
 			}
 		}
 

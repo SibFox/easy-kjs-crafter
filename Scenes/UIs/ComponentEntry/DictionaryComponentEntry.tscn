@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dgrrw3jlg744b" path="res://Assets/Images/brackets_icon.png" id="2_2ygou"]
 [ext_resource type="Script" uid="uid://ctplby5o6xqgi" path="res://Scenes/UIs/ComponentEntry/DictionaryComponentEntry.cs" id="2_iaqrd"]
 [ext_resource type="Texture2D" uid="uid://qofs7r3clh04" path="res://Assets/Images/list_icon.png" id="4_fstnc"]
+[ext_resource type="PackedScene" uid="uid://b7b1xroofa85f" path="res://Scenes/UIs/CollectionHolderUI/DictionaryCollectionHolder.tscn" id="5_e1abv"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_e1abv"]
 color = Color(0.19215687, 0.039215688, 0.41568628, 1)
@@ -14,6 +15,7 @@ vertical = true
 
 [node name="DictionaryComponentEntry" unique_id=698204598 instance=ExtResource("1_2q1yd")]
 script = ExtResource("2_iaqrd")
+Component = null
 
 [node name="TextureRect" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="2" unique_id=1792871586]
 texture = ExtResource("2_2ygou")
@@ -21,7 +23,7 @@ texture = ExtResource("2_2ygou")
 [node name="Label" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="3" unique_id=995329201]
 visible = false
 
-[node name="ShowArrayButton" type="Button" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="5" unique_id=1252267228]
+[node name="ShowDictionaryButton" type="Button" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="5" unique_id=1252267228]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(35, 35)
 custom_maximum_size = Vector2(35, 35)
@@ -43,7 +45,7 @@ texture = ExtResource("4_fstnc")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ComponentsCountLabel" type="Label" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="8" unique_id=1951370655]
+[node name="ElementsCountLabel" type="Label" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="8" unique_id=1951370655]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(35, 35)
 custom_maximum_size = Vector2(35, 35)
@@ -56,3 +58,11 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxLine_e1abv")
+
+[node name="DictionaryCollectionHolder" parent="." index="1" unique_id=298819742 instance=ExtResource("5_e1abv")]
+visible = false
+layout_mode = 2
+
+[connection signal="toggled" from="DataHBoxContainer/ShowDictionaryButton" to="." method="OnShowArrayButton_Toggled"]
+[connection signal="ElementAdded" from="DictionaryCollectionHolder" to="." method="UpdateCountLabel"]
+[connection signal="ElementRemoved" from="DictionaryCollectionHolder" to="." method="UpdateCountLabel"]

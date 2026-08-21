@@ -1,4 +1,5 @@
 using EasyKJSCrafter.ResourceClasses.ComponentEntities;
+using EasyKJSCrafter.ResourceClasses.DictionaryEntities;
 using EasyKJSCrafter.Scenes.UIs.CollectionHolderUI;
 using Godot;
 
@@ -14,21 +15,21 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 			{
 				base.Component = value;
 
-				// CollectionHolder.Holder = (value as DictionaryComponent).Value.As<ComponentCollection>();
+				CollectionHolder.Holder = (value as DictionaryComponent).Value.As<DictionaryCollection>();
 				UpdateCountLabel();
 			}
 		}
 
-		protected ComponentCollectionHolder CollectionHolder => GetNode<ComponentCollectionHolder>("ComponentCollectionHolder");
-		protected Button ShowArrayButton => GetNode<Button>("%ShowArrayButton");
-		protected Label ComponentsCountLabel => GetNode<Label>("%ComponentsCountLabel");
+		protected DictionaryCollectionHolder CollectionHolder => GetNode<DictionaryCollectionHolder>("DictionaryCollectionHolder");
+		protected Button ShowDictionaryButton => GetNode<Button>("%ShowDictionaryButton");
+		protected Label ElementsCountLabel => GetNode<Label>("%ElementsCountLabel");
 		
 		void OnShowArrayButton_Toggled(bool toggledOn)
 		{
-			ShowArrayButton.Text = toggledOn ? "X" : "O";
+			ShowDictionaryButton.Text = toggledOn ? "X" : "O";
 			CollectionHolder.Visible = toggledOn;
 		}
 
-		void UpdateCountLabel() => ComponentsCountLabel.Text = CollectionHolder.Collection.Count.ToString();
+		void UpdateCountLabel() => ElementsCountLabel.Text = CollectionHolder.Collection.Count.ToString();
 	}
 }

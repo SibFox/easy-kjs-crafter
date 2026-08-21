@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dv2i72sisegeo"]
+
+[ext_resource type="PackedScene" uid="uid://d2fl86q7wkvjy" path="res://Scenes/UIs/ComponentEntry/DictionaryEntry/DictionaryEntry.tscn" id="1_areu1"]
+[ext_resource type="Script" uid="uid://b7ua6il534pfo" path="res://Scenes/UIs/ComponentEntry/DictionaryEntry/StringDictionaryEntry.cs" id="2_u1k60"]
+[ext_resource type="Texture2D" uid="uid://bqyaflil2cv51" path="res://Assets/Images/string_icon.png" id="3_5x225"]
+
+[node name="StringDictionaryEntry" unique_id=216465191 instance=ExtResource("1_areu1")]
+script = ExtResource("2_u1k60")
+
+[node name="TextureRect" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="2" unique_id=575013122]
+texture = ExtResource("3_5x225")
+
+[node name="ValueLine" type="LineEdit" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="4" unique_id=1467822974]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+placeholder_text = "string"
+expand_to_text_length = true
+select_all_on_focus = true
+
+[connection signal="editing_toggled" from="DataHBoxContainer/ValueLine" to="." method="OnValueLine_Toggled"]

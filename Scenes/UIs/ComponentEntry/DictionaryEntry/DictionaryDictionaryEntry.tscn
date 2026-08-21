@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://br1ruubpywdgo"]
+
+[ext_resource type="PackedScene" uid="uid://d2fl86q7wkvjy" path="res://Scenes/UIs/ComponentEntry/DictionaryEntry/DictionaryEntry.tscn" id="1_cfdyb"]
+[ext_resource type="Script" uid="uid://ckpmt5jtlapij" path="res://Scenes/UIs/ComponentEntry/DictionaryEntry/DictionaryDictionaryEntry.cs" id="2_0bxfk"]
+[ext_resource type="Texture2D" uid="uid://dgrrw3jlg744b" path="res://Assets/Images/brackets_icon.png" id="2_ygbeh"]
+[ext_resource type="Texture2D" uid="uid://qofs7r3clh04" path="res://Assets/Images/list_icon.png" id="3_70rcn"]
+[ext_resource type="PackedScene" uid="uid://b7b1xroofa85f" path="res://Scenes/UIs/CollectionHolderUI/DictionaryCollectionHolder.tscn" id="4_0bxfk"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_j2d08"]
+color = Color(0.19215687, 0.039215688, 0.41568628, 1)
+grow_begin = -2.0
+grow_end = -2.0
+thickness = 5
+vertical = true
+
+[node name="DictionaryDictionaryEntry" unique_id=347897485 instance=ExtResource("1_cfdyb")]
+script = ExtResource("2_0bxfk")
+Element = null
+
+[node name="TextureRect" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="2" unique_id=575013122]
+texture = ExtResource("2_ygbeh")
+
+[node name="Label" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="3" unique_id=1981219077]
+visible = false
+
+[node name="ShowDictionaryButton" type="Button" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="5" unique_id=1597104984]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+toggle_mode = true
+text = "O"
+alignment = 2
+
+[node name="VSeparator3" type="VSeparator" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="6" unique_id=520305504]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_j2d08")
+
+[node name="TextureRect2" type="TextureRect" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="7" unique_id=1960371794]
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("3_70rcn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ElementsCountLabel" type="Label" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="8" unique_id=714817302]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator4" type="VSeparator" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="9" unique_id=2057048727]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_j2d08")
+
+[node name="DictionaryCollectionHolder" parent="." index="1" unique_id=298819742 instance=ExtResource("4_0bxfk")]
+visible = false
+layout_mode = 2
+
+[connection signal="toggled" from="DataHBoxContainer/ShowDictionaryButton" to="." method="OnShowArrayButton_Toggled"]
+[connection signal="ElementAdded" from="DictionaryCollectionHolder" to="." method="UpdateCountLabel"]
+[connection signal="ElementRemoved" from="DictionaryCollectionHolder" to="." method="UpdateCountLabel"]

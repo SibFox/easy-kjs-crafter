@@ -1,12 +1,12 @@
 using System.Diagnostics;
-using EasyKJSCrafter.Interfaces;
+using EasyKJSCrafter.ResourceClasses.ItemEntities;
 using Godot;
 
 namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 {
 	[GlobalClass]
 	[DebuggerDisplay("Id = {Id.WholePath}, Value = {Value}")]
-	public partial class ComponentBase : Resource
+	public partial class ComponentBase : Entry
 	{
 		public enum ComponentType
 		{
@@ -20,8 +20,6 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 
 		[Export]
 		public PathId Id { get; set; }
-
-		public bool HasErrors { get; set; }
 
 		protected Variant _value;
 		public virtual Variant Value

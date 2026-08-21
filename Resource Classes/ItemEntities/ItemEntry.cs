@@ -1,4 +1,4 @@
-using EasyKJSCrafter.Interfaces;
+using EasyKJSCrafter.ResourceClasses.ComponentEntities;
 using Godot;
 using System.Diagnostics;
 

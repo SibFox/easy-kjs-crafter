@@ -48,8 +48,8 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 
 		void OnKeyLine_EditingToggled(bool toggledOn)
 		{
-			Resource.SetDeclarationKey(KeyLine.Text);
-			KeyLine.Text = Resource.ResourceName;
+			Resource.Key = KeyLine.Text;
+			KeyLine.Text = Resource.Key;
 		}
 
 		void OnShowDataButton_Toggled(bool toggledOn)
@@ -82,11 +82,11 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 			if (owner.Holder.Collection.Remove(_resource))
 			{
 				owner.EmitSignal(CollectionHolder.SignalName.ElementRemoved);
-				GD.Print($"Ресурс \"{_resource.ResourceName}\" удалён из коллекции \"{owner.Holder.ResourceName}\"");
+				GD.Print($"Ресурс \"{_resource.Key}\" удалён из коллекции \"{owner.Holder.ResourceName}\"");
 				QueueFree();
 				return;
 			}
-			GD.Print($"Ошибка при удалении ресурса \"{_resource.ResourceName}\" из коллекции \"{owner.Holder.ResourceName}\"");
+			GD.Print($"Ошибка при удалении ресурса \"{_resource.Key}\" из коллекции \"{owner.Holder.ResourceName}\"");
 		}
 	}
 }

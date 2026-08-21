@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dmh4tyoebj6uf"]
+
+[ext_resource type="PackedScene" uid="uid://d2fl86q7wkvjy" path="res://Scenes/UIs/ComponentEntry/DictionaryEntry/DictionaryEntry.tscn" id="1_1gvpg"]
+[ext_resource type="Texture2D" uid="uid://b0en74rlccigd" path="res://Assets/Images/integer_icon.png" id="2_84xjr"]
+[ext_resource type="Script" uid="uid://dgock300ul1tc" path="res://Scenes/UIs/ComponentEntry/DictionaryEntry/IntegerDictionaryEntry.cs" id="2_m6jfr"]
+
+[node name="IntegerDictionaryEntry" unique_id=216465191 instance=ExtResource("1_1gvpg")]
+script = ExtResource("2_m6jfr")
+Element = null
+
+[node name="TextureRect" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="2" unique_id=575013122]
+texture = ExtResource("2_84xjr")
+
+[node name="ValueSpinBox" type="SpinBox" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="4" unique_id=79238384]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(-1, 35)
+layout_mode = 2
+max_value = 99999999.0
+rounded = true
+allow_greater = true
+allow_lesser = true
+alignment = 2
+update_on_text_changed = true
+custom_arrow_step = 1.0
+custom_arrow_round = true
+select_all_on_focus = true
+
+[connection signal="value_changed" from="DataHBoxContainer/ValueSpinBox" to="." method="OnValueBox_ValueChanged"]

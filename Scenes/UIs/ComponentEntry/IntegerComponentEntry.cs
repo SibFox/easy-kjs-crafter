@@ -20,7 +20,7 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 
 		void OnValueBox_ValueChanged(float val)
 		{
-			_component.Value = val;
+			Component.Value = val;
 		}
 	}
 }

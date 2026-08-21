@@ -2,20 +2,18 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using EasyKJSCrafter.Interfaces;
-using EasyKJSCrafter.ResourceClasses.ComponentEntities;
 using Godot;
 using Godot.Collections;
 using static EasyKJSCrafter.Common.Logger.Logger;
 
-namespace EasyKJSCrafter.ResourceClasses.ItemEntities
+namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 {
 	[GlobalClass]
 	[DebuggerDisplay("Key = {ResourceName}, Name = {EntryName}, Count = {Collection.Count}")]
 	public partial class ComponentCollection : ComponentBase, ICollection<ComponentBase>
 	{
-		protected Array<ComponentBase> _collection;
 		[Export]
-		public virtual Array<ComponentBase> Collection { get => _collection; set => _collection = value; }
+		public virtual Array<ComponentBase> Collection { get; set; }
 
 		public ComponentCollection() { Collection = []; }
 
@@ -88,7 +86,7 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 			}
 
 			if (deep == 0 && allErrors.Length > 0)
-				LogErr(nameof(ItemCollection), nameof(ValidateCollection)).AddLine(allErrors.ToString()).Push();
+				LogErr(nameof(ComponentCollection), nameof(ValidateCollection)).AddLine(allErrors.ToString()).Push();
 
 			return allErrors.ToString();
 		}

@@ -15,13 +15,13 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 			set
 			{
 				_component = value;
-				IdLabel.Id = value.Id;
+				IdLine.Id = value.Id;
 				HasErrorsLabel.Visible = value.HasErrors;
 			}
 		}
 
 		protected HBoxContainer DataContainer => GetNode<HBoxContainer>("DataHBoxContainer");
-		protected PathIdLabel IdLabel => GetNode<PathIdLabel>("%PathIdLabel");
+		protected PathIdLabel IdLine => GetNode<PathIdLabel>("%PathIdLabel");
 
 		protected Label HasErrorsLabel => DataContainer.GetNode<Label>("HasErrorsLabel");
 		protected Button DeleteButton => DataContainer.GetNode<Button>("DeleteButton");

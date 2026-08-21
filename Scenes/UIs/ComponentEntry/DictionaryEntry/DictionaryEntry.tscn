@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://d2fl86q7wkvjy"]
+
+[ext_resource type="Script" uid="uid://bvvg3s0ap8df2" path="res://Scenes/UIs/ComponentEntry/DictionaryEntry/DictionaryEntry.cs" id="1_1uj1t"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_p231l"]
+color = Color(0.19215687, 0.039215688, 0.41568628, 1)
+grow_begin = -2.0
+grow_end = -2.0
+thickness = 5
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_81v63"]
+color = Color(0.19215687, 0.039215688, 0.41568628, 1)
+grow_begin = -2.0
+grow_end = -2.0
+thickness = 5
+vertical = true
+
+[node name="DictionaryEntry" type="VBoxContainer" unique_id=347897485]
+offset_right = 348.0
+offset_bottom = 35.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(50, 0)
+offset_transform_visual_only = false
+script = ExtResource("1_1uj1t")
+
+[node name="DataHBoxContainer" type="HBoxContainer" parent="." unique_id=1225144735]
+layout_mode = 2
+
+[node name="KeyLine" type="LineEdit" parent="DataHBoxContainer" unique_id=1512982639]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+placeholder_text = "Ключ"
+expand_to_text_length = true
+select_all_on_focus = true
+
+[node name="VSeparator" type="VSeparator" parent="DataHBoxContainer" unique_id=512002920]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_p231l")
+
+[node name="TextureRect" type="TextureRect" parent="DataHBoxContainer" unique_id=575013122]
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="DataHBoxContainer" unique_id=1981219077]
+layout_mode = 2
+text = "  =  "
+horizontal_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="DataHBoxContainer" unique_id=1608593586]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_81v63")
+
+[node name="DeleteButton" type="Button" parent="DataHBoxContainer" unique_id=5291780]
+custom_minimum_size = Vector2(0, 35)
+custom_maximum_size = Vector2(-1, 35)
+layout_mode = 2
+text = "Удалить"
+
+[node name="ConfirmDeleteButton" type="Button" parent="DataHBoxContainer" unique_id=1966720646]
+visible = false
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Y"
+
+[node name="DeclineDeleteButton" type="Button" parent="DataHBoxContainer" unique_id=1883339809]
+visible = false
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "N"
+
+[node name="HasErrorsLabel" type="Label" parent="DataHBoxContainer" unique_id=1106083375]
+visible = false
+custom_maximum_size = Vector2(-1, 35)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0.1, 0)
+theme_override_colors/font_color = Color(0.92156863, 0.24705882, 0.23529412, 1)
+theme_override_font_sizes/font_size = 20
+text = "ОШИБКА"
+
+[connection signal="editing_toggled" from="DataHBoxContainer/KeyLine" to="." method="OnKeyLine_EditingToggled"]
+[connection signal="pressed" from="DataHBoxContainer/DeleteButton" to="." method="OnDeleteButton_Pressed"]
+[connection signal="pressed" from="DataHBoxContainer/ConfirmDeleteButton" to="." method="OnConfirmDeleteButton_Pressed"]
+[connection signal="pressed" from="DataHBoxContainer/DeclineDeleteButton" to="." method="OnDeclineDeleteButton_Pressed"]
