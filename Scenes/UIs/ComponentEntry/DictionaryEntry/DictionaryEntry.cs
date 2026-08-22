@@ -14,9 +14,9 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI.DictionaryEntryUI
 			set
 			{
 				_element = value;
-				KeyLine.Text = value.Key;
 				HasErrorsLabel.Visible = value.HasErrors;
 
+				KeyLine.Text = value.InsideArray ? string.Empty : value.Key;
 				KeyLine.Visible = DataContainer.GetNode<Separator>("VSeparator").Visible = !value.InsideArray;
 			}
 		}
@@ -29,7 +29,7 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI.DictionaryEntryUI
 		public Button ConfirmDeleteButton => DataContainer.GetNode<Button>("ConfirmDeleteButton");
 		protected Button DeclineDeleteButton => DataContainer.GetNode<Button>("DeclineDeleteButton");
 
-		void OnKeyLine_EditingToggled(bool toggledOn)
+		protected virtual void OnKeyLine_EditingToggled(bool toggledOn)
 		{
 			_element.Key = KeyLine.Text;
 			KeyLine.Text = _element.Key;
@@ -50,16 +50,18 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI.DictionaryEntryUI
 		void OnConfirmDeleteButton_Pressed()
 		{
 			var owner = FindParent("DictionaryCollectionHolder") as DictionaryCollectionHolder;
+			string elmId = string.IsNullOrEmpty(Element.Key) ? Element.DebuggerName : Element.Key;
+			string ownerId = string.IsNullOrEmpty(owner.Holder.Key) ? owner.Holder.DebuggerName : owner.Holder.Key;
 			if (owner.Collection.Remove(_element))
 			{
 				owner.EmitSignal(CollectionHolder.SignalName.ElementRemoved);
 				QueueFree();
-				LogInfo(nameof(ComponentEntry)).AddLine($"Удалён элемент \"{_element.Key}\" типа \"{GetType().FullName[2]}\"" +
-				$"из словаря {owner.Holder.Key}").Push();
+				LogInfo(nameof(ComponentEntry)).AddLine($"Удалён элемент \"{elmId}\" типа \"{GetType().FullName.Split('.')[4]}\""+
+				$" из словаря {ownerId}").Push();
 				return;
 			}
-			LogErr(nameof(ComponentEntry)).AddLine($"Ошибка при удалении элемент \"{_element.Key}\" типа \"{GetType().FullName[2]}\"" +
-				$"из словаря {owner.Holder.Key}").Push();
+			LogErr(nameof(ComponentEntry)).AddLine($"Ошибка при удалении элемента \"{elmId}\" типа \"{GetType().FullName.Split('.')[4]}\""+
+				$" из словаря {ownerId}").Push();
 		}
 	}
 }

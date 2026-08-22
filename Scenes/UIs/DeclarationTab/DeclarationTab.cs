@@ -1,4 +1,3 @@
-using EasyKJSCrafter.Interfaces;
 using EasyKJSCrafter.ResourceClasses.ItemEntities;
 using EasyKJSCrafter.Scenes.UIs.CollectionHolderUI;
 using Godot;
@@ -10,11 +9,15 @@ namespace EasyKJSCrafter.Scenes.UIs.DeclarationTabUI
 		[Export]
 		public ItemCollection DeclarationCollection { get; set; }
 
-		ItemCollectionHolder CollectionHolder => GetNode<ItemCollectionHolder>("ItemCollectionHolder");
+		ItemCollectionHolder CollectionHolder => GetChild<ItemCollectionHolder>(0);
 
-		public override void _Ready() {
+		public override void _Ready()
+		{
 			CollectionHolder.Holder = DeclarationCollection;
+			CollectionHolder.Name = "ItemCollectionHolder_"+DeclarationCollection.Key;
 		}
+
+		public void BuildCollection() => CollectionHolder.BuildEntryTree();
 
 		public bool SaveCollection()
 		{

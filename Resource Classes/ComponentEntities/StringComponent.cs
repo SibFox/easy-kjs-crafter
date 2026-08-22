@@ -21,7 +21,7 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 			}
 		}
 
-        public StringComponent() {}
+        public StringComponent() {  Value = string.Empty; }
         public StringComponent(PathId pathId, string val) : base(pathId) { Value = val; }
         public StringComponent(string wholePath, string val) : base(wholePath) { Value = val; }
     }

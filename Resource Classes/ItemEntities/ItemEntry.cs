@@ -24,6 +24,8 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 		[Export]
 		public Texture2D Icon { get; set; }
 
+		public bool ComponentsExpanded { get; set; }
+
 		public ItemEntry() { Components = new(); Id = new(); }
 
 		public ItemEntry(string declarationKey, PathId itemId, string itemName = null) : base(declarationKey, itemName)

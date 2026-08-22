@@ -7,16 +7,17 @@ namespace EasyKJSCrafter.ResourceClasses.DictionaryEntities
 	[DebuggerDisplay("Id = {Id.WholePath}, Value = {Value}")]
 	public partial class FloatDElement : DictionaryElementBase
 	{
+		[Export]
 		public override Variant Value
 		{
-			get => (float)_value.AsDouble();
+			get => _value.AsDouble();
 			set
 			{
-				_value = (float)value.AsDouble();
+				_value = value.AsDouble();
 			}
 		}
 
-		public FloatDElement() {}
+		public FloatDElement() { Value = 0.0; }
 		public FloatDElement(string key) : base(key) {}
 	}
 }

@@ -1,6 +1,5 @@
 using EasyKJSCrafter.Interfaces;
 using EasyKJSCrafter.ResourceClasses.ComponentEntities;
-using EasyKJSCrafter.ResourceClasses.ItemEntities;
 using EasyKJSCrafter.Scenes.UIs.ComponentEntryUI;
 using Godot;
 using Godot.Collections;
@@ -77,76 +76,67 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 
 		void AddComponent(ComponentBase.ComponentType type, ComponentBase componentBase = null)
 		{
-			// ComponentEntry componentEntry = new();
+			ComponentEntry componentEntry = new();
 			switch (type)
 			{
 				case ComponentBase.ComponentType.Integer:
-					IntegerComponentEntry intComponentEntry = Manager.LoadedUIScenes.IntegerComponentEntryInstance();
+					componentEntry = Manager.LoadedUIScenes.IntegerComponentEntryInstance();
 					if (componentBase == null)
 					{
 						componentBase = new IntegerComponent();
 						Collection.Add(componentBase);
 					}
-					intComponentEntry.Component = componentBase as IntegerComponent;
-					intComponentEntry.Name = $"IntegerComponentEntry_{componentBase.Id.WholePath}";
-					CollectionContainer.AddChild(intComponentEntry, false, InternalMode.Front);
+					componentBase.DebuggerName = $"IntegerComponentEntry_"+(CollectionContainer.GetChildCount()-1);
 					break;
 				case ComponentBase.ComponentType.Float:
-					FloatComponentEntry floatComponentEntry = Manager.LoadedUIScenes.FloatComponentEntryInstance();
+					componentEntry = Manager.LoadedUIScenes.FloatComponentEntryInstance();
 					if (componentBase == null)
 					{
 						componentBase = new FloatComponent();
 						Collection.Add(componentBase);
 					}
-					floatComponentEntry.Component = componentBase as FloatComponent;
-					floatComponentEntry.Name = $"FloatComponentEntry_{componentBase.Id.WholePath}";
-					CollectionContainer.AddChild(floatComponentEntry, false, InternalMode.Front);
+					componentBase.DebuggerName = $"FloatComponentEntry_"+(CollectionContainer.GetChildCount()-1);
 					break;
 				case ComponentBase.ComponentType.String:
-					StringComponentEntry stringComponentEntry = Manager.LoadedUIScenes.StringComponentEntryInstance();
+					componentEntry = Manager.LoadedUIScenes.StringComponentEntryInstance();
 					if (componentBase == null)
 					{
 						componentBase = new StringComponent();
 						Collection.Add(componentBase);
 					}
-					stringComponentEntry.Component = componentBase as StringComponent;
-					stringComponentEntry.Name = $"StringComponentEntry_{componentBase.Id.WholePath}";
-					CollectionContainer.AddChild(stringComponentEntry, false, InternalMode.Front);
+					componentBase.DebuggerName = $"StringComponentEntry_"+(CollectionContainer.GetChildCount()-1);
 					break;
 				case ComponentBase.ComponentType.Boolean:
-					BooleanComponentEntry booleanComponentEntry = Manager.LoadedUIScenes.BooleanComponentEntryInstance();
+					componentEntry = Manager.LoadedUIScenes.BooleanComponentEntryInstance();
 					if (componentBase == null)
 					{
 						componentBase = new BooleanComponent();
 						Collection.Add(componentBase);
 					}
-					booleanComponentEntry.Component = componentBase as BooleanComponent;
-					booleanComponentEntry.Name = $"BooleanComponentEntry_{componentBase.Id.WholePath}";
-					CollectionContainer.AddChild(booleanComponentEntry, false, InternalMode.Front);
+					componentBase.DebuggerName = $"BooleanComponentEntry_"+(CollectionContainer.GetChildCount()-1);
 					break;
 				case ComponentBase.ComponentType.Array:
-					ArrayComponentEntry arrayComponentEntry = Manager.LoadedUIScenes.ArrayComponentEntryInstance();
+					componentEntry = Manager.LoadedUIScenes.ArrayComponentEntryInstance();
 					if (componentBase == null)
 					{
 						componentBase = new ArrayComponent();
 						Collection.Add(componentBase);
 					}
-					arrayComponentEntry.Component = componentBase as ArrayComponent;
-					arrayComponentEntry.Name = $"ArrayComponentEntry_{componentBase.Id.WholePath}";
-					CollectionContainer.AddChild(arrayComponentEntry, false, InternalMode.Front);
+					componentBase.DebuggerName = $"ArrayComponentEntry_"+(CollectionContainer.GetChildCount()-1);
 					break;
 				case ComponentBase.ComponentType.Dictionary:
-					DictionaryComponentEntry dictComponentEntry = Manager.LoadedUIScenes.DictionaryComponentEntryInstance();
+					componentEntry = Manager.LoadedUIScenes.DictionaryComponentEntryInstance();
 					if (componentBase == null)
 					{
 						componentBase = new DictionaryComponent();
 						Collection.Add(componentBase);
 					}
-					dictComponentEntry.Component = componentBase as DictionaryComponent;
-					dictComponentEntry.Name = $"DictionaryComponentEntry_{componentBase.Id.WholePath}";
-					CollectionContainer.AddChild(dictComponentEntry, false, InternalMode.Front);
+					componentBase.DebuggerName = $"DictionaryComponentEntry_"+(CollectionContainer.GetChildCount()-1);
 					break;
 			}
+			componentEntry.Name = componentBase.DebuggerName;
+			componentEntry.Component = componentBase;
+			CollectionContainer.AddChild(componentEntry, false, InternalMode.Front);
 		}
 
 		public bool ValidateCollection() => Holder.ValidateCollection().Length == 0;

@@ -1,6 +1,7 @@
 using EasyKJSCrafter.ResourceClasses.ItemEntities;
 using Godot;
 using EasyKJSCrafter.Scenes.UIs.CollectionHolderUI;
+using static EasyKJSCrafter.Common.Logger.Logger;
 
 namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 {
@@ -16,10 +17,11 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 
 				KeyLine.Text = value.ResourceName;
 				EntryNameLine.Text = value.EntryName;
+				HasErrorsLabel.Visible = value.HasErrors;
 
-				ShowDataButton.ButtonPressed = _resource.Expanded;
-				DataContainer.Visible = _resource.Expanded;
-				ShowDataButton.Text = _resource.Expanded ? "X" : "O";
+				ShowDataButton.ButtonPressed = Resource.Expanded;
+				DataContainer.Visible = Resource.Expanded;
+				ShowDataButton.Text = Resource.Expanded ? "X" : "O";
 			}
 		}
 
@@ -39,24 +41,24 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 
 		public override void _Ready()
 		{
-			HasErrorsLabel.Visible = _resource.HasErrors;
+			HasErrorsLabel.Visible = Resource.HasErrors;
 
-			ShowDataButton.ButtonPressed = _resource.Expanded;
-			DataContainer.Visible = _resource.Expanded;
-			ShowDataButton.Text = _resource.Expanded ? "X" : "O";
-		}
-
-		void OnKeyLine_EditingToggled(bool toggledOn)
-		{
-			Resource.Key = KeyLine.Text;
-			KeyLine.Text = Resource.Key;
+			ShowDataButton.ButtonPressed = Resource.Expanded;
+			DataContainer.Visible = Resource.Expanded;
+			ShowDataButton.Text = Resource.Expanded ? "X" : "O";
 		}
 
 		void OnShowDataButton_Toggled(bool toggledOn)
 		{
-			_resource.Expanded = toggledOn;
+			Resource.Expanded = toggledOn;
 			DataContainer.Visible = toggledOn;
 			ShowDataButton.Text = toggledOn ? "X" : "O";
+		}
+
+		protected virtual void OnKeyLine_EditingToggled(bool toggledOn)
+		{
+			Resource.Key = KeyLine.Text;
+			KeyLine.Text = Resource.Key;
 		}
 
 		void OnItemNameLine_EditingToggled(bool toggledOn)
@@ -78,15 +80,18 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 
 		void OnConfirmDeleteButton_Pressed()
 		{
-			var owner = GetParent<ItemCollectionHolder>();
-			if (owner.Holder.Collection.Remove(_resource))
+			var owner = FindParent("ItemCollectionHolder") as ItemCollectionHolder;
+			string resId = string.IsNullOrEmpty(Resource.Key) ? Resource.DebuggerName : Resource.Key;
+			string ownerId = string.IsNullOrEmpty(owner.Holder.Key) ? owner.Holder.DebuggerName : owner.Holder.Key;
+
+			if (owner.Holder.Collection.Remove(Resource))
 			{
 				owner.EmitSignal(CollectionHolder.SignalName.ElementRemoved);
-				GD.Print($"Ресурс \"{_resource.Key}\" удалён из коллекции \"{owner.Holder.ResourceName}\"");
+				LogInfo(nameof(ResourceEntryBox), Name).AddLine($"Ресурс \"{resId}\" удалён из коллекции \"{ownerId}\"").Push();
 				QueueFree();
 				return;
 			}
-			GD.Print($"Ошибка при удалении ресурса \"{_resource.Key}\" из коллекции \"{owner.Holder.ResourceName}\"");
+			LogErr(nameof(ResourceEntryBox), Name).AddLine($"Ошибка при удалении ресурса \"{resId}\" из коллекции \"{ownerId}\"").Push();
 		}
 	}
 }

@@ -3,6 +3,7 @@ using EasyKJSCrafter.ResourceClasses.ItemEntities;
 using EasyKJSCrafter.Scenes.UIs.ResourceEntryUI;
 using Godot;
 using Godot.Collections;
+using static EasyKJSCrafter.Common.Logger.Logger;
 
 namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 {
@@ -41,39 +42,43 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 				if (entry is ItemEntry item)
 				{
 					ItemEntryBox itemBox = Manager.LoadedUIScenes.ItemEntryBoxInstance();
-					itemBox.Resource = item;
 					AddChild(itemBox, false, InternalMode.Front);
+					itemBox.Resource = item;
+					itemBox.Name = "ItemEntry_"+(GetChildCount()-1);
 					addedEntries++;
 				}
 				if (entry is ItemCollection icoll)
 				{
 					ItemCollectionEntryBox collectionBox = Manager.LoadedUIScenes.ItemCollectionEntryBoxBoxInstance();
-					collectionBox.Resource = icoll;
 					AddChild(collectionBox, false, InternalMode.Front);
+					collectionBox.Name = "ItemCollectionEntry_"+(GetChildCount()-1);
+					collectionBox.Resource = icoll;
 					addedEntries++;
 				}
 			}
 
-			GD.Print($"[CollectionHolder] Added {addedEntries} entries from collection {Holder.ResourceName}");
+			LogInfo(nameof(ItemCollectionHolder), Holder.Key).AddLine($"Added {addedEntries} entries from collection {Holder.ResourceName}").Push();
 		}
 
 		void OnAddEntryButton_Pressed()
 		{
-			ItemEntry item = new();
+			ItemEntry item = new() { DebuggerName = "ItemEntry_" + (GetChildCount() - 1) };
 			Holder.Collection.Add(item);
 			ItemEntryBox itemBox = Manager.LoadedUIScenes.ItemEntryBoxInstance();
-			itemBox.Resource = item;
 			AddChild(itemBox, false, InternalMode.Front);
+			itemBox.Name = item.DebuggerName;
+			itemBox.Resource = item;
 			EmitSignalElementAdded();
 		}
 
 		void OnAddCollectionButton_Pressed()
 		{
-			ItemCollection coll = new();
+			ItemCollection coll = new() { DebuggerName = "ItemCollectionEntry_" + (GetChildCount() - 1) };
 			Holder.Collection.Add(coll);
 			ItemCollectionEntryBox collectionBox = Manager.LoadedUIScenes.ItemCollectionEntryBoxBoxInstance();
-			collectionBox.Resource = coll;
 			AddChild(collectionBox, false, InternalMode.Front);
+			collectionBox.Name = coll.DebuggerName;
+			collectionBox.Resource = coll;
 			EmitSignalElementAdded();
 		}
 

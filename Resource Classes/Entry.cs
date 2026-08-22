@@ -19,6 +19,11 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 		}
 		public bool HasErrors { get; set; }
 		public virtual string StringView { get => string.Empty; }
+		// Сохранение состояния раскрытия записи в редакторе
+		[Export(PropertyHint.None)]
+		public bool Expanded { get; set; }
+
+		public string DebuggerName { get; set; }
 
 		public Entry() {}
 		public Entry(string declarationKey) => Key = declarationKey;

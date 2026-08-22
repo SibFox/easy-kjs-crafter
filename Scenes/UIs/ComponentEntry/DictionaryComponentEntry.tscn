@@ -63,6 +63,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_e1abv")
 visible = false
 layout_mode = 2
 
+[connection signal="IdChanged" from="DataHBoxContainer/PathIdLabel" to="." method="UpdateHolderKey"]
 [connection signal="toggled" from="DataHBoxContainer/ShowDictionaryButton" to="." method="OnShowArrayButton_Toggled"]
 [connection signal="ElementAdded" from="DictionaryCollectionHolder" to="." method="UpdateCountLabel"]
 [connection signal="ElementRemoved" from="DictionaryCollectionHolder" to="." method="UpdateCountLabel"]

@@ -52,6 +52,10 @@ namespace EasyKJSCrafter.Scenes.UIs.DeclarationsRedactor
 				SaveInfoLabel.Text = errors.ToString();
 			else
 				SaveInfoLabel.Text = "Определения успешно сохранены";
+
+			ItemsTab.BuildCollection();
+			TagsTab.BuildCollection();
+			FluidsTab.BuildCollection();
 		}
 	}
 }

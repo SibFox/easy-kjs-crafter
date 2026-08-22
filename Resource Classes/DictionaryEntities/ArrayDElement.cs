@@ -7,6 +7,7 @@ namespace EasyKJSCrafter.ResourceClasses.DictionaryEntities
 	[DebuggerDisplay("Id = {Id.WholePath}, Value = {Value}")]
 	public partial class ArrayDElement : DictionaryElementBase
 	{
+		[Export]
 		public override Variant Value
 		{
 			get => _value.As<DictionaryCollection>();

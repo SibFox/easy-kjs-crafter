@@ -25,7 +25,7 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 			}
 		}
 
-		public BooleanComponent() {}
+		public BooleanComponent() { Value = false; }
 		public BooleanComponent(PathId pathId, bool val) : base(pathId) { Value = val; }
 		public BooleanComponent(string wholePath, bool val) : base(wholePath) { Value = val; }
 	}

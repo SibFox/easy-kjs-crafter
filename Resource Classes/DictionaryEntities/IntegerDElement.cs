@@ -7,6 +7,7 @@ namespace EasyKJSCrafter.ResourceClasses.DictionaryEntities
 	[DebuggerDisplay("Id = {Id.WholePath}, Value = {Value}")]
 	public partial class IntegerDElement : DictionaryElementBase
 	{
+		[Export]
 		public override Variant Value
 		{
 			get => _value.AsInt32();
@@ -16,7 +17,7 @@ namespace EasyKJSCrafter.ResourceClasses.DictionaryEntities
 			}
 		}
 
-		public IntegerDElement() {}
+		public IntegerDElement() { Value = 0; }
 		public IntegerDElement(string key) : base(key) {}
 	}
 }

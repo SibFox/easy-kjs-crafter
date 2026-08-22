@@ -43,14 +43,18 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 		void OnConfirmDeleteButton_Pressed()
 		{
 			var owner = FindParent("ComponentCollectionHolder") as ComponentCollectionHolder;
+			string cmpId = string.IsNullOrEmpty(Component.Id.WholePath.Replace(":","")) ? Component.DebuggerName : Component.Id.WholePath;
+			string ownerId = string.IsNullOrEmpty(owner.Holder.Id.WholePath) ? owner.Holder.DebuggerName : owner.Holder.Id.WholePath;
 			if (owner.Collection.Remove(_component))
 			{
 				owner.EmitSignal(CollectionHolder.SignalName.ElementRemoved);
 				QueueFree();
-				LogInfo(nameof(ComponentEntry)).AddLine($"Удалён компонент \"{_component.Id.WholePath}\" типа \"{GetType().FullName[2]}\"").Push();
+				LogInfo(nameof(ComponentEntry)).AddLine($"Удалён компонент \"{cmpId}\" типа \"{GetType().FullName.Split('.')[4]}\""+
+				$" из коллекции компонентов {ownerId}").Push();
 				return;
 			}
-			LogErr(nameof(ComponentEntry)).AddLine($"Ошибка при удалении компонента \"{_component.Id.WholePath}\" типа \"{GetType().FullName[2]}\"").Push();
+			LogErr(nameof(ComponentEntry)).AddLine($"Ошибка при удалении компонента \"{cmpId}\" типа \"{GetType().FullName.Split('.')[4]}\""+
+				$" из коллекции компонентов {ownerId}").Push();
 		}
 	}
 }

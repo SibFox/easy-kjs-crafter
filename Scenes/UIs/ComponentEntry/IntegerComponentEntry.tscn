@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c4ofav60g2ggu"]
 
-[ext_resource type="PackedScene" uid="uid://mx32uw3d250u" path="res://Scenes/UIs/ResourceEntry/ComponentEntry/ComponentEntry.tscn" id="1_51g6l"]
-[ext_resource type="Script" uid="uid://1xjuawcj25tq" path="res://Scenes/UIs/ResourceEntry/ComponentEntry/IntegerComponentEntry.cs" id="2_lnin2"]
+[ext_resource type="PackedScene" uid="uid://mx32uw3d250u" path="res://Scenes/UIs/ComponentEntry/ComponentEntry.tscn" id="1_51g6l"]
+[ext_resource type="Script" uid="uid://1xjuawcj25tq" path="res://Scenes/UIs/ComponentEntry/IntegerComponentEntry.cs" id="2_lnin2"]
 [ext_resource type="Texture2D" uid="uid://b0en74rlccigd" path="res://Assets/Images/integer_icon.png" id="3_60fbn"]
 [ext_resource type="Script" uid="uid://dnqbschkt35h" path="res://Resource Classes/PathId.cs" id="3_uefn4"]
 [ext_resource type="Script" uid="uid://u2ra5b6ufqwd" path="res://Resource Classes/ComponentEntities/ComponentBase.cs" id="4_bdrjv"]
@@ -23,6 +23,7 @@ texture = ExtResource("3_60fbn")
 
 [node name="ValueSpinBox" type="SpinBox" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1300276417) index="4" unique_id=1677886277]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
 custom_maximum_size = Vector2(-1, 35)
 layout_mode = 2
 max_value = 99999999.0

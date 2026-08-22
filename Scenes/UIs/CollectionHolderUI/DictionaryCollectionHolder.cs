@@ -87,7 +87,7 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 						elementBase = new IntegerDElement();
 						Collection.Add(elementBase);
 					}
-					dictionaryEntry.Name = $"IntegerDictionaryEntry_{elementBase.Key}";
+					elementBase.DebuggerName = $"IntegerDictionaryEntry_"+(CollectionContainer.GetChildCount()-1);
 					break;
 				case ComponentBase.ComponentType.Float:
 					dictionaryEntry = Manager.LoadedUIScenes.FloatDictionaryEntryInstance();
@@ -96,7 +96,7 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 						elementBase = new FloatDElement();
 						Collection.Add(elementBase);
 					}
-					dictionaryEntry.Name = $"FloatDictionaryEntry_{elementBase.Key}";
+					elementBase.DebuggerName = $"FloatDictionaryEntry_"+(CollectionContainer.GetChildCount()-1);
 					break;
 				case ComponentBase.ComponentType.String:
 					dictionaryEntry = Manager.LoadedUIScenes.StringDictionaryEntryInstance();
@@ -105,7 +105,7 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 						elementBase = new StringDElement();
 						Collection.Add(elementBase);
 					}
-					dictionaryEntry.Name = $"StringDictionaryEntry_{elementBase.Key}";
+					elementBase.DebuggerName = $"StringDictionaryEntry_"+(CollectionContainer.GetChildCount()-1);
 					break;
 				case ComponentBase.ComponentType.Boolean:
 					dictionaryEntry = Manager.LoadedUIScenes.BooleanDictionaryEntryInstance();
@@ -114,7 +114,7 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 						elementBase = new BooleanDElement();
 						Collection.Add(elementBase);
 					}
-					dictionaryEntry.Name = $"BooleanDictionaryEntry_{elementBase.Key}";
+					elementBase.DebuggerName = $"BooleanDictionaryEntry_"+(CollectionContainer.GetChildCount()-1);
 					break;
 				case ComponentBase.ComponentType.Array:
 					dictionaryEntry = Manager.LoadedUIScenes.ArrayDictionaryEntryInstance();
@@ -123,7 +123,7 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 						elementBase = new ArrayDElement();
 						Collection.Add(elementBase);
 					}
-					dictionaryEntry.Name = $"ArrayDictionaryEntry_{elementBase.Key}";
+					elementBase.DebuggerName = $"ArrayDictionaryEntry_"+(CollectionContainer.GetChildCount()-1);
 					break;
 				case ComponentBase.ComponentType.Dictionary:
 					dictionaryEntry = Manager.LoadedUIScenes.DictionaryDictionaryEntryInstance();
@@ -132,10 +132,13 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 						elementBase = new DictionaryDElement();
 						Collection.Add(elementBase);
 					}
-					dictionaryEntry.Name = $"DictionaryDictionaryEntry_{elementBase.Key}";
+					elementBase.DebuggerName = $"DictionaryDictionaryEntry_"+(CollectionContainer.GetChildCount()-1);
 					break;
 			}
 			elementBase.InsideArray = GetMeta("IsInArray", false).AsBool();
+			if (elementBase.InsideArray)
+				elementBase.ResourceName = $"arr_{Holder.Key}_{Collection.Count}";
+			dictionaryEntry.Name = elementBase.DebuggerName;
 			dictionaryEntry.Element = elementBase;
 			CollectionContainer.AddChild(dictionaryEntry, false, InternalMode.Front);
 		}

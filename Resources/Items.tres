@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="ItemCollection" format=3 uid="uid://dbb6gc8reha55"]
+[gd_resource type="Resource" script_class="ItemCollection" format=3]
 
-[ext_resource type="Script" uid="uid://dnqbschkt35h" path="res://Resource Classes/PathId.cs" id="1_fs83q"]
-[ext_resource type="Script" uid="uid://cg4jp2j3n0mjw" path="res://Resource Classes/ItemEntities/ResourceEntry.cs" id="1_koyoo"]
-[ext_resource type="Script" uid="uid://c0rkj240liapo" path="res://Resource Classes/ItemEntities/ItemCollection.cs" id="1_nbop3"]
-[ext_resource type="Script" uid="uid://dxhj00dxkf3cq" path="res://Resource Classes/ItemEntities/ItemEntry.cs" id="2_7aef8"]
-[ext_resource type="Script" uid="uid://d2em7ndnmkq7j" path="res://Resource Classes/ComponentEntities/IntegerComponent.cs" id="3_koyoo"]
-[ext_resource type="Script" uid="uid://vtkni35a1h0b" path="res://Resource Classes/ComponentEntities/ComponentCollection.cs" id="5_koyoo"]
-[ext_resource type="Script" uid="uid://bqedfyan0vtov" path="res://Resource Classes/ComponentEntities/StringComponent.cs" id="6_s5dqs"]
-[ext_resource type="Script" uid="uid://bg2wumieujrnd" path="res://Resource Classes/ComponentEntities/BooleanComponent.cs" id="7_xtmuh"]
+[ext_resource type="Script" path="res://Resource Classes/PathId.cs" id="1_fs83q"]
+[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ResourceEntry.cs" id="1_koyoo"]
+[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ItemCollection.cs" id="1_nbop3"]
+[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ItemEntry.cs" id="2_7aef8"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/ComponentBase.cs" id="2_xtmuh"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/IntegerComponent.cs" id="3_koyoo"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/ComponentCollection.cs" id="5_koyoo"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/StringComponent.cs" id="6_s5dqs"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/BooleanComponent.cs" id="7_xtmuh"]
 
 [sub_resource type="Resource" id="Resource_s5dqs"]
 script = ExtResource("1_fs83q")
@@ -15,17 +16,25 @@ ModId = "minecraft"
 Path = "redstone"
 WholePath = "minecraft:redstone"
 
+[sub_resource type="Resource" id="Resource_jajaj"]
+script = ExtResource("5_koyoo")
+Collection = Array[ExtResource("2_xtmuh")]([])
+Id = SubResource("Resource_s5dqs")
+
 [sub_resource type="Resource" id="Resource_ames6"]
 resource_name = "redstone"
 script = ExtResource("2_7aef8")
 Id = SubResource("Resource_s5dqs")
+Components = SubResource("Resource_jajaj")
 EntryName = "Редстоун"
+Expanded = true
 metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
 
 [sub_resource type="Resource" id="Resource_koyoo"]
 script = ExtResource("1_fs83q")
 ModId = "industrialupgrade"
 Path = "level_microchip"
+WholePath = "industrialupgrade:level_microchip"
 metadata/_custom_type_script = "uid://dnqbschkt35h"
 
 [sub_resource type="Resource" id="Resource_7aef8"]
@@ -34,16 +43,17 @@ Value = 1
 Id = SubResource("Resource_koyoo")
 metadata/_custom_type_script = "uid://d2em7ndnmkq7j"
 
-[sub_resource type="Resource" id="Resource_fs83q"]
-script = ExtResource("5_koyoo")
-Collection = Array[Object]([SubResource("Resource_7aef8")])
-metadata/_custom_type_script = "uid://vtkni35a1h0b"
-
 [sub_resource type="Resource" id="Resource_xtmuh"]
 script = ExtResource("1_fs83q")
 ModId = "minecraft"
 Path = "airff12"
 WholePath = "minecraft:airff12"
+
+[sub_resource type="Resource" id="Resource_fs83q"]
+script = ExtResource("5_koyoo")
+Collection = Array[ExtResource("2_xtmuh")]([SubResource("Resource_7aef8")])
+Id = SubResource("Resource_xtmuh")
+metadata/_custom_type_script = "uid://vtkni35a1h0b"
 
 [sub_resource type="Resource" id="Resource_7srki"]
 resource_name = "lvl1"
@@ -57,6 +67,7 @@ metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
 script = ExtResource("1_fs83q")
 ModId = "bazz"
 Path = "puzz"
+WholePath = "bazz:puzz"
 metadata/_custom_type_script = "uid://dnqbschkt35h"
 
 [sub_resource type="Resource" id="Resource_qxnum"]
@@ -69,6 +80,7 @@ metadata/_custom_type_script = "uid://bqedfyan0vtov"
 script = ExtResource("1_fs83q")
 ModId = "bim"
 Path = "badapim"
+WholePath = "bim:badapim"
 metadata/_custom_type_script = "uid://dnqbschkt35h"
 
 [sub_resource type="Resource" id="Resource_gpy60"]
@@ -77,16 +89,17 @@ Value = true
 Id = SubResource("Resource_jsilp")
 metadata/_custom_type_script = "uid://bg2wumieujrnd"
 
-[sub_resource type="Resource" id="Resource_87hhb"]
-script = ExtResource("5_koyoo")
-Collection = Array[Object]([SubResource("Resource_qxnum"), SubResource("Resource_gpy60")])
-metadata/_custom_type_script = "uid://vtkni35a1h0b"
-
 [sub_resource type="Resource" id="Resource_ehnp8"]
 script = ExtResource("1_fs83q")
 ModId = "minecraft"
 Path = "air"
 WholePath = "minecraft:air"
+
+[sub_resource type="Resource" id="Resource_87hhb"]
+script = ExtResource("5_koyoo")
+Collection = Array[ExtResource("2_xtmuh")]([SubResource("Resource_qxnum"), SubResource("Resource_gpy60")])
+Id = SubResource("Resource_ehnp8")
+metadata/_custom_type_script = "uid://vtkni35a1h0b"
 
 [sub_resource type="Resource" id="Resource_7m4je"]
 resource_name = "graphene_wire"

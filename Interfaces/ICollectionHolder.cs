@@ -25,6 +25,6 @@ namespace EasyKJSCrafter.Interfaces
 		/// Проверяет коллекцию на валидность. Релазуется через метод ValidateCollection() коллекции Holder.
 		/// </summary>
 		/// <returns></returns>
-		public bool ValidateCollection() => Holder.ValidateCollection().Length == 0;
+		public bool ValidateCollection(int deep = 0) => Holder.ValidateCollection(deep).Length == 0;
 	}
 }

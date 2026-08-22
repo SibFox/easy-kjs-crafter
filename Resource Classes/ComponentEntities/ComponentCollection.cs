@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using EasyKJSCrafter.Interfaces;
+using EasyKJSCrafter.ResourceClasses.DictionaryEntities;
 using Godot;
 using Godot.Collections;
 using static EasyKJSCrafter.Common.Logger.Logger;
@@ -21,72 +22,72 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 		{
 			StringBuilder allErrors = new();
 
-			string collResId = ToString();
-			if (string.IsNullOrEmpty(ResourceName))
-				allErrors.Append(new string('\t', deep-1) + $"У коллекции \"{collResId}\" отсутсвует ключ" + '\n');
-			else
-				collResId = ResourceName;
-
-			foreach (ComponentBase entry in Collection)
+			string collResId = DebuggerName;
+			if (Id == null)
 			{
-				entry.HasErrors = false;
+				allErrors.Append(new string('\t', deep-1) + $"У коллекции компонентов \"{collResId}\" отсутсвует Id" + '\n');
+				HasErrors = true;
+			}
+			else
+			{
+				if (string.IsNullOrEmpty(Id.ModId))
+				{
+					allErrors.Append(new string('\t', deep-1) + $"У коллекции компонентов \"{collResId}\" отсутсвует ModId" + '\n');
+					HasErrors = true;
+				}
+				if (string.IsNullOrEmpty(Id.Path))
+				{
+					allErrors.Append(new string('\t', deep-1) + $"У коллекции компонентов \"{collResId}\" отсутсвует Path" + '\n');
+					HasErrors = true;
+				}
+			}
+			if (allErrors.Length == 0)
+				collResId = Id.WholePath;
+
+			foreach (ComponentBase component in Collection)
+			{
+				component.HasErrors = false;
 				StringBuilder error = new();
 
-				string entryResId = entry.ToString() + " типа " + entry.GetType().FullName.Split('.')[3];
-				if (string.IsNullOrEmpty(entry.ResourceName))
-						error.Append(new string('\t', deep) + $"У ресурса отсутсвует ключ" + '\n');
+				string componentResId = component.DebuggerName;
+				if (component.Id == null)
+					error.Append(new string('\t', deep) + $"У компонента отсутсвует Id" + '\n');
 				else
-					entryResId = entry.ResourceName + " типа " + entry.GetType().FullName.Split('.')[3];
-				
-				// if (entry is ItemEntry item)
-				// {
-				// 	if (item.Id == null)
-				// 		error.Append(new string('\t', deep) + $"У предмета отсутсвует Id" + '\n');
-				// 	else
-				// 	{
-				// 		if (string.IsNullOrEmpty(item.Id.ModId))
-				// 			error.Append(new string('\t', deep) + $"У предмета отсутсвует ModId в Id" + '\n');
-				// 		if (string.IsNullOrEmpty(item.Id.Path))
-				// 			error.Append(new string('\t', deep) + $"У предмета отсутсвует Path в Id" + '\n');
-				// 	}
-				// 	foreach (ComponentBase component in item.Components)
-				// 	{
-				// 		string componentResId = entry.ToString();
-				// 		if (component.Id == null)
-				// 			error.Append(new string('\t', deep) + $"У компонента \"{componentResId}\" предмета \"{entryResId}\" коллекции \"{collResId}\" отсутсвует Id" + '\n');
-				// 		else
-				// 		{
-				// 			if (string.IsNullOrEmpty(component.Id.ModId))
-				// 				error.Append(new string('\t', deep) + $"У компонента \"{componentResId}\" отсутсвует ModId в Id" + '\n');
-				// 			if (string.IsNullOrEmpty(component.Id.Path))
-				// 				error.Append(new string('\t', deep) + $"У компонента \"{componentResId}\" отсутсвует Path в Id" + '\n');
-				// 		}
-						
-				// 	}
-				// }
-				// if (entry is ItemCollection coll)
-				// {
-				// 	string collErrors = coll.ValidateCollection(++deep);
-				// 	--deep;
-				// 	if (collErrors.Length > 0)
-				// 		error.Append(collErrors);
-				// }
+				{
+					if (string.IsNullOrEmpty(component.Id.ModId))
+						error.Append(new string('\t', deep) + $"У компонента отсутсвует ModId" + '\n');
+					if (string.IsNullOrEmpty(component.Id.Path))
+						error.Append(new string('\t', deep) + $"У компонента отсутсвует Path" + '\n');
+				}
+				if (error.Length == 0)
+					componentResId = Id.WholePath + " типа " + component.GetType().FullName.Split('.')[3];
+
+				if (component is ArrayComponent arrC)
+				{
+					error.Append(arrC.Value.As<ComponentCollection>().ValidateCollection(++deep));
+					--deep;
+				}
+				if (component is DictionaryComponent dictC)
+				{
+					error.Append(dictC.Value.As<DictionaryCollection>().ValidateCollection(++deep));
+					--deep;
+				}
 
 				if (error.Length > 0)
 				{
 					if (allErrors.Length > 0)
 						allErrors.Append(new string('-', 40 + deep * 4) + '\n');
-					allErrors.Append(new string('\t', deep) + $"Ошибки валидации записи \"{entryResId}\" коллекции \"{collResId}\"" + '\n');
+					allErrors.Append(new string('\t', deep) + $"Ошибки валидации компонента \"{componentResId}\"" + '\n');
 					allErrors.Append(new string('=', 40 + deep * 4) + '\n');
-					allErrors.Append(error.ToString());
+					allErrors.Append(error);
 
 					HasErrors = true;
-					Collection.First(e => e.ToString() == entry.ToString()).HasErrors = true;
+					Collection.First(c => c == component).HasErrors = true;
 				}
 			}
 
 			if (deep == 0 && allErrors.Length > 0)
-				LogErr(nameof(ComponentCollection), nameof(ValidateCollection)).AddLine(allErrors.ToString()).Push();
+				LogErr(nameof(ComponentCollection), nameof(ValidateCollection), DebuggerName).AddLine(allErrors.ToString()).Push();
 
 			return allErrors.ToString();
 		}

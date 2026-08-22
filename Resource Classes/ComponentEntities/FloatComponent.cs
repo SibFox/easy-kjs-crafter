@@ -21,7 +21,7 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 			}
 		}
 
-		public FloatComponent() {}
+		public FloatComponent() {  Value = 0.0; }
 		public FloatComponent(PathId pathId, float val) : base(pathId) { Value = val; }
 		public FloatComponent(string wholePath, float val) : base(wholePath) { Value = val; }
 	}

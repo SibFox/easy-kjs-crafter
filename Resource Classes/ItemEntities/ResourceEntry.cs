@@ -10,8 +10,6 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 	{
 		[Export]
 		public string EntryName { get; set; }
-		// Сохранение состояния раскрытия записи в редакторе
-		public bool Expanded { get; set; }
 
 		public ResourceEntry() {}
 		public ResourceEntry(string declarationKey, string entryName = null) : base(declarationKey) => EntryName = entryName;

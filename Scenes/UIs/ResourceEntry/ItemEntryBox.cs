@@ -15,16 +15,16 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 			{
 				if (value is ItemEntry item)
 				{
-					_resource = value;
+					base.Resource = value;
 
-					KeyLine.Text = item.ResourceName;
-					EntryNameLine.Text = item.EntryName;
 					IdLabel.Id = item.Id;
 					ItemIconRect.Texture = item.Icon;
 					if (item.Icon == null)
 						ItemIconRect.Texture = Manager.QuestionMarkTexture;
 					ComponentsContainer.Holder = item.Components;
 					UpdateCountLabel();
+
+					ComponentsButton.ButtonPressed = ComponentsContainer.Visible = item.ComponentsExpanded;
 				}
 			}
 		}
@@ -35,18 +35,25 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 
 		protected ComponentCollectionHolder ComponentsContainer => GetNode<ComponentCollectionHolder>("%ComponentCollectionHolder");
 		protected OptionButton AddComponentOption => GetNode<OptionButton>("%AddComponentOptionButton");
-		protected Label ComponentsCountLabel => NameContainer.GetNode<Label>("%ComponentsCountLabel");
+		protected Label ComponentsCountLabel => GetNode<Label>("%ComponentsCountLabel");
+		protected Button ComponentsButton => GetNode<Button>("%ComponentsButton");
 
 		void OnComponentsButton_Toggle(bool toggledOn)
 		{
+			(Resource as ItemEntry).ComponentsExpanded = toggledOn;
 			ComponentsContainer.Visible = toggledOn;
+		}
+
+		protected override void OnKeyLine_EditingToggled(bool toggledOn)
+		{
+			base.OnKeyLine_EditingToggled(toggledOn);
+			var item = Resource as ItemEntry;
+			ComponentsContainer.Holder.Id.SetPathFromWholePath(item.Id.ModId + ":" + item.Id.Path);
 		}
 
 		void UpdateCountLabel()
 		{
 			ComponentsCountLabel.Text = (_resource as ItemEntry).Components.Collection.Count.ToString();
-			DebugInfo(nameof(ItemEntryBox), nameof(UpdateCountLabel)).AddLine($"Вызвано в {_resource.ResourceName} " +
-			$"с количеством элементов {(_resource as ItemEntry).Components.Collection.Count}").Push();
 		}
 	}
 }

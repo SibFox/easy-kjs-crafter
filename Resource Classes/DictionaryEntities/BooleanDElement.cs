@@ -7,6 +7,7 @@ namespace EasyKJSCrafter.ResourceClasses.DictionaryEntities
 	[DebuggerDisplay("Id = {Id.WholePath}, Value = {Value}")]
 	public partial class BooleanDElement : DictionaryElementBase
 	{
+		[Export]
 		public override Variant Value
 		{
 			get => _value.AsBool();
@@ -16,7 +17,7 @@ namespace EasyKJSCrafter.ResourceClasses.DictionaryEntities
 			}
 		}
 
-		public BooleanDElement() {}
+		public BooleanDElement() { Value = false; }
 		public BooleanDElement(string key) : base(key) {}
 	}
 }
