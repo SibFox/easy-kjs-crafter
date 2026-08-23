@@ -18,6 +18,28 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 		public ItemCollection() { Collection = []; }
 		public ItemCollection(string declarationKey, string collectionName = null) : base (declarationKey, collectionName) { Collection = []; }
 
+		public override string StringView
+		{
+			get
+			{
+				StringBuilder builder = new();
+
+				builder.Append($"{Key}: {{");
+				System.Collections.Generic.LinkedList<string> entries = [];
+				if (Collection.Count > 0)
+				{
+					foreach (var entry in Collection)
+					{
+						entries.AddLast($"\n\t{entry.StringView}");
+					}
+				}
+				builder.AppendJoin(',', entries);
+				builder.Append("\n}");
+
+				return builder.ToString();
+			}
+		}
+
 		public string ValidateCollection(int deep = 0)
 		{
 			StringBuilder allErrors = new();

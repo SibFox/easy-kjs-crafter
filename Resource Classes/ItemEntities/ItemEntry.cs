@@ -1,6 +1,7 @@
 using EasyKJSCrafter.ResourceClasses.ComponentEntities;
 using Godot;
 using System.Diagnostics;
+using System.Text;
 
 namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 {
@@ -23,6 +24,28 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 		// TODO: Вставку через буфер обмена и сохранение внутри файлов проекта/приложения
 		[Export]
 		public Texture2D Icon { get; set; }
+
+		public override string StringView
+		{
+			get
+			{
+				StringBuilder builder = new();
+				builder.Append($"{Key}: \"{Id.WholePath}");
+
+				if (Components.Collection.Count > 0)
+				{
+					builder.Append('[');
+					foreach (var comp in Components.Collection)
+					{
+						builder.Append(comp.StringView);
+					}
+					builder.Append(']');
+				}
+				builder.Append('\"');
+				return builder.ToString();
+			}
+		}
+
 
 		public bool ComponentsExpanded { get; set; }
 

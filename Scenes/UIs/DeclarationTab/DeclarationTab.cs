@@ -7,14 +7,13 @@ namespace EasyKJSCrafter.Scenes.UIs.DeclarationTabUI
 	public partial class DeclarationTab : ScrollContainer
 	{
 		[Export]
-		public ItemCollection DeclarationCollection { get; set; }
+		ItemCollection DeclarationCollection { get; set; }
 
 		ItemCollectionHolder CollectionHolder => GetChild<ItemCollectionHolder>(0);
 
 		public override void _Ready()
 		{
 			CollectionHolder.Holder = DeclarationCollection;
-			CollectionHolder.Name = "ItemCollectionHolder_"+DeclarationCollection.Key;
 		}
 
 		public void BuildCollection() => CollectionHolder.BuildEntryTree();
@@ -25,13 +24,15 @@ namespace EasyKJSCrafter.Scenes.UIs.DeclarationTabUI
 			{
 				if (ResourceSaver.Save(DeclarationCollection) == Error.Ok)
 				{
-					GD.Print($"Коллекция \"{DeclarationCollection.ResourceName}\" успешно сохранена");
+					GD.Print($"Коллекция \"{DeclarationCollection.Key}\" успешно сохранена");
 					return true;
 				}
 				else
-					GD.Print($"При сохранении коллекции \"{DeclarationCollection.ResourceName}\" произошла ошибка");
+					GD.Print($"При сохранении коллекции \"{DeclarationCollection.Key}\" произошла ошибка");
 			}
 			return false;
 		}
+
+		public string GetStringView() => DeclarationCollection.StringView;
 	}
 }

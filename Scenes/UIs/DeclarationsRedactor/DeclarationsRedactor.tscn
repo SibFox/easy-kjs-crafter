@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dg6vfa1h6gkfy" path="res://Scenes/UIs/DeclarationsRedactor/DeclarationsRedactor.cs" id="1_abtwu"]
 [ext_resource type="PackedScene" uid="uid://buvp0yyq5s7qg" path="res://Scenes/UIs/DeclarationTab/DeclarationTab.tscn" id="2_6yq3b"]
-[ext_resource type="Resource" path="res://Resources/Items.tres" id="3_bs6ar"]
-[ext_resource type="Resource" uid="uid://c573vkfdm0u03" path="res://Resources/Tags.tres" id="4_jy3jp"]
-[ext_resource type="Resource" uid="uid://btjlqhavknje2" path="res://Resources/Fluids.tres" id="5_0xy4v"]
+[ext_resource type="Resource" uid="uid://br186hugkmnf3" path="res://Resources/Items.tres" id="3_bs6ar"]
+[ext_resource type="Resource" path="res://Resources/Tags.tres" id="4_jy3jp"]
+[ext_resource type="Resource" uid="uid://7enkv2utr8x6" path="res://Resources/Fluids.tres" id="5_0xy4v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2dwb"]
 bg_color = Color(0.039215688, 0.02745098, 0.078431375, 1)
@@ -109,12 +109,31 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 10
 
-[node name="SaveButton" type="Button" parent="PanelContainer/VBoxContainer/SaveHBoxContainer" unique_id=1616036766]
+[node name="SaveIntoFileButton" type="Button" parent="PanelContainer/VBoxContainer/SaveHBoxContainer" unique_id=390268386]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_stretch_ratio = 0.0
-text = "Сохранить"
+text = "ui.button.save.into_file"
+
+[node name="SaveCollectionsButton" type="Button" parent="PanelContainer/VBoxContainer/SaveHBoxContainer" unique_id=1616036766]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.0
+text = "ui.button.save.collections"
+
+[node name="WhereToSaveDialog" type="FileDialog" parent="." unique_id=508294488]
+disable_3d = true
+oversampling_override = 1.0
+title = "ui.file_dialog.save_collections"
+initial_position = 1
+size = Vector2i(944, 687)
+display_mode = 1
+access = 2
+filters = PackedStringArray("*.js")
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/Label/BackButton" to="." method="OnBackButton_Pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/SaveHBoxContainer/SaveButton" to="." method="OnSaveButton_Pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/SaveHBoxContainer/SaveIntoFileButton" to="." method="OnSaveIntoFileButton_Pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/SaveHBoxContainer/SaveCollectionsButton" to="." method="OnSaveCollectionsButton_Pressed"]
+[connection signal="file_selected" from="WhereToSaveDialog" to="." method="OnWhereToSaveDialog_FileSelected"]
