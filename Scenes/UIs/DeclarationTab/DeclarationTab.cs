@@ -7,7 +7,7 @@ namespace EasyKJSCrafter.Scenes.UIs.DeclarationTabUI
 	public partial class DeclarationTab : ScrollContainer
 	{
 		[Export]
-		ItemCollection DeclarationCollection { get; set; }
+		public ItemCollection DeclarationCollection { get; set; }
 
 		ItemCollectionHolder CollectionHolder => GetChild<ItemCollectionHolder>(0);
 

@@ -49,13 +49,11 @@ namespace EasyKJSCrafter.ResourceClasses.DictionaryEntities
 
 				if (element is ArrayDElement arrC)
 				{
-					error.Append(arrC.Value.As<DictionaryCollection>().ValidateCollection(++deep));
-					--deep;
+					error.Append(arrC.Value.As<DictionaryCollection>().ValidateCollection(deep+1));
 				}
 				if (element is DictionaryDElement dictC)
 				{
-					error.Append(dictC.Value.As<DictionaryCollection>().ValidateCollection(++deep));
-					--deep;
+					error.Append(dictC.Value.As<DictionaryCollection>().ValidateCollection(deep+1));
 				}
 				
 				if (error.Length > 0)

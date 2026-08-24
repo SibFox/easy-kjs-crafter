@@ -64,13 +64,11 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 
 				if (component is ArrayComponent arrC)
 				{
-					error.Append(arrC.Value.As<ComponentCollection>().ValidateCollection(++deep));
-					--deep;
+					error.Append(arrC.Value.As<ComponentCollection>().ValidateCollection(deep+1));
 				}
 				if (component is DictionaryComponent dictC)
 				{
-					error.Append(dictC.Value.As<DictionaryCollection>().ValidateCollection(++deep));
-					--deep;
+					error.Append(dictC.Value.As<DictionaryCollection>().ValidateCollection(deep+1));
 				}
 
 				if (error.Length > 0)

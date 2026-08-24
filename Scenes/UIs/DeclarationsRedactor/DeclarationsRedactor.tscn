@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dg6vfa1h6gkfy" path="res://Scenes/UIs/DeclarationsRedactor/DeclarationsRedactor.cs" id="1_abtwu"]
 [ext_resource type="PackedScene" uid="uid://buvp0yyq5s7qg" path="res://Scenes/UIs/DeclarationTab/DeclarationTab.tscn" id="2_6yq3b"]
-[ext_resource type="Resource" uid="uid://br186hugkmnf3" path="res://Resources/Items.tres" id="3_bs6ar"]
+[ext_resource type="Resource" path="res://Resources/Items.tres" id="3_bs6ar"]
 [ext_resource type="Resource" path="res://Resources/Tags.tres" id="4_jy3jp"]
-[ext_resource type="Resource" uid="uid://7enkv2utr8x6" path="res://Resources/Fluids.tres" id="5_0xy4v"]
+[ext_resource type="Resource" path="res://Resources/Fluids.tres" id="5_0xy4v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2dwb"]
 bg_color = Color(0.039215688, 0.02745098, 0.078431375, 1)
@@ -133,7 +133,12 @@ display_mode = 1
 access = 2
 filters = PackedStringArray("*.js")
 
+[node name="HintTimer" type="Timer" parent="." unique_id=1755018338]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/Label/BackButton" to="." method="OnBackButton_Pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/SaveHBoxContainer/SaveIntoFileButton" to="." method="OnSaveIntoFileButton_Pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/SaveHBoxContainer/SaveCollectionsButton" to="." method="OnSaveCollectionsButton_Pressed"]
 [connection signal="file_selected" from="WhereToSaveDialog" to="." method="OnWhereToSaveDialog_FileSelected"]
+[connection signal="timeout" from="HintTimer" to="." method="OnHintTimer_Timeout"]

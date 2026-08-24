@@ -22,17 +22,7 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 			}
 		}
 
-		public override string StringView
-		{
-			get
-			{
-				StringBuilder builder = new();
-
-				builder.Append($"{Id.WholePath}={Value.AsInt32()}");
-
-				return builder.ToString();
-			}
-		}
+		public override string StringView => $"{Id.WholePath}={Value.AsInt32()}";
 
 		public IntegerComponent() { Value = 0; }
 		public IntegerComponent(PathId pathId, int val) : base(pathId) { Value = val; }

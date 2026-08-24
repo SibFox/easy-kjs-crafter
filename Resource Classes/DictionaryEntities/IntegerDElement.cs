@@ -4,7 +4,7 @@ using Godot;
 namespace EasyKJSCrafter.ResourceClasses.DictionaryEntities
 {
 	[GlobalClass]
-	[DebuggerDisplay("Id = {Id.WholePath}, Value = {Value}")]
+	[DebuggerDisplay("Key={Key}, Name={DebuggerName}, Value={Value.AsInt32()}")]
 	public partial class IntegerDElement : DictionaryElementBase
 	{
 		[Export]
@@ -16,6 +16,8 @@ namespace EasyKJSCrafter.ResourceClasses.DictionaryEntities
 				_value = value.AsInt32();
 			}
 		}
+
+		public override string StringView => (!InsideArray ? $"{Key}:" : string.Empty) + Value.AsInt32();
 
 		public IntegerDElement() { Value = 0; }
 		public IntegerDElement(string key) : base(key) {}

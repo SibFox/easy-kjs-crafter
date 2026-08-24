@@ -4,7 +4,7 @@ using Godot;
 namespace EasyKJSCrafter.ResourceClasses.DictionaryEntities
 {
 	[GlobalClass]
-	[DebuggerDisplay("Id = {Id.WholePath}, Value = {Value}")]
+	[DebuggerDisplay("Key={Key}, Name={DebuggerName}, Value={Value.AsDouble()}")]
 	public partial class FloatDElement : DictionaryElementBase
 	{
 		[Export]
@@ -13,9 +13,11 @@ namespace EasyKJSCrafter.ResourceClasses.DictionaryEntities
 			get => _value.AsDouble();
 			set
 			{
-				_value = value.AsDouble();
+				_value = Mathf.Snapped(value.AsDouble(), 0.0001);
 			}
 		}
+
+		public override string StringView => (!InsideArray ? $"{Key}:" : string.Empty) + Mathf.Snapped(Value.AsDouble(), 0.0001).ToString().Replace(',','.');
 
 		public FloatDElement() { Value = 0.0; }
 		public FloatDElement(string key) : base(key) {}

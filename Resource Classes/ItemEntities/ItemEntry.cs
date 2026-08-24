@@ -30,18 +30,22 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 			get
 			{
 				StringBuilder builder = new();
-				builder.Append($"{Key}: \"{Id.WholePath}");
+				if (!string.IsNullOrEmpty(EntryName))
+					builder.Append(new string('\t', Level) + "// " + EntryName + '\n');
+				builder.Append(new string('\t', Level) + $"{Key}: \'{Id.WholePath}");
 
 				if (Components.Collection.Count > 0)
 				{
 					builder.Append('[');
+					System.Collections.Generic.LinkedList<string> entries = [];
 					foreach (var comp in Components.Collection)
 					{
-						builder.Append(comp.StringView);
+						entries.AddLast(comp.StringView);
 					}
+					builder.AppendJoin(',', entries);
 					builder.Append(']');
 				}
-				builder.Append('\"');
+				builder.Append('\'');
 				return builder.ToString();
 			}
 		}

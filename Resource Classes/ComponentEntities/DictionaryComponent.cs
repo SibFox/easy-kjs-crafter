@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text;
 using EasyKJSCrafter.ResourceClasses.DictionaryEntities;
 using Godot;
 
@@ -23,6 +24,27 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 			set
 			{
 				_value = value.As<DictionaryCollection>();
+			}
+		}
+
+		public override string StringView
+		{
+			get
+			{
+				StringBuilder builder = new();
+
+				builder.Append($"{Id.WholePath}={{");
+
+				System.Collections.Generic.LinkedList<string> entries = [];
+				foreach (var element in Value.As<DictionaryCollection>().Collection)
+				{
+					entries.AddLast(element.StringView);
+				}
+
+				builder.AppendJoin(',', entries);
+				builder.Append('}');
+
+				return builder.ToString();
 			}
 		}
 

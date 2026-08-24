@@ -24,17 +24,20 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 			{
 				StringBuilder builder = new();
 
-				builder.Append($"{Key}: {{");
+				if (!string.IsNullOrEmpty(EntryName))
+					builder.Append(new string('\t', Level) + "// " + EntryName + '\n');
+				builder.Append(new string('\t', Level) + $"{Key}: {{");
 				System.Collections.Generic.LinkedList<string> entries = [];
 				if (Collection.Count > 0)
 				{
 					foreach (var entry in Collection)
 					{
-						entries.AddLast($"\n\t{entry.StringView}");
+						entry.Level = Level+1;
+						entries.AddLast($"\n{entry.StringView}");
 					}
 				}
 				builder.AppendJoin(',', entries);
-				builder.Append("\n}");
+				builder.Append('\n' + new string('\t', Level) + '}');
 
 				return builder.ToString();
 			}
@@ -76,18 +79,11 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 							error.Append(new string('\t', deep) + $"У предмета отсутсвует Path в Id" + '\n');
 					}
 					item.Components.Id = item.Id;
-					// string cErr = item.Components.ValidateCollection(++deep);
-					// if (cErr.Length > 0)
-					// {
-					// 	item.HasErrors = true;
-					// }
-					error.Append(item.Components.ValidateCollection(++deep));
-					--deep;
+					error.Append(item.Components.ValidateCollection(deep+1));
 				}
 				if (entry is ItemCollection coll)
 				{
-					error.Append(coll.ValidateCollection(++deep));
-					--deep;
+					error.Append(coll.ValidateCollection(deep+1));
 				}
 ;
 				if (error.Length > 0)

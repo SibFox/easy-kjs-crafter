@@ -19,7 +19,7 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 
 		void OnValueCheck_Toggled(bool toggledOn)
 		{
-			_component.Value = toggledOn;
+			Component.Value = toggledOn;
 		}
 	}
 }

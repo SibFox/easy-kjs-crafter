@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text;
 using Godot;
 
 namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
@@ -20,6 +21,8 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 				_value = value.AsString();
 			}
 		}
+
+		public override string StringView => $"{Id.WholePath}=\"{Value.AsString()}\"";
 
         public StringComponent() {  Value = string.Empty; }
         public StringComponent(PathId pathId, string val) : base(pathId) { Value = val; }

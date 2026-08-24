@@ -6,6 +6,18 @@
 [ext_resource type="Script" path="res://Resource Classes/PathId.cs" id="3_fbdrw"]
 [ext_resource type="Script" path="res://Resource Classes/ComponentEntities/ComponentCollection.cs" id="4_fbdrw"]
 [ext_resource type="Script" path="res://Resource Classes/ItemEntities/ItemEntry.cs" id="4_fpkat"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/IntegerComponent.cs" id="6_ghhv7"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/BooleanComponent.cs" id="7_bt8ua"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/ArrayComponent.cs" id="8_hn12e"]
+[ext_resource type="Script" path="res://Resource Classes/DictionaryEntities/DictionaryElementBase.cs" id="9_o831x"]
+[ext_resource type="Script" path="res://Resource Classes/DictionaryEntities/IntegerDElement.cs" id="10_v0uol"]
+[ext_resource type="Script" path="res://Resource Classes/DictionaryEntities/StringDElement.cs" id="11_0gjm8"]
+[ext_resource type="Script" path="res://Resource Classes/DictionaryEntities/DictionaryCollection.cs" id="12_llhfm"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/DictionaryComponent.cs" id="13_jnjic"]
+[ext_resource type="Script" path="res://Resource Classes/DictionaryEntities/FloatDElement.cs" id="14_jnjic"]
+[ext_resource type="Script" path="res://Resource Classes/DictionaryEntities/BooleanDElement.cs" id="15_dpe4b"]
+[ext_resource type="Script" path="res://Resource Classes/DictionaryEntities/DictionaryDElement.cs" id="16_dgjfm"]
+[ext_resource type="Script" path="res://Resource Classes/DictionaryEntities/ArrayDElement.cs" id="17_jik7h"]
 
 [sub_resource type="Resource" id="Resource_qgw8q"]
 script = ExtResource("3_fbdrw")
@@ -25,8 +37,273 @@ Id = SubResource("Resource_qgw8q")
 Components = SubResource("Resource_bt8ua")
 EntryName = "Вода"
 
+[sub_resource type="Resource" id="Resource_t6ea8"]
+script = ExtResource("3_fbdrw")
+ModId = "grwe"
+Path = "ger"
+WholePath = "grwe:ger"
+
+[sub_resource type="Resource" id="Resource_lv4t3"]
+script = ExtResource("3_fbdrw")
+ModId = "ee"
+Path = "wf"
+WholePath = "ee:wf"
+
+[sub_resource type="Resource" id="Resource_o831x"]
+script = ExtResource("6_ghhv7")
+Value = 556
+Id = SubResource("Resource_lv4t3")
+
+[sub_resource type="Resource" id="Resource_v0uol"]
+script = ExtResource("3_fbdrw")
+ModId = "eet"
+Path = "te"
+WholePath = "eet:te"
+
+[sub_resource type="Resource" id="Resource_0gjm8"]
+script = ExtResource("7_bt8ua")
+Value = false
+Id = SubResource("Resource_v0uol")
+
+[sub_resource type="Resource" id="Resource_llhfm"]
+script = ExtResource("4_fbdrw")
+Collection = Array[ExtResource("2_6ofqd")]([SubResource("Resource_o831x"), SubResource("Resource_0gjm8")])
+Id = SubResource("Resource_t6ea8")
+
+[sub_resource type="Resource" id="Resource_jnjic"]
+script = ExtResource("8_hn12e")
+Value = SubResource("Resource_llhfm")
+Id = SubResource("Resource_t6ea8")
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_dpe4b"]
+script = ExtResource("3_fbdrw")
+ModId = "gwg"
+Path = "gew"
+WholePath = "gwg:gew"
+
+[sub_resource type="Resource" id="Resource_dgjfm"]
+script = ExtResource("4_fbdrw")
+Collection = Array[ExtResource("2_6ofqd")]([SubResource("Resource_jnjic")])
+Id = SubResource("Resource_dpe4b")
+
+[sub_resource type="Resource" id="Resource_jik7h"]
+resource_name = "ehn"
+script = ExtResource("4_fpkat")
+Id = SubResource("Resource_dpe4b")
+Components = SubResource("Resource_dgjfm")
+EntryName = "в массиве"
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_2wv0h"]
+script = ExtResource("3_fbdrw")
+ModId = "geneticsresequenced"
+Path = "plasmid_progress"
+WholePath = "geneticsresequenced:plasmid_progress"
+
+[sub_resource type="Resource" id="Resource_brnc7"]
+resource_name = "dna_points"
+script = ExtResource("10_v0uol")
+Value = 50
+
+[sub_resource type="Resource" id="Resource_fojoi"]
+resource_name = "gene"
+script = ExtResource("11_0gjm8")
+Value = "geneticsresequenced:regeneration_4"
+
+[sub_resource type="Resource" id="Resource_m0ooh"]
+resource_name = "geneticsresequenced_plasmid_progress"
+script = ExtResource("12_llhfm")
+Collection = Array[ExtResource("9_o831x")]([SubResource("Resource_brnc7"), SubResource("Resource_fojoi")])
+
+[sub_resource type="Resource" id="Resource_akhc2"]
+script = ExtResource("13_jnjic")
+Value = SubResource("Resource_m0ooh")
+Id = SubResource("Resource_2wv0h")
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_7c2qw"]
+script = ExtResource("3_fbdrw")
+ModId = "genetics"
+Path = "gene"
+WholePath = "genetics:gene"
+
+[sub_resource type="Resource" id="Resource_c7vff"]
+script = ExtResource("4_fbdrw")
+Collection = Array[ExtResource("2_6ofqd")]([SubResource("Resource_akhc2")])
+Id = SubResource("Resource_7c2qw")
+
+[sub_resource type="Resource" id="Resource_ftv8r"]
+resource_name = "genetics"
+script = ExtResource("4_fpkat")
+Id = SubResource("Resource_7c2qw")
+Components = SubResource("Resource_c7vff")
+EntryName = "словарь"
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_5f0s3"]
+script = ExtResource("3_fbdrw")
+ModId = "wg"
+Path = "ge"
+WholePath = "wg:ge"
+
+[sub_resource type="Resource" id="Resource_73dpj"]
+script = ExtResource("3_fbdrw")
+ModId = "arg"
+Path = "gr"
+WholePath = "arg:gr"
+
+[sub_resource type="Resource" id="Resource_7ri2f"]
+resource_name = "flof"
+script = ExtResource("14_jnjic")
+Value = 25.1
+
+[sub_resource type="Resource" id="Resource_mloel"]
+resource_name = "arr_gge_4"
+script = ExtResource("10_v0uol")
+Value = -8
+
+[sub_resource type="Resource" id="Resource_v2nfc"]
+resource_name = "arr_gge_4"
+script = ExtResource("15_dpe4b")
+Value = false
+
+[sub_resource type="Resource" id="Resource_uj6eu"]
+resource_name = "boolb"
+script = ExtResource("15_dpe4b")
+Value = false
+
+[sub_resource type="Resource" id="Resource_g4tel"]
+script = ExtResource("12_llhfm")
+Collection = Array[ExtResource("9_o831x")]([SubResource("Resource_uj6eu")])
+
+[sub_resource type="Resource" id="Resource_08wmd"]
+resource_name = "arr_gge_4"
+script = ExtResource("16_dgjfm")
+Value = SubResource("Resource_g4tel")
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_pfo5e"]
+resource_name = "arr__1"
+script = ExtResource("10_v0uol")
+Value = 4
+
+[sub_resource type="Resource" id="Resource_cpcwl"]
+script = ExtResource("12_llhfm")
+Collection = Array[ExtResource("9_o831x")]([SubResource("Resource_pfo5e")])
+
+[sub_resource type="Resource" id="Resource_80t2w"]
+resource_name = "arr_gge_4"
+script = ExtResource("17_jik7h")
+Value = SubResource("Resource_cpcwl")
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_k1qfx"]
+resource_name = "gge"
+script = ExtResource("12_llhfm")
+Collection = Array[ExtResource("9_o831x")]([SubResource("Resource_mloel"), SubResource("Resource_v2nfc"), SubResource("Resource_08wmd"), SubResource("Resource_80t2w")])
+
+[sub_resource type="Resource" id="Resource_bg8fu"]
+resource_name = "gge"
+script = ExtResource("17_jik7h")
+Value = SubResource("Resource_k1qfx")
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_7p16y"]
+resource_name = "sg"
+script = ExtResource("11_0gjm8")
+Value = "ggwe"
+
+[sub_resource type="Resource" id="Resource_iyhoq"]
+resource_name = "gwint"
+script = ExtResource("10_v0uol")
+Value = -6
+
+[sub_resource type="Resource" id="Resource_qdupr"]
+resource_name = "vvsw"
+script = ExtResource("12_llhfm")
+Collection = Array[ExtResource("9_o831x")]([SubResource("Resource_iyhoq")])
+
+[sub_resource type="Resource" id="Resource_pclsw"]
+resource_name = "vvsw"
+script = ExtResource("16_dgjfm")
+Value = SubResource("Resource_qdupr")
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_5ywb5"]
+resource_name = "g"
+script = ExtResource("10_v0uol")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_4dfrg"]
+resource_name = "wwg"
+script = ExtResource("12_llhfm")
+Collection = Array[ExtResource("9_o831x")]([SubResource("Resource_bg8fu"), SubResource("Resource_7p16y"), SubResource("Resource_pclsw"), SubResource("Resource_5ywb5")])
+
+[sub_resource type="Resource" id="Resource_otp8w"]
+resource_name = "wwg"
+script = ExtResource("16_dgjfm")
+Value = SubResource("Resource_4dfrg")
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_552tv"]
+resource_name = "e"
+script = ExtResource("10_v0uol")
+Value = 2
+
+[sub_resource type="Resource" id="Resource_fmfir"]
+resource_name = "arg_gr"
+script = ExtResource("12_llhfm")
+Collection = Array[ExtResource("9_o831x")]([SubResource("Resource_7ri2f"), SubResource("Resource_otp8w"), SubResource("Resource_552tv")])
+
+[sub_resource type="Resource" id="Resource_u7bxn"]
+script = ExtResource("13_jnjic")
+Value = SubResource("Resource_fmfir")
+Id = SubResource("Resource_73dpj")
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_l2bhp"]
+script = ExtResource("3_fbdrw")
+ModId = "fwe"
+Path = "f"
+WholePath = "fwe:f"
+
+[sub_resource type="Resource" id="Resource_si4mj"]
+script = ExtResource("6_ghhv7")
+Value = 3
+Id = SubResource("Resource_l2bhp")
+
+[sub_resource type="Resource" id="Resource_0uvdp"]
+script = ExtResource("4_fbdrw")
+Collection = Array[ExtResource("2_6ofqd")]([SubResource("Resource_u7bxn"), SubResource("Resource_si4mj")])
+Id = SubResource("Resource_5f0s3")
+
+[sub_resource type="Resource" id="Resource_hcwwx"]
+script = ExtResource("8_hn12e")
+Value = SubResource("Resource_0uvdp")
+Id = SubResource("Resource_5f0s3")
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_fgxdu"]
+script = ExtResource("3_fbdrw")
+ModId = "fq"
+Path = "fwq"
+WholePath = "fq:fwq"
+
+[sub_resource type="Resource" id="Resource_r6876"]
+script = ExtResource("4_fbdrw")
+Collection = Array[ExtResource("2_6ofqd")]([SubResource("Resource_hcwwx")])
+Id = SubResource("Resource_fgxdu")
+
+[sub_resource type="Resource" id="Resource_0s8my"]
+resource_name = "arrayed"
+script = ExtResource("4_fpkat")
+Id = SubResource("Resource_fgxdu")
+Components = SubResource("Resource_r6876")
+EntryName = "пипец"
+
 [resource]
 resource_name = "fluid"
 script = ExtResource("1_uygw1")
-Collection = Array[ExtResource("1_ioi0w")]([SubResource("Resource_ghhv7")])
+Collection = Array[ExtResource("1_ioi0w")]([SubResource("Resource_ghhv7"), SubResource("Resource_jik7h"), SubResource("Resource_ftv8r"), SubResource("Resource_0s8my")])
 metadata/_custom_type_script = "uid://c0rkj240liapo"

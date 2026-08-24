@@ -2,9 +2,144 @@
 
 [ext_resource type="Script" path="res://Resource Classes/ItemEntities/ItemCollection.cs" id="1_05u8e"]
 [ext_resource type="Script" path="res://Resource Classes/ItemEntities/ResourceEntry.cs" id="1_47vnv"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/ComponentBase.cs" id="2_507e2"]
+[ext_resource type="Script" path="res://Resource Classes/PathId.cs" id="3_qav36"]
+[ext_resource type="Script" path="res://Resource Classes/DictionaryEntities/DictionaryElementBase.cs" id="4_ycsdw"]
+[ext_resource type="Script" path="res://Resource Classes/DictionaryEntities/BooleanDElement.cs" id="5_r6lkk"]
+[ext_resource type="Script" path="res://Resource Classes/DictionaryEntities/IntegerDElement.cs" id="6_lhewt"]
+[ext_resource type="Script" path="res://Resource Classes/DictionaryEntities/DictionaryCollection.cs" id="7_bqbbw"]
+[ext_resource type="Script" path="res://Resource Classes/DictionaryEntities/DictionaryDElement.cs" id="8_40ikh"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/DictionaryComponent.cs" id="9_okrej"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/ComponentCollection.cs" id="10_ljwa5"]
+[ext_resource type="Script" path="res://Resource Classes/ItemEntities/ItemEntry.cs" id="11_woysg"]
+[ext_resource type="Script" path="res://Resource Classes/DictionaryEntities/ArrayDElement.cs" id="12_qav36"]
+
+[sub_resource type="Resource" id="Resource_55lha"]
+script = ExtResource("3_qav36")
+ModId = "dqw"
+Path = "dwq"
+WholePath = "dqw:dwq"
+
+[sub_resource type="Resource" id="Resource_devls"]
+resource_name = "b"
+script = ExtResource("5_r6lkk")
+Value = true
+
+[sub_resource type="Resource" id="Resource_08dic"]
+resource_name = "i"
+script = ExtResource("6_lhewt")
+Value = -9
+
+[sub_resource type="Resource" id="Resource_cddyc"]
+resource_name = "b"
+script = ExtResource("5_r6lkk")
+Value = false
+
+[sub_resource type="Resource" id="Resource_kxl4u"]
+resource_name = "d"
+script = ExtResource("7_bqbbw")
+Collection = Array[ExtResource("4_ycsdw")]([SubResource("Resource_cddyc")])
+
+[sub_resource type="Resource" id="Resource_1pdq7"]
+resource_name = "d"
+script = ExtResource("8_40ikh")
+Value = SubResource("Resource_kxl4u")
+
+[sub_resource type="Resource" id="Resource_m4aum"]
+resource_name = "i"
+script = ExtResource("6_lhewt")
+Value = 10
+
+[sub_resource type="Resource" id="Resource_e4hut"]
+resource_name = "dqw_dwq"
+script = ExtResource("7_bqbbw")
+Collection = Array[ExtResource("4_ycsdw")]([SubResource("Resource_devls"), SubResource("Resource_08dic"), SubResource("Resource_1pdq7"), SubResource("Resource_m4aum")])
+
+[sub_resource type="Resource" id="Resource_46t8o"]
+script = ExtResource("9_okrej")
+Value = SubResource("Resource_e4hut")
+Id = SubResource("Resource_55lha")
+
+[sub_resource type="Resource" id="Resource_e6wd6"]
+script = ExtResource("3_qav36")
+ModId = "f"
+Path = "fw"
+WholePath = "f:fw"
+
+[sub_resource type="Resource" id="Resource_i6t8m"]
+script = ExtResource("10_ljwa5")
+Collection = Array[ExtResource("2_507e2")]([SubResource("Resource_46t8o")])
+Id = SubResource("Resource_e6wd6")
+
+[sub_resource type="Resource" id="Resource_lkwln"]
+resource_name = "wqf"
+script = ExtResource("11_woysg")
+Id = SubResource("Resource_e6wd6")
+Components = SubResource("Resource_i6t8m")
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_ycsdw"]
+script = ExtResource("3_qav36")
+ModId = "ghm"
+Path = "dtm"
+WholePath = "ghm:dtm"
+
+[sub_resource type="Resource" id="Resource_r6lkk"]
+resource_name = "arr_a_2"
+script = ExtResource("6_lhewt")
+Value = 0
+
+[sub_resource type="Resource" id="Resource_lhewt"]
+resource_name = "arr_a_2"
+script = ExtResource("5_r6lkk")
+Value = false
+
+[sub_resource type="Resource" id="Resource_bqbbw"]
+resource_name = "a"
+script = ExtResource("7_bqbbw")
+Collection = Array[ExtResource("4_ycsdw")]([SubResource("Resource_r6lkk"), SubResource("Resource_lhewt")])
+
+[sub_resource type="Resource" id="Resource_40ikh"]
+resource_name = "a"
+script = ExtResource("12_qav36")
+Value = SubResource("Resource_bqbbw")
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_okrej"]
+resource_name = "i"
+script = ExtResource("6_lhewt")
+Value = -1
+
+[sub_resource type="Resource" id="Resource_ljwa5"]
+resource_name = "ghm_dtm"
+script = ExtResource("7_bqbbw")
+Collection = Array[ExtResource("4_ycsdw")]([SubResource("Resource_40ikh"), SubResource("Resource_okrej")])
+
+[sub_resource type="Resource" id="Resource_woysg"]
+script = ExtResource("9_okrej")
+Value = SubResource("Resource_ljwa5")
+Id = SubResource("Resource_ycsdw")
+
+[sub_resource type="Resource" id="Resource_tljs6"]
+script = ExtResource("3_qav36")
+ModId = "h"
+Path = "rth"
+WholePath = "h:rth"
+
+[sub_resource type="Resource" id="Resource_auyug"]
+script = ExtResource("10_ljwa5")
+Collection = Array[ExtResource("2_507e2")]([SubResource("Resource_woysg")])
+Id = SubResource("Resource_tljs6")
+
+[sub_resource type="Resource" id="Resource_jgvi7"]
+resource_name = "tsrh"
+script = ExtResource("11_woysg")
+Id = SubResource("Resource_tljs6")
+Components = SubResource("Resource_auyug")
+Expanded = true
 
 [resource]
 resource_name = "tag"
 script = ExtResource("1_05u8e")
-Collection = Array[ExtResource("1_47vnv")]([])
+Collection = Array[ExtResource("1_47vnv")]([SubResource("Resource_lkwln"), SubResource("Resource_jgvi7")])
 metadata/_custom_type_script = "uid://c0rkj240liapo"

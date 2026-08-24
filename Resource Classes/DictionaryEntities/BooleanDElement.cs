@@ -4,7 +4,7 @@ using Godot;
 namespace EasyKJSCrafter.ResourceClasses.DictionaryEntities
 {
 	[GlobalClass]
-	[DebuggerDisplay("Id = {Id.WholePath}, Value = {Value}")]
+	[DebuggerDisplay("Key={Key}, Name={DebuggerName}, Value={Value.AsBool()}")]
 	public partial class BooleanDElement : DictionaryElementBase
 	{
 		[Export]
@@ -16,6 +16,8 @@ namespace EasyKJSCrafter.ResourceClasses.DictionaryEntities
 				_value = value.AsBool();
 			}
 		}
+
+		public override string StringView => (!InsideArray ? $"{Key}:" : string.Empty) + Value.AsBool().ToString().ToLower();
 
 		public BooleanDElement() { Value = false; }
 		public BooleanDElement(string key) : base(key) {}

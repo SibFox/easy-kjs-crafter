@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text;
 using Godot;
 
 namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
@@ -14,14 +15,16 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 		[Export]
 		public override Variant Value
 		{
-			get => (float)_value.AsDouble();
+			get => _value.AsDouble();
 			set
 			{
-				_value = (float)value.AsDouble();
+				_value = Mathf.Snapped(value.AsDouble(), 0.0001);
 			}
 		}
 
-		public FloatComponent() {  Value = 0.0; }
+		public override string StringView => $"{Id.WholePath}={Mathf.Snapped(Value.AsDouble(), 0.0001).ToString().Replace(',','.')}";
+
+		public FloatComponent() { Value = 0.0; }
 		public FloatComponent(PathId pathId, float val) : base(pathId) { Value = val; }
 		public FloatComponent(string wholePath, float val) : base(wholePath) { Value = val; }
 	}

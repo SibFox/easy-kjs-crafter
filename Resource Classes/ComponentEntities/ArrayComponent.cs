@@ -1,7 +1,6 @@
 using System.Diagnostics;
-using EasyKJSCrafter.ResourceClasses.ItemEntities;
+using System.Text;
 using Godot;
-using Godot.Collections;
 
 namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 {
@@ -24,6 +23,27 @@ namespace EasyKJSCrafter.ResourceClasses.ComponentEntities
 			set
 			{
 				_value = value.As<ComponentCollection>();
+			}
+		}
+
+		public override string StringView
+		{
+			get
+			{
+				StringBuilder builder = new();
+
+				builder.Append($"{Id.WholePath}[");
+
+				System.Collections.Generic.LinkedList<string> entries = [];
+				foreach (var comp in Value.As<ComponentCollection>().Collection)
+				{
+					entries.AddLast(comp.StringView);
+				}
+				
+				builder.AppendJoin(',', entries);
+				builder.Append(']');
+
+				return builder.ToString();
 			}
 		}
 

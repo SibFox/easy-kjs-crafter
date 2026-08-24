@@ -7,116 +7,134 @@
 [ext_resource type="Script" path="res://Resource Classes/ComponentEntities/ComponentBase.cs" id="2_xtmuh"]
 [ext_resource type="Script" path="res://Resource Classes/ComponentEntities/IntegerComponent.cs" id="3_koyoo"]
 [ext_resource type="Script" path="res://Resource Classes/ComponentEntities/ComponentCollection.cs" id="5_koyoo"]
-[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/StringComponent.cs" id="6_s5dqs"]
-[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/BooleanComponent.cs" id="7_xtmuh"]
-
-[sub_resource type="Resource" id="Resource_s5dqs"]
-script = ExtResource("1_fs83q")
-ModId = "minecraft"
-Path = "redstone"
-WholePath = "minecraft:redstone"
-
-[sub_resource type="Resource" id="Resource_jajaj"]
-script = ExtResource("5_koyoo")
-Collection = Array[ExtResource("2_xtmuh")]([])
-Id = SubResource("Resource_s5dqs")
-
-[sub_resource type="Resource" id="Resource_ames6"]
-resource_name = "redstone"
-script = ExtResource("2_7aef8")
-Id = SubResource("Resource_s5dqs")
-Components = SubResource("Resource_jajaj")
-EntryName = "Редстоун"
-Expanded = true
-metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
-
-[sub_resource type="Resource" id="Resource_koyoo"]
-script = ExtResource("1_fs83q")
-ModId = "industrialupgrade"
-Path = "level_microchip"
-WholePath = "industrialupgrade:level_microchip"
-metadata/_custom_type_script = "uid://dnqbschkt35h"
-
-[sub_resource type="Resource" id="Resource_7aef8"]
-script = ExtResource("3_koyoo")
-Value = 1
-Id = SubResource("Resource_koyoo")
-metadata/_custom_type_script = "uid://d2em7ndnmkq7j"
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/FloatComponent.cs" id="7_s5dqs"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/BooleanComponent.cs" id="8_jhp23"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/StringComponent.cs" id="9_jajaj"]
+[ext_resource type="Script" path="res://Resource Classes/ComponentEntities/ArrayComponent.cs" id="10_7kxd5"]
 
 [sub_resource type="Resource" id="Resource_xtmuh"]
 script = ExtResource("1_fs83q")
-ModId = "minecraft"
-Path = "airff12"
-WholePath = "minecraft:airff12"
-
-[sub_resource type="Resource" id="Resource_fs83q"]
-script = ExtResource("5_koyoo")
-Collection = Array[ExtResource("2_xtmuh")]([SubResource("Resource_7aef8")])
-Id = SubResource("Resource_xtmuh")
-metadata/_custom_type_script = "uid://vtkni35a1h0b"
-
-[sub_resource type="Resource" id="Resource_7srki"]
-resource_name = "lvl1"
-script = ExtResource("2_7aef8")
-Id = SubResource("Resource_xtmuh")
-Components = SubResource("Resource_fs83q")
-EntryName = "Микрочип 1ур"
-metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
-
-[sub_resource type="Resource" id="Resource_spamo"]
-script = ExtResource("1_fs83q")
-ModId = "bazz"
-Path = "puzz"
-WholePath = "bazz:puzz"
-metadata/_custom_type_script = "uid://dnqbschkt35h"
-
-[sub_resource type="Resource" id="Resource_qxnum"]
-script = ExtResource("6_s5dqs")
-Value = "badабум"
-Id = SubResource("Resource_spamo")
-metadata/_custom_type_script = "uid://bqedfyan0vtov"
-
-[sub_resource type="Resource" id="Resource_jsilp"]
-script = ExtResource("1_fs83q")
-ModId = "bim"
-Path = "badapim"
-WholePath = "bim:badapim"
-metadata/_custom_type_script = "uid://dnqbschkt35h"
-
-[sub_resource type="Resource" id="Resource_gpy60"]
-script = ExtResource("7_xtmuh")
-Value = true
-Id = SubResource("Resource_jsilp")
-metadata/_custom_type_script = "uid://bg2wumieujrnd"
+ModId = "aa"
+Path = "ee"
+WholePath = "aa:ee"
 
 [sub_resource type="Resource" id="Resource_ehnp8"]
-script = ExtResource("1_fs83q")
-ModId = "minecraft"
-Path = "air"
-WholePath = "minecraft:air"
-
-[sub_resource type="Resource" id="Resource_87hhb"]
 script = ExtResource("5_koyoo")
-Collection = Array[ExtResource("2_xtmuh")]([SubResource("Resource_qxnum"), SubResource("Resource_gpy60")])
-Id = SubResource("Resource_ehnp8")
-metadata/_custom_type_script = "uid://vtkni35a1h0b"
+Collection = Array[ExtResource("2_xtmuh")]([])
+Id = SubResource("Resource_xtmuh")
 
-[sub_resource type="Resource" id="Resource_7m4je"]
-resource_name = "graphene_wire"
+[sub_resource type="Resource" id="Resource_jhp23"]
+resource_name = "usual"
 script = ExtResource("2_7aef8")
-Id = SubResource("Resource_ehnp8")
-Components = SubResource("Resource_87hhb")
-metadata/_custom_type_script = "uid://dxhj00dxkf3cq"
+Id = SubResource("Resource_xtmuh")
+Components = SubResource("Resource_ehnp8")
 
-[sub_resource type="Resource" id="Resource_qc31c"]
-resource_name = "iu"
+[sub_resource type="Resource" id="Resource_jajaj"]
+script = ExtResource("1_fs83q")
+ModId = "ss"
+Path = "ff"
+WholePath = "ss:ff"
+
+[sub_resource type="Resource" id="Resource_7kxd5"]
+script = ExtResource("3_koyoo")
+Value = 15
+Id = SubResource("Resource_jajaj")
+
+[sub_resource type="Resource" id="Resource_eruf8"]
+script = ExtResource("1_fs83q")
+ModId = "ewr"
+Path = "xszb"
+WholePath = "ewr:xszb"
+
+[sub_resource type="Resource" id="Resource_6bmb3"]
+script = ExtResource("7_s5dqs")
+Value = 23.5487
+Id = SubResource("Resource_eruf8")
+
+[sub_resource type="Resource" id="Resource_gh1wg"]
+script = ExtResource("1_fs83q")
+ModId = "gre"
+Path = "gres"
+WholePath = "gre:gres"
+
+[sub_resource type="Resource" id="Resource_vpd3q"]
+script = ExtResource("5_koyoo")
+Collection = Array[ExtResource("2_xtmuh")]([SubResource("Resource_7kxd5"), SubResource("Resource_6bmb3")])
+Id = SubResource("Resource_gh1wg")
+
+[sub_resource type="Resource" id="Resource_fpxtt"]
+resource_name = "sggge"
+script = ExtResource("2_7aef8")
+Id = SubResource("Resource_gh1wg")
+Components = SubResource("Resource_vpd3q")
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_o1dai"]
+script = ExtResource("1_fs83q")
+ModId = "ffq"
+Path = "fqf"
+WholePath = "ffq:fqf"
+
+[sub_resource type="Resource" id="Resource_1woqp"]
+script = ExtResource("8_jhp23")
+Value = true
+Id = SubResource("Resource_o1dai")
+
+[sub_resource type="Resource" id="Resource_n0kke"]
+script = ExtResource("1_fs83q")
+ModId = "geneticsresequenced"
+Path = "dna_helix"
+WholePath = "geneticsresequenced:dna_helix"
+
+[sub_resource type="Resource" id="Resource_yyoka"]
+script = ExtResource("1_fs83q")
+ModId = "geneticsresequenced"
+Path = "gene"
+WholePath = "geneticsresequenced:gene"
+
+[sub_resource type="Resource" id="Resource_4f44l"]
+script = ExtResource("9_jajaj")
+Value = "geneticsresequenced:step_assist"
+Id = SubResource("Resource_yyoka")
+
+[sub_resource type="Resource" id="Resource_q8vm4"]
+script = ExtResource("5_koyoo")
+Collection = Array[ExtResource("2_xtmuh")]([SubResource("Resource_4f44l")])
+Id = SubResource("Resource_n0kke")
+
+[sub_resource type="Resource" id="Resource_0nn4y"]
+script = ExtResource("10_7kxd5")
+Value = SubResource("Resource_q8vm4")
+Id = SubResource("Resource_n0kke")
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_u1jb5"]
+script = ExtResource("1_fs83q")
+ModId = "rar"
+Path = "qqe"
+WholePath = "rar:qqe"
+
+[sub_resource type="Resource" id="Resource_8csap"]
+script = ExtResource("5_koyoo")
+Collection = Array[ExtResource("2_xtmuh")]([SubResource("Resource_1woqp"), SubResource("Resource_0nn4y")])
+Id = SubResource("Resource_u1jb5")
+
+[sub_resource type="Resource" id="Resource_23x2l"]
+resource_name = "arrs"
+script = ExtResource("2_7aef8")
+Id = SubResource("Resource_u1jb5")
+Components = SubResource("Resource_8csap")
+EntryName = "массивч ик"
+Expanded = true
+
+[sub_resource type="Resource" id="Resource_xeu3i"]
+resource_name = "wwef"
 script = ExtResource("1_nbop3")
-Collection = Array[ExtResource("1_koyoo")]([SubResource("Resource_7srki"), SubResource("Resource_7m4je")])
-EntryName = "Industrial Upgrade"
-metadata/_custom_type_script = "uid://c0rkj240liapo"
+Collection = Array[ExtResource("1_koyoo")]([SubResource("Resource_jhp23"), SubResource("Resource_fpxtt"), SubResource("Resource_23x2l")])
+Expanded = true
 
 [resource]
 resource_name = "item"
 script = ExtResource("1_nbop3")
-Collection = Array[ExtResource("1_koyoo")]([SubResource("Resource_ames6"), SubResource("Resource_qc31c")])
+Collection = Array[ExtResource("1_koyoo")]([SubResource("Resource_xeu3i")])
 metadata/_custom_type_script = "uid://c0rkj240liapo"

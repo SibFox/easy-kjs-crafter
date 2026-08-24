@@ -10,7 +10,7 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI.DictionaryEntryUI
 			set
 			{
 				base.Element = value;
-				ValueBox.Value = value.Value.AsDouble();
+				ValueBox.Value = Godot.Mathf.Snapped(value.Value.AsDouble(), 0.0001);
 			}
 		}
 	}
