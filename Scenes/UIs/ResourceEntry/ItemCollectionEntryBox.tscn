@@ -16,12 +16,12 @@ vertical = true
 script = ExtResource("2_wfdgm")
 Resource = null
 
-[node name="VSeparator3" type="VSeparator" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="3" unique_id=1304113086]
+[node name="VSeparator3" type="VSeparator" parent="ContentContainer/ContentVBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="3" unique_id=1304113086]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxLine_ma682")
 
-[node name="TextureRect" type="TextureRect" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="4" unique_id=1523115831]
+[node name="TextureRect" type="TextureRect" parent="ContentContainer/ContentVBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="4" unique_id=1523115831]
 custom_minimum_size = Vector2(35, 35)
 custom_maximum_size = Vector2(35, 35)
 layout_mode = 2
@@ -29,7 +29,7 @@ texture = ExtResource("3_s4pbk")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="CountLabel" type="Label" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="5" unique_id=1301429550]
+[node name="CountLabel" type="Label" parent="ContentContainer/ContentVBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="5" unique_id=1301429550]
 custom_minimum_size = Vector2(35, 35)
 custom_maximum_size = Vector2(35, 35)
 layout_mode = 2
@@ -37,12 +37,9 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DataVBoxContainer" parent="InfoPanelContainer/HBoxContainer" parent_id_path=PackedInt32Array(1954647250) index="1" unique_id=1105333730]
-visible = false
-
-[node name="ItemCollectionHolder" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer" index="0" unique_id=298819742 instance=ExtResource("4_s4pbk")]
+[node name="ItemCollectionHolder" parent="ContentContainer/ContentVBoxContainer/DataVBoxContainer" parent_id_path=PackedInt32Array(1105333730) index="0" unique_id=298819742 instance=ExtResource("4_s4pbk")]
 layout_mode = 2
 
 [connection signal="item_rect_changed" from="." to="." method="OnResized"]
-[connection signal="ElementAdded" from="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ItemCollectionHolder" to="." method="UpdateCountLabel"]
-[connection signal="ElementRemoved" from="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ItemCollectionHolder" to="." method="UpdateCountLabel"]
+[connection signal="ElementAdded" from="ContentContainer/ContentVBoxContainer/DataVBoxContainer/ItemCollectionHolder" to="." method="UpdateCountLabel"]
+[connection signal="ElementRemoved" from="ContentContainer/ContentVBoxContainer/DataVBoxContainer/ItemCollectionHolder" to="." method="UpdateCountLabel"]

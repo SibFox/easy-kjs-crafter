@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dtfooyp35xidp"]
+
+[ext_resource type="PackedScene" uid="uid://dpu4wycjq7o05" path="res://Scenes/UIs/ResourceEntry/ResourceEntryBox.tscn" id="1_26qt3"]
+[ext_resource type="Script" uid="uid://duqqo7x03qec5" path="res://Scenes/UIs/ResourceEntry/TagEntryBox.cs" id="2_h46e1"]
+[ext_resource type="Texture2D" uid="uid://dwkbudmsga2be" path="res://Assets/Images/question_mark.svg" id="3_4u1gm"]
+[ext_resource type="PackedScene" uid="uid://8yxjkqme6h04" path="res://Scenes/UIs/ResourceEntry/PathIdLabel.tscn" id="4_tccqj"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_uwvma"]
+color = Color(0.19215687, 0.039215688, 0.41568628, 1)
+grow_begin = -2.0
+grow_end = -2.0
+thickness = 5
+vertical = true
+
+[node name="TagEntryBox" unique_id=1670762569 instance=ExtResource("1_26qt3")]
+offset_right = 736.0
+script = ExtResource("2_h46e1")
+Resource = null
+
+[node name="VSeparator3" type="VSeparator" parent="ContentContainer/ContentVBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="3" unique_id=1703838304]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_uwvma")
+
+[node name="ItemIconRect" type="TextureRect" parent="ContentContainer/ContentVBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="4" unique_id=1839002066]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("3_4u1gm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ConfirmDeleteButton" parent="ContentContainer/ContentVBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="7" unique_id=2013115525]
+alignment = 2
+
+[node name="DeclineDeleteButton" parent="ContentContainer/ContentVBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="8" unique_id=780734770]
+alignment = 2
+
+[node name="DataVBoxContainer" parent="ContentContainer/ContentVBoxContainer" parent_id_path=PackedInt32Array(25873988) index="1" unique_id=1105333730]
+visible = true
+offset_transform_enabled = true
+offset_transform_position = Vector2(50, 0)
+offset_transform_visual_only = false
+
+[node name="PathIdLabel" parent="ContentContainer/ContentVBoxContainer/DataVBoxContainer" index="0" unique_id=203030064 instance=ExtResource("4_tccqj")]
+layout_mode = 2

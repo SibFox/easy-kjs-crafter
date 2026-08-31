@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://mx32uw3d250u"]
 
-[ext_resource type="Script" uid="uid://di5emxu27nkoq" path="res://Scenes/UIs/ResourceEntry/ComponentEntry/ComponentEntry.cs" id="1_kge7g"]
+[ext_resource type="PackedScene" uid="uid://2hinecpquxrm" path="res://Scenes/UIs/EntryBox.tscn" id="1_dot12"]
+[ext_resource type="Script" uid="uid://di5emxu27nkoq" path="res://Scenes/UIs/ComponentEntry/ComponentEntry.cs" id="1_kge7g"]
 [ext_resource type="PackedScene" uid="uid://8yxjkqme6h04" path="res://Scenes/UIs/ResourceEntry/PathIdLabel.tscn" id="2_r28wj"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_r28wj"]
@@ -17,48 +18,48 @@ grow_end = -2.0
 thickness = 5
 vertical = true
 
-[node name="ComponentEntry" type="VBoxContainer" unique_id=698204598]
+[node name="ComponentEntry" unique_id=698204598 instance=ExtResource("1_dot12")]
 offset_transform_enabled = true
 offset_transform_position = Vector2(50, 0)
 offset_transform_visual_only = false
 script = ExtResource("1_kge7g")
 
-[node name="DataHBoxContainer" type="HBoxContainer" parent="." unique_id=1300276417]
+[node name="DataHBoxContainer" type="HBoxContainer" parent="ContentContainer/ContentVBoxContainer" parent_id_path=PackedInt32Array(25873988) index="0" unique_id=1300276417]
 layout_mode = 2
 
-[node name="PathIdLabel" parent="DataHBoxContainer" unique_id=203030064 instance=ExtResource("2_r28wj")]
+[node name="PathIdLabel" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" index="0" unique_id=203030064 instance=ExtResource("2_r28wj")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="DataHBoxContainer" unique_id=261552194]
+[node name="VSeparator" type="VSeparator" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" index="1" unique_id=261552194]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxLine_r28wj")
 
-[node name="TextureRect" type="TextureRect" parent="DataHBoxContainer" unique_id=1792871586]
+[node name="TextureRect" type="TextureRect" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" index="2" unique_id=1792871586]
 custom_minimum_size = Vector2(35, 35)
 custom_maximum_size = Vector2(35, 35)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="DataHBoxContainer" unique_id=995329201]
+[node name="Label" type="Label" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" index="3" unique_id=995329201]
 layout_mode = 2
 text = "  =  "
 horizontal_alignment = 1
 
-[node name="VSeparator2" type="VSeparator" parent="DataHBoxContainer" unique_id=1122780980]
+[node name="VSeparator2" type="VSeparator" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" index="4" unique_id=1122780980]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxLine_s4jbg")
 
-[node name="DeleteButton" type="Button" parent="DataHBoxContainer" unique_id=693783506]
+[node name="DeleteButton" type="Button" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" index="5" unique_id=693783506]
 custom_minimum_size = Vector2(0, 35)
 custom_maximum_size = Vector2(-1, 35)
 layout_mode = 2
 text = "Удалить"
 
-[node name="ConfirmDeleteButton" type="Button" parent="DataHBoxContainer" unique_id=1987061477]
+[node name="ConfirmDeleteButton" type="Button" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" index="6" unique_id=1987061477]
 visible = false
 custom_minimum_size = Vector2(35, 35)
 custom_maximum_size = Vector2(35, 35)
@@ -66,7 +67,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Y"
 
-[node name="DeclineDeleteButton" type="Button" parent="DataHBoxContainer" unique_id=2123778978]
+[node name="DeclineDeleteButton" type="Button" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" index="7" unique_id=2123778978]
 visible = false
 custom_minimum_size = Vector2(35, 35)
 custom_maximum_size = Vector2(35, 35)
@@ -74,7 +75,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "N"
 
-[node name="HasErrorsLabel" type="Label" parent="DataHBoxContainer" unique_id=711224550]
+[node name="HasErrorsLabel" type="Label" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" index="8" unique_id=711224550]
 visible = false
 custom_maximum_size = Vector2(-1, 35)
 layout_mode = 2
@@ -84,6 +85,6 @@ theme_override_colors/font_color = Color(0.92156863, 0.24705882, 0.23529412, 1)
 theme_override_font_sizes/font_size = 20
 text = "ОШИБКА"
 
-[connection signal="pressed" from="DataHBoxContainer/DeleteButton" to="." method="OnDeleteButton_Pressed"]
-[connection signal="pressed" from="DataHBoxContainer/ConfirmDeleteButton" to="." method="OnConfirmDeleteButton_Pressed"]
-[connection signal="pressed" from="DataHBoxContainer/DeclineDeleteButton" to="." method="OnDeclineDeleteButton_Pressed"]
+[connection signal="pressed" from="ContentContainer/ContentVBoxContainer/DataHBoxContainer/DeleteButton" to="." method="OnDeleteButton_Pressed"]
+[connection signal="pressed" from="ContentContainer/ContentVBoxContainer/DataHBoxContainer/ConfirmDeleteButton" to="." method="OnConfirmDeleteButton_Pressed"]
+[connection signal="pressed" from="ContentContainer/ContentVBoxContainer/DataHBoxContainer/DeclineDeleteButton" to="." method="OnDeclineDeleteButton_Pressed"]

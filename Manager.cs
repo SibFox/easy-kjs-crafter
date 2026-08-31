@@ -43,25 +43,26 @@ namespace EasyKJSCrafter
 
 		public static class LoadedUIScenes
 		{
-			public static readonly MainMenu MainMenu = ResourceLoader.Load<PackedScene>("res://Scenes/UIs/MainMenu/MainMenu.tscn").Instantiate<MainMenu>();
-			public static readonly DeclarationsRedactor DeclarationsRedactor = ResourceLoader.Load<PackedScene>("res://Scenes/UIs/DeclarationsRedactor/DeclarationsRedactor.tscn").Instantiate<DeclarationsRedactor>();
+			public static readonly MainMenu MainMenu = ResourceLoader.Load<PackedScene>("uid://1ei3gtjf3xpc").Instantiate<MainMenu>();
+			public static readonly DeclarationsRedactor DeclarationsRedactor = ResourceLoader.Load<PackedScene>("uid://dc8srvin27rtg").Instantiate<DeclarationsRedactor>();
 
-			public static ItemEntryBox ItemEntryBoxInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ResourceEntry/ItemEntryBox.tscn").Instantiate<ItemEntryBox>();
-			public static ItemCollectionEntryBox ItemCollectionEntryBoxBoxInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ResourceEntry/ItemCollectionEntryBox.tscn").Instantiate<ItemCollectionEntryBox>();
+			public static TagEntryBox TagEntryBoxInstance() => ResourceLoader.Load<PackedScene>("uid://dtfooyp35xidp").Instantiate<TagEntryBox>();
+			public static ItemEntryBox ItemEntryBoxInstance() => ResourceLoader.Load<PackedScene>("uid://bfu7lsul3ckth").Instantiate<ItemEntryBox>();
+			public static ItemCollectionEntryBox ItemCollectionEntryBoxBoxInstance() => ResourceLoader.Load<PackedScene>("uid://cpn7rta0p7lhy").Instantiate<ItemCollectionEntryBox>();
 
-			public static IntegerComponentEntry IntegerComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/IntegerComponentEntry.tscn").Instantiate<IntegerComponentEntry>();
-			public static FloatComponentEntry FloatComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/FloatComponentEntry.tscn").Instantiate<FloatComponentEntry>();
-			public static StringComponentEntry StringComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/StringComponentEntry.tscn").Instantiate<StringComponentEntry>();
-			public static BooleanComponentEntry BooleanComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/BooleanComponentEntry.tscn").Instantiate<BooleanComponentEntry>();
-			public static ArrayComponentEntry ArrayComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/ArrayComponentEntry.tscn").Instantiate<ArrayComponentEntry>();
-			public static DictionaryComponentEntry DictionaryComponentEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/DictionaryComponentEntry.tscn").Instantiate<DictionaryComponentEntry>();
+			public static IntegerComponentEntry IntegerComponentEntryInstance() => ResourceLoader.Load<PackedScene>("uid://c4ofav60g2ggu").Instantiate<IntegerComponentEntry>();
+			public static FloatComponentEntry FloatComponentEntryInstance() => ResourceLoader.Load<PackedScene>("uid://gi4aukixawbl").Instantiate<FloatComponentEntry>();
+			public static StringComponentEntry StringComponentEntryInstance() => ResourceLoader.Load<PackedScene>("uid://bblxbg30e2mdc").Instantiate<StringComponentEntry>();
+			public static BooleanComponentEntry BooleanComponentEntryInstance() => ResourceLoader.Load<PackedScene>("uid://dlyqw1e0yte5c").Instantiate<BooleanComponentEntry>();
+			public static ArrayComponentEntry ArrayComponentEntryInstance() => ResourceLoader.Load<PackedScene>("uid://cnrnjqsblejj6").Instantiate<ArrayComponentEntry>();
+			public static DictionaryComponentEntry DictionaryComponentEntryInstance() => ResourceLoader.Load<PackedScene>("uid://d1f3g2b0b2nyu").Instantiate<DictionaryComponentEntry>();
 
-			public static IntegerDictionaryEntry IntegerDictionaryEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/DictionaryEntry/IntegerDictionaryEntry.tscn").Instantiate<IntegerDictionaryEntry>();
-			public static FloatDictionaryEntry FloatDictionaryEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/DictionaryEntry/FloatDictionaryEntry.tscn").Instantiate<FloatDictionaryEntry>();
-			public static StringDictionaryEntry StringDictionaryEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/DictionaryEntry/StringDictionaryEntry.tscn").Instantiate<StringDictionaryEntry>();
-			public static BooleanDictionaryEntry BooleanDictionaryEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/DictionaryEntry/BooleanDictionaryEntry.tscn").Instantiate<BooleanDictionaryEntry>();
-			public static ArrayDictionaryEntry ArrayDictionaryEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/DictionaryEntry/ArrayDictionaryEntry.tscn").Instantiate<ArrayDictionaryEntry>();
-			public static DictionaryDictionaryEntry DictionaryDictionaryEntryInstance() => ResourceLoader.Load<PackedScene>("res://Scenes/UIs/ComponentEntry/DictionaryEntry/DictionaryDictionaryEntry.tscn").Instantiate<DictionaryDictionaryEntry>();
+			public static IntegerDictionaryEntry IntegerDictionaryEntryInstance() => ResourceLoader.Load<PackedScene>("uid://dmh4tyoebj6uf").Instantiate<IntegerDictionaryEntry>();
+			public static FloatDictionaryEntry FloatDictionaryEntryInstance() => ResourceLoader.Load<PackedScene>("uid://uejourcourwy").Instantiate<FloatDictionaryEntry>();
+			public static StringDictionaryEntry StringDictionaryEntryInstance() => ResourceLoader.Load<PackedScene>("uid://dv2i72sisegeo").Instantiate<StringDictionaryEntry>();
+			public static BooleanDictionaryEntry BooleanDictionaryEntryInstance() => ResourceLoader.Load<PackedScene>("uid://ddugy4hotwmcv").Instantiate<BooleanDictionaryEntry>();
+			public static ArrayDictionaryEntry ArrayDictionaryEntryInstance() => ResourceLoader.Load<PackedScene>("uid://cv621uelaa5g6").Instantiate<ArrayDictionaryEntry>();
+			public static DictionaryDictionaryEntry DictionaryDictionaryEntryInstance() => ResourceLoader.Load<PackedScene>("uid://br1ruubpywdgo").Instantiate<DictionaryDictionaryEntry>();
 		}
 
 		public static class Paths

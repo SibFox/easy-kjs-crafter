@@ -1,56 +1,17 @@
 [gd_scene format=3 uid="uid://bfu7lsul3ckth"]
 
-[ext_resource type="PackedScene" uid="uid://dpu4wycjq7o05" path="res://Scenes/UIs/ResourceEntry/ResourceEntryBox.tscn" id="1_4y8wc"]
+[ext_resource type="PackedScene" uid="uid://dtfooyp35xidp" path="res://Scenes/UIs/ResourceEntry/TagEntryBox.tscn" id="1_t5l0d"]
 [ext_resource type="Script" uid="uid://bpi3dimq1e0dq" path="res://Scenes/UIs/ResourceEntry/ItemEntryBox.cs" id="2_1kpaa"]
-[ext_resource type="PackedScene" uid="uid://8yxjkqme6h04" path="res://Scenes/UIs/ResourceEntry/PathIdLabel.tscn" id="2_465bp"]
-[ext_resource type="Texture2D" uid="uid://dwkbudmsga2be" path="res://Assets/Images/question_mark.svg" id="3_t5l0d"]
 [ext_resource type="PackedScene" uid="uid://bxm675frbx0u0" path="res://Scenes/UIs/CollectionHolderUI/ComponentCollectionHolder.tscn" id="5_uwvma"]
 [ext_resource type="Texture2D" uid="uid://qofs7r3clh04" path="res://Assets/Images/list_icon.png" id="5_x02ii"]
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_uwvma"]
-color = Color(0.19215687, 0.039215688, 0.41568628, 1)
-grow_begin = -2.0
-grow_end = -2.0
-thickness = 5
-vertical = true
-
-[node name="ItemEntryBox" unique_id=1670762569 instance=ExtResource("1_4y8wc")]
-offset_right = 736.0
-offset_bottom = 35.0
+[node name="ItemEntryBox" unique_id=1670762569 instance=ExtResource("1_t5l0d")]
 script = ExtResource("2_1kpaa")
-Resource = null
 
-[node name="VSeparator3" type="VSeparator" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="3" unique_id=1703838304]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxLine_uwvma")
-
-[node name="ItemIconRect" type="TextureRect" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="4" unique_id=1839002066]
-custom_minimum_size = Vector2(35, 35)
-layout_mode = 2
-texture = ExtResource("3_t5l0d")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="ConfirmDeleteButton" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="7" unique_id=2013115525]
-alignment = 2
-
-[node name="DeclineDeleteButton" parent="InfoPanelContainer/HBoxContainer/NameHBoxContainer" parent_id_path=PackedInt32Array(305104392) index="8" unique_id=780734770]
-alignment = 2
-
-[node name="DataVBoxContainer" parent="InfoPanelContainer/HBoxContainer" parent_id_path=PackedInt32Array(1954647250) index="1" unique_id=1105333730]
-visible = false
-offset_transform_enabled = true
-offset_transform_position = Vector2(50, 0)
-offset_transform_visual_only = false
-
-[node name="PathIdLabel" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer" index="0" unique_id=203030064 instance=ExtResource("2_465bp")]
+[node name="ButtonHBoxContainer" type="HBoxContainer" parent="ContentContainer/ContentVBoxContainer/DataVBoxContainer" parent_id_path=PackedInt32Array(1105333730) index="1" unique_id=1009646945]
 layout_mode = 2
 
-[node name="ButtonHBoxContainer" type="HBoxContainer" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer" index="1" unique_id=520580747]
-layout_mode = 2
-
-[node name="ComponentsButton" type="Button" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ButtonHBoxContainer" index="0" unique_id=785763251]
+[node name="ComponentsButton" type="Button" parent="ContentContainer/ContentVBoxContainer/DataVBoxContainer/ButtonHBoxContainer" index="0" unique_id=284249086]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 35)
 custom_maximum_size = Vector2(300, 35)
@@ -58,7 +19,7 @@ layout_mode = 2
 toggle_mode = true
 text = "Компоненты"
 
-[node name="TextureRect" type="TextureRect" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ButtonHBoxContainer" index="1" unique_id=1042227866]
+[node name="TextureRect" type="TextureRect" parent="ContentContainer/ContentVBoxContainer/DataVBoxContainer/ButtonHBoxContainer" index="1" unique_id=538678785]
 custom_minimum_size = Vector2(35, 35)
 custom_maximum_size = Vector2(35, 35)
 layout_mode = 2
@@ -66,7 +27,7 @@ texture = ExtResource("5_x02ii")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ComponentsCountLabel" type="Label" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ButtonHBoxContainer" index="2" unique_id=1582990184]
+[node name="ComponentsCountLabel" type="Label" parent="ContentContainer/ContentVBoxContainer/DataVBoxContainer/ButtonHBoxContainer" index="2" unique_id=525529415]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(35, 35)
 custom_maximum_size = Vector2(35, 35)
@@ -75,11 +36,11 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ComponentCollectionHolder" parent="InfoPanelContainer/HBoxContainer/DataVBoxContainer" index="2" unique_id=298819742 instance=ExtResource("5_uwvma")]
+[node name="ComponentCollectionHolder" parent="ContentContainer/ContentVBoxContainer/DataVBoxContainer" parent_id_path=PackedInt32Array(1105333730) index="2" unique_id=298819742 instance=ExtResource("5_uwvma")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[connection signal="toggled" from="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ButtonHBoxContainer/ComponentsButton" to="." method="OnComponentsButton_Toggle"]
-[connection signal="ElementAdded" from="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ComponentCollectionHolder" to="." method="UpdateCountLabel"]
-[connection signal="ElementRemoved" from="InfoPanelContainer/HBoxContainer/DataVBoxContainer/ComponentCollectionHolder" to="." method="UpdateCountLabel"]
+[connection signal="toggled" from="ContentContainer/ContentVBoxContainer/DataVBoxContainer/ButtonHBoxContainer/ComponentsButton" to="." method="OnComponentsButton_Toggle"]
+[connection signal="ElementAdded" from="ContentContainer/ContentVBoxContainer/DataVBoxContainer/ComponentCollectionHolder" to="." method="UpdateCountLabel"]
+[connection signal="ElementRemoved" from="ContentContainer/ContentVBoxContainer/DataVBoxContainer/ComponentCollectionHolder" to="." method="UpdateCountLabel"]

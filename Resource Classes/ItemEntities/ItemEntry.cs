@@ -7,23 +7,10 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 {
 	[GlobalClass]
 	[DebuggerDisplay("Key = {ResourceName}, Name = {EntryName}, ItemId = {ItemId.WholePath}")]
-	public partial class ItemEntry : ResourceEntry
+	public partial class ItemEntry : TagEntry
 	{
-		[Signal]
-		public delegate void EntryAddedEventHandler();
-		[Signal]
-		public delegate void EntryRemovedEventHandler();
-
-		// Для отображения в редакторе
-		[Export]
-		public PathId Id { get; set; }
 		[Export]
 		public ComponentCollection Components { get; private set; }
-
-		// Для отображения иконки для удобного отображения
-		// TODO: Вставку через буфер обмена и сохранение внутри файлов проекта/приложения
-		[Export]
-		public Texture2D Icon { get; set; }
 
 		public override string StringView
 		{
@@ -50,21 +37,10 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 			}
 		}
 
-
 		public bool ComponentsExpanded { get; set; }
 
-		public ItemEntry() { Components = new(); Id = new(); }
-
-		public ItemEntry(string declarationKey, PathId itemId, string itemName = null) : base(declarationKey, itemName)
-		{
-			Id = itemId;
-			Components = new();
-		}
-
-		public ItemEntry(string declarationKey, string itemIdString, string itemName = null) : base(declarationKey, itemName)
-		{
-			Id.SetPathFromWholePath(itemIdString);
-			Components = new();
-		}
+		public ItemEntry() : base() { Components = new(); }
+		public ItemEntry(string declarationKey, PathId itemId, string itemName = null) : base(declarationKey, itemId, itemName) { Components = new(); }
+		public ItemEntry(string declarationKey, string itemId, string itemName = null) : base(declarationKey, itemId, itemName) { Components = new(); }
 	}
 }

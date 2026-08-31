@@ -17,13 +17,13 @@ vertical = true
 script = ExtResource("2_30i2s")
 Element = null
 
-[node name="TextureRect" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="2" unique_id=575013122]
+[node name="TextureRect" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="2" unique_id=575013122]
 texture = ExtResource("2_tnpb2")
 
-[node name="Label" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="3" unique_id=1981219077]
+[node name="Label" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="3" unique_id=1981219077]
 visible = false
 
-[node name="ShowArrayButton" type="Button" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="5" unique_id=1958942509]
+[node name="ShowArrayButton" type="Button" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="5" unique_id=1958942509]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(35, 35)
 custom_maximum_size = Vector2(35, 35)
@@ -32,12 +32,12 @@ toggle_mode = true
 text = "O"
 alignment = 2
 
-[node name="VSeparator3" type="VSeparator" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="6" unique_id=292894347]
+[node name="VSeparator3" type="VSeparator" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="6" unique_id=292894347]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxLine_30i2s")
 
-[node name="TextureRect2" type="TextureRect" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="7" unique_id=1512672650]
+[node name="TextureRect2" type="TextureRect" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="7" unique_id=1512672650]
 custom_minimum_size = Vector2(35, 35)
 custom_maximum_size = Vector2(35, 35)
 layout_mode = 2
@@ -45,7 +45,7 @@ texture = ExtResource("3_yj04k")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ComponentsCountLabel" type="Label" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="8" unique_id=252787172]
+[node name="ComponentsCountLabel" type="Label" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="8" unique_id=252787172]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(35, 35)
 custom_maximum_size = Vector2(35, 35)
@@ -54,17 +54,18 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator4" type="VSeparator" parent="DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="9" unique_id=699484576]
+[node name="VSeparator4" type="VSeparator" parent="ContentContainer/ContentVBoxContainer/DataHBoxContainer" parent_id_path=PackedInt32Array(1225144735) index="9" unique_id=699484576]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxLine_30i2s")
 
-[node name="DictionaryCollectionHolder" parent="." index="1" unique_id=298819742 instance=ExtResource("5_kd0m3")]
+[node name="DictionaryCollectionHolder" parent="ContentContainer/ContentVBoxContainer" parent_id_path=PackedInt32Array(25873988) index="1" unique_id=298819742 instance=ExtResource("5_kd0m3")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 metadata/IsInArray = true
 
-[connection signal="toggled" from="DataHBoxContainer/ShowArrayButton" to="." method="OnShowArrayButton_Toggled"]
-[connection signal="ElementAdded" from="DictionaryCollectionHolder" to="." method="UpdateCountLabel"]
-[connection signal="ElementAdded" from="DictionaryCollectionHolder" to="." method="ElementAdded"]
-[connection signal="ElementRemoved" from="DictionaryCollectionHolder" to="." method="UpdateCountLabel"]
+[connection signal="toggled" from="ContentContainer/ContentVBoxContainer/DataHBoxContainer/ShowArrayButton" to="." method="OnShowArrayButton_Toggled"]
+[connection signal="ElementAdded" from="ContentContainer/ContentVBoxContainer/DictionaryCollectionHolder" to="." method="ElementAdded"]
+[connection signal="ElementAdded" from="ContentContainer/ContentVBoxContainer/DictionaryCollectionHolder" to="." method="UpdateCountLabel"]
+[connection signal="ElementRemoved" from="ContentContainer/ContentVBoxContainer/DictionaryCollectionHolder" to="." method="UpdateCountLabel"]

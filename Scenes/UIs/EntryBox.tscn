@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://2hinecpquxrm"]
+
+[ext_resource type="Script" uid="uid://boklijes6hi7l" path="res://Scenes/UIs/EntryBox.cs" id="1_aa1w4"]
+[ext_resource type="Texture2D" uid="uid://mno0j4yrrt75" path="res://Assets/Images/entry.png" id="2_qnc2k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e1abv"]
+
+[node name="EntryBox" type="HBoxContainer" unique_id=462027351]
+offset_right = 39.0
+offset_bottom = 35.0
+script = ExtResource("1_aa1w4")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=301188568]
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("2_qnc2k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ContentContainer" type="PanelContainer" parent="." unique_id=2001562944]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_e1abv")
+
+[node name="ContentVBoxContainer" type="VBoxContainer" parent="ContentContainer" unique_id=25873988]
+layout_mode = 2

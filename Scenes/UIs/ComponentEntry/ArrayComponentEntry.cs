@@ -26,7 +26,7 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 			}
 		}
 
-		protected ComponentCollectionHolder CollectionHolder => GetChild<ComponentCollectionHolder>(1);
+		protected ComponentCollectionHolder CollectionHolder => GetNode<ComponentCollectionHolder>("%ComponentCollectionHolder");
 		protected Button ShowArrayButton => GetNode<Button>("%ShowArrayButton");
 		protected Label ComponentsCountLabel => GetNode<Label>("%ComponentsCountLabel");
 		

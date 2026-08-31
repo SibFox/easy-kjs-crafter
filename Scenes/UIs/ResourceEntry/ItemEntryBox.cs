@@ -1,11 +1,10 @@
 using EasyKJSCrafter.ResourceClasses.ItemEntities;
 using EasyKJSCrafter.Scenes.UIs.CollectionHolderUI;
 using Godot;
-using static EasyKJSCrafter.Common.Logger.Logger;
 
 namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 {
-	public partial class ItemEntryBox : ResourceEntryBox
+	public partial class ItemEntryBox : TagEntryBox
 	{
 		[Export]
 		public override ResourceEntry Resource
@@ -28,10 +27,6 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 				}
 			}
 		}
-
-		protected TextureRect ItemIconRect => NameContainer.GetNode<TextureRect>("ItemIconRect");
-
-		protected PathIdLabel IdLabel => DataContainer.GetNode<PathIdLabel>("PathIdLabel");
 
 		protected ComponentCollectionHolder ComponentsContainer => GetNode<ComponentCollectionHolder>("%ComponentCollectionHolder");
 		protected OptionButton AddComponentOption => GetNode<OptionButton>("%AddComponentOptionButton");

@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Text.RegularExpressions;
 using Godot;
 
 namespace EasyKJSCrafter.ResourceClasses.ItemEntities

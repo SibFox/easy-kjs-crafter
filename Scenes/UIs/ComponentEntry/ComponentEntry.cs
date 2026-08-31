@@ -6,7 +6,7 @@ using static EasyKJSCrafter.Common.Logger.Logger;
 
 namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 {
-	public partial class ComponentEntry : VBoxContainer
+	public partial class ComponentEntry : EntryBox
 	{
 		protected ComponentBase _component = new();
 		public virtual ComponentBase Component
@@ -20,7 +20,7 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 			}
 		}
 
-		protected HBoxContainer DataContainer => GetNode<HBoxContainer>("DataHBoxContainer");
+		protected HBoxContainer DataContainer => ContentVBoxContainer.GetNode<HBoxContainer>("DataHBoxContainer");
 		protected PathIdLabel IdLine => GetNode<PathIdLabel>("%PathIdLabel");
 
 		protected Label HasErrorsLabel => DataContainer.GetNode<Label>("HasErrorsLabel");

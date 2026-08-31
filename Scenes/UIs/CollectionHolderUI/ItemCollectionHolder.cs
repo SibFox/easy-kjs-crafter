@@ -39,35 +39,67 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 
 			foreach (ResourceEntry entry in Holder.Collection)
 			{
-				if (entry is ItemEntry item)
+				ResourceEntryBox entryBox = new();
+				if (entry is TagEntry tag)
 				{
-					ItemEntryBox itemBox = Manager.LoadedUIScenes.ItemEntryBoxInstance();
-					AddChild(itemBox, false, InternalMode.Front);
-					itemBox.Resource = item;
-					itemBox.Name = "ItemEntry_"+(GetChildCount()-1);
-					addedEntries++;
+					if (Holder.Type == ItemCollection.CollectionType.Items)
+					{
+						entryBox = Manager.LoadedUIScenes.ItemEntryBoxInstance();
+						entryBox.Resource = tag as ItemEntry;
+						entryBox.Name = "ItemEntry_"+(GetChildCount()-1);
+					}
+					if (Holder.Type == ItemCollection.CollectionType.Tags)
+					{
+						entryBox = Manager.LoadedUIScenes.TagEntryBoxInstance();
+						entryBox.Resource = tag;
+						entryBox.Name = "TagEntry_"+(GetChildCount()-1);
+					}
+					if (Holder.Type == ItemCollection.CollectionType.Fluids)
+					{
+						entryBox = Manager.LoadedUIScenes.TagEntryBoxInstance();
+						tag.SetMeta("IsFluid", true);
+						entryBox.Resource = tag;
+						entryBox.Name = "FluidEntry_"+(GetChildCount()-1);
+					}
 				}
 				if (entry is ItemCollection icoll)
 				{
-					ItemCollectionEntryBox collectionBox = Manager.LoadedUIScenes.ItemCollectionEntryBoxBoxInstance();
-					AddChild(collectionBox, false, InternalMode.Front);
-					collectionBox.Name = "ItemCollectionEntry_"+(GetChildCount()-1);
-					collectionBox.Resource = icoll;
-					addedEntries++;
+					icoll.Type = Holder.Type;
+					entryBox = Manager.LoadedUIScenes.ItemCollectionEntryBoxBoxInstance();
+					entryBox.Name = "ItemCollectionEntry_"+(GetChildCount()-1);
+					entryBox.Resource = icoll;
 				}
+				addedEntries++;
+				AddChild(entryBox, false, InternalMode.Front);
 			}
 
-			LogInfo(nameof(ItemCollectionHolder), Holder.Key).AddLine($"Added {addedEntries} entries from collection {Holder.ResourceName}").Push();
+			LogInfo(nameof(ItemCollectionHolder), Holder.Key).AddLine($"Added {addedEntries} entries from collection {Holder.Key}").Push();
 		}
 
 		void OnAddEntryButton_Pressed()
 		{
-			ItemEntry item = new() { DebuggerName = "ItemEntry_" + (GetChildCount() - 1) };
-			Holder.Collection.Add(item);
-			ItemEntryBox itemBox = Manager.LoadedUIScenes.ItemEntryBoxInstance();
-			AddChild(itemBox, false, InternalMode.Front);
-			itemBox.Name = item.DebuggerName;
-			itemBox.Resource = item;
+			ResourceEntryBox entryBox = new();
+			TagEntry entry = new();
+			if (Holder.Type == ItemCollection.CollectionType.Items)
+			{
+				entry = new ItemEntry() { DebuggerName = "ItemEntry_" + (GetChildCount() - 1) };
+				entryBox = Manager.LoadedUIScenes.ItemEntryBoxInstance();
+			}
+			if (Holder.Type == ItemCollection.CollectionType.Tags)
+			{
+				entry = new() { DebuggerName = "TagEntry_" + (GetChildCount() - 1) };
+				entryBox = Manager.LoadedUIScenes.TagEntryBoxInstance();
+			}
+			if (Holder.Type == ItemCollection.CollectionType.Fluids)
+			{
+				entry = new() { DebuggerName = "FluidEntry_" + (GetChildCount() - 1) };
+				entry.SetMeta("IsFluid", true);
+			}
+
+			Holder.Collection.Add(entry);
+			AddChild(entryBox, false, InternalMode.Front);
+			entryBox.Name = entry.DebuggerName;
+			entryBox.Resource = entry;
 			EmitSignalElementAdded();
 		}
 
@@ -77,6 +109,7 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 			Holder.Collection.Add(coll);
 			ItemCollectionEntryBox collectionBox = Manager.LoadedUIScenes.ItemCollectionEntryBoxBoxInstance();
 			AddChild(collectionBox, false, InternalMode.Front);
+			coll.Type = Holder.Type;
 			collectionBox.Name = coll.DebuggerName;
 			collectionBox.Resource = coll;
 			EmitSignalElementAdded();

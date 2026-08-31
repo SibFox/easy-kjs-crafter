@@ -1,4 +1,5 @@
 using System.Text;
+using EasyKJSCrafter.ResourceClasses.ItemEntities;
 using EasyKJSCrafter.Scenes.UIs.DeclarationTabUI;
 using Godot;
 using static EasyKJSCrafter.Common.Logger.Logger;
@@ -17,6 +18,13 @@ namespace EasyKJSCrafter.Scenes.UIs.DeclarationsRedactor
 
 		Label SaveInfoLabel => SaveContainer.GetNode<Label>("SaveInfoLabel");
 		
+		public override void _Ready()
+		{
+			ItemsTab.DeclarationCollection.Type = ItemCollection.CollectionType.Items;
+			TagsTab.DeclarationCollection.Type = ItemCollection.CollectionType.Tags;
+			FluidsTab.DeclarationCollection.Type = ItemCollection.CollectionType.Fluids;
+		}
+
 		void OnBackButton_Pressed()
 		{
 			Manager.Main.UIHandler.ChangeTo(Manager.LoadedUIScenes.MainMenu);

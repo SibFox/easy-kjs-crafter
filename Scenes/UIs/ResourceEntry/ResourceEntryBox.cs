@@ -5,7 +5,7 @@ using static EasyKJSCrafter.Common.Logger.Logger;
 
 namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 {
-	public partial class ResourceEntryBox : HBoxContainer
+	public partial class ResourceEntryBox : EntryBox
 	{
 		protected  ResourceEntry _resource;
 		public virtual ResourceEntry Resource
@@ -25,10 +25,8 @@ namespace EasyKJSCrafter.Scenes.UIs.ResourceEntryUI
 			}
 		}
 
-		protected PanelContainer InfoContainer => GetNode<PanelContainer>("InfoPanelContainer");
-
-		protected HBoxContainer NameContainer => InfoContainer.GetNode<HBoxContainer>("HBoxContainer/NameHBoxContainer");
-		protected Control DataContainer => InfoContainer.GetNode<Control>("HBoxContainer/DataVBoxContainer");
+		protected HBoxContainer NameContainer => ContentVBoxContainer.GetNode<HBoxContainer>("NameHBoxContainer");
+		protected Control DataContainer => ContentVBoxContainer.GetNode<Control>("DataVBoxContainer");
 
 		protected Button ShowDataButton => GetNode<Button>("ShowDataButton");
 

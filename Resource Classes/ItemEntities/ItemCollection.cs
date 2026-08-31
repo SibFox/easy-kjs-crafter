@@ -12,8 +12,17 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 	[DebuggerDisplay("Key = {Key}, Name = {EntryName}, Count = {Collection.Count}")]
 	public partial class ItemCollection : ResourceEntry, ICollection<ResourceEntry>
 	{
+		public enum CollectionType
+		{
+			Items,
+			Tags,
+			Fluids
+		}
+
 		[Export]
 		public virtual Array<ResourceEntry> Collection { get; set; }
+		[Export]
+		public CollectionType Type { get; set; } = CollectionType.Items;
 
 		public ItemCollection() { Collection = []; }
 		public ItemCollection(string declarationKey, string collectionName = null) : base (declarationKey, collectionName) { Collection = []; }

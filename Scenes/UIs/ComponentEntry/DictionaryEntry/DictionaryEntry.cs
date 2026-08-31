@@ -5,7 +5,7 @@ using static EasyKJSCrafter.Common.Logger.Logger;
 
 namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI.DictionaryEntryUI
 {
-	public partial class DictionaryEntry : VBoxContainer
+	public partial class DictionaryEntry : EntryBox
 	{
 		protected DictionaryElementBase _element = new();
 		public virtual DictionaryElementBase Element
@@ -21,7 +21,7 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI.DictionaryEntryUI
 			}
 		}
 
-		protected HBoxContainer DataContainer => GetNode<HBoxContainer>("DataHBoxContainer");
+		protected HBoxContainer DataContainer => ContentContainer.GetNode<HBoxContainer>("DataHBoxContainer");
 		protected LineEdit KeyLine => GetNode<LineEdit>("%KeyLine");
 
 		protected Label HasErrorsLabel => DataContainer.GetNode<Label>("HasErrorsLabel");

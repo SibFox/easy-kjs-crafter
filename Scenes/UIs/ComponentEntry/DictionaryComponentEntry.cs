@@ -26,7 +26,7 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI
 			}
 		}
 
-		protected DictionaryCollectionHolder CollectionHolder => GetChild<DictionaryCollectionHolder>(1);
+		protected DictionaryCollectionHolder CollectionHolder => GetNode<DictionaryCollectionHolder>("%DictionaryCollectionHolder");
 		protected Button ShowDictionaryButton => GetNode<Button>("%ShowDictionaryButton");
 		protected Label ElementsCountLabel => GetNode<Label>("%ElementsCountLabel");
 
