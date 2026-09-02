@@ -18,17 +18,18 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 			{
 				_holder = value;
 				BuildEntryTree();
+				EmitSignalElementAdded();
 			}
 		}
 		public Array<ResourceEntry> Collection => Holder.Collection;
 
-		OptionButton AddEntryOption => GetNode<OptionButton>("AddEntryOption");
+		VBoxContainer CollectionContainer => GetNode<VBoxContainer>("BorderPanelContainer/CollectionVBoxContainer");
 
 		public override void BuildEntryTree()
 		{
 			int addedEntries = 0;
 
-			foreach (Node entry in GetChildren(true))
+			foreach (Node entry in CollectionContainer.GetChildren(true))
 			{
 				if (entry.Name != "AddButtonHBoxContainer")
 					entry.QueueFree();
@@ -37,7 +38,7 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 			if (Holder == null)
 				return;
 
-			foreach (ResourceEntry entry in Holder.Collection)
+			foreach (ResourceEntry entry in Collection)
 			{
 				ResourceEntryBox entryBox = new();
 				if (entry is TagEntry tag)
@@ -70,7 +71,7 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 					entryBox.Resource = icoll;
 				}
 				addedEntries++;
-				AddChild(entryBox, false, InternalMode.Front);
+				CollectionContainer.AddChild(entryBox, false, InternalMode.Front);
 			}
 
 			LogInfo(nameof(ItemCollectionHolder), Holder.Key).AddLine($"Added {addedEntries} entries from collection {Holder.Key}").Push();
@@ -94,10 +95,11 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 			{
 				entry = new() { DebuggerName = "FluidEntry_" + (GetChildCount() - 1) };
 				entry.SetMeta("IsFluid", true);
+				entryBox = Manager.LoadedUIScenes.TagEntryBoxInstance();
 			}
 
-			Holder.Collection.Add(entry);
-			AddChild(entryBox, false, InternalMode.Front);
+			Collection.Add(entry);
+			CollectionContainer.AddChild(entryBox, false, InternalMode.Front);
 			entryBox.Name = entry.DebuggerName;
 			entryBox.Resource = entry;
 			EmitSignalElementAdded();
@@ -106,9 +108,9 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 		void OnAddCollectionButton_Pressed()
 		{
 			ItemCollection coll = new() { DebuggerName = "ItemCollectionEntry_" + (GetChildCount() - 1) };
-			Holder.Collection.Add(coll);
+			Collection.Add(coll);
 			ItemCollectionEntryBox collectionBox = Manager.LoadedUIScenes.ItemCollectionEntryBoxBoxInstance();
-			AddChild(collectionBox, false, InternalMode.Front);
+			CollectionContainer.AddChild(collectionBox, false, InternalMode.Front);
 			coll.Type = Holder.Type;
 			collectionBox.Name = coll.DebuggerName;
 			collectionBox.Resource = coll;

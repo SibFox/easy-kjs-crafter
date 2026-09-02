@@ -25,7 +25,7 @@ namespace EasyKJSCrafter.Scenes.UIs.CollectionHolderUI
 		public Array<DictionaryElementBase> Collection => Holder.Collection;
 
 		VBoxContainer CollectionContainer => GetNode<VBoxContainer>("BorderPanelContainer/CollectionVBoxContainer");
-		public OptionButton AddElementOption => GetNode<OptionButton>("%AddElementOptionButton");
+		public OptionButton AddElementOption => CollectionContainer.GetNode<OptionButton>("%AddElementOptionButton");
 
 		void OnAddElementOption_Selected(int index)
 		{

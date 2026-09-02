@@ -3,24 +3,37 @@
 [ext_resource type="PackedScene" uid="uid://3y3dglybi0lp" path="res://Scenes/UIs/CollectionHolderUI/CollectionHolder.tscn" id="1_5vin5"]
 [ext_resource type="Script" uid="uid://dthdj1855tluv" path="res://Scenes/UIs/CollectionHolderUI/ItemCollectionHolder.cs" id="2_cvb2q"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvb2q"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_color = Color(0.17254902, 0.6431373, 0.47843137, 1)
+corner_radius_bottom_left = 6
+
 [node name="ItemCollectionHolder" unique_id=298819742 instance=ExtResource("1_5vin5")]
 script = ExtResource("2_cvb2q")
 Holder = null
 
-[node name="AddButtonHBoxContainer" type="HBoxContainer" parent="." index="0" unique_id=1755535360]
+[node name="BorderPanelContainer" type="PanelContainer" parent="." index="0" unique_id=826804529]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cvb2q")
+
+[node name="CollectionVBoxContainer" type="VBoxContainer" parent="BorderPanelContainer" index="0" unique_id=2115772992]
 layout_mode = 2
 
-[node name="AddEntryButton" type="Button" parent="AddButtonHBoxContainer" index="0" unique_id=1620121985]
+[node name="AddButtonHBoxContainer" type="HBoxContainer" parent="BorderPanelContainer/CollectionVBoxContainer" index="0" unique_id=1755535360]
+layout_mode = 2
+
+[node name="AddEntryButton" type="Button" parent="BorderPanelContainer/CollectionVBoxContainer/AddButtonHBoxContainer" index="0" unique_id=1620121985]
 custom_minimum_size = Vector2(200, 35)
 custom_maximum_size = Vector2(-1, 35)
 layout_mode = 2
 text = "+ Запись"
 
-[node name="AddCollectionButton" type="Button" parent="AddButtonHBoxContainer" index="1" unique_id=957809909]
+[node name="AddCollectionButton" type="Button" parent="BorderPanelContainer/CollectionVBoxContainer/AddButtonHBoxContainer" index="1" unique_id=957809909]
 custom_minimum_size = Vector2(200, 35)
 custom_maximum_size = Vector2(-1, 35)
 layout_mode = 2
 text = "+ Коллекция"
 
-[connection signal="pressed" from="AddButtonHBoxContainer/AddEntryButton" to="." method="OnAddEntryButton_Pressed"]
-[connection signal="pressed" from="AddButtonHBoxContainer/AddCollectionButton" to="." method="OnAddCollectionButton_Pressed"]
+[connection signal="pressed" from="BorderPanelContainer/CollectionVBoxContainer/AddButtonHBoxContainer/AddEntryButton" to="." method="OnAddEntryButton_Pressed"]
+[connection signal="pressed" from="BorderPanelContainer/CollectionVBoxContainer/AddButtonHBoxContainer/AddCollectionButton" to="." method="OnAddCollectionButton_Pressed"]

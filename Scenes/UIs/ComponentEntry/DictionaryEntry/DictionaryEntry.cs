@@ -21,7 +21,7 @@ namespace EasyKJSCrafter.Scenes.UIs.ComponentEntryUI.DictionaryEntryUI
 			}
 		}
 
-		protected HBoxContainer DataContainer => ContentContainer.GetNode<HBoxContainer>("DataHBoxContainer");
+		protected HBoxContainer DataContainer => ContentVBoxContainer.GetNode<HBoxContainer>("DataHBoxContainer");
 		protected LineEdit KeyLine => GetNode<LineEdit>("%KeyLine");
 
 		protected Label HasErrorsLabel => DataContainer.GetNode<Label>("HasErrorsLabel");

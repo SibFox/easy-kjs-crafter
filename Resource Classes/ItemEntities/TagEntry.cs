@@ -30,7 +30,7 @@ namespace EasyKJSCrafter.ResourceClasses.ItemEntities
 				StringBuilder builder = new();
 				if (!string.IsNullOrEmpty(EntryName))
 					builder.Append(new string('\t', Level) + "// " + EntryName + '\n');
-				builder.Append(new string('\t', Level) + $"{Key}: \'{(GetMeta("IsFluid", false).AsBool() ? '#' : "")}{Id.WholePath}");
+				builder.Append(new string('\t', Level) + $"{Key}: \'{(GetMeta("IsFluid", false).AsBool() ? "" : '#')}{Id.WholePath}");
 
 				builder.Append('\'');
 				return builder.ToString();
